@@ -15,8 +15,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "4A2F72D7117840A600F35FA7"
-               BuildableName = "ARApp2.app"
-               BlueprintName = "ARApp2"
+               BuildableName = "Window.app"
+               BlueprintName = "Window"
                ReferencedContainer = "container:Window.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -33,8 +33,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "4A2F72D7117840A600F35FA7"
-            BuildableName = "ARApp2.app"
-            BlueprintName = "ARApp2"
+            BuildableName = "Window.app"
+            BlueprintName = "Window"
             ReferencedContainer = "container:Window.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -59,8 +59,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "4A2F72D7117840A600F35FA7"
-            BuildableName = "ARApp2.app"
-            BlueprintName = "ARApp2"
+            BuildableName = "Window.app"
+            BlueprintName = "Window"
             ReferencedContainer = "container:Window.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -92,8 +92,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "4A2F72D7117840A600F35FA7"
-            BuildableName = "ARApp2.app"
-            BlueprintName = "ARApp2"
+            BuildableName = "Window.app"
+            BlueprintName = "Window"
             ReferencedContainer = "container:Window.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
