@@ -61,6 +61,11 @@
 @class ARViewController;
 
 @interface VirtualEnvironment : NSObject {
+@public
+    NSMutableArray *objects;
+    Boolean moveLeft;
+    Boolean moveRight;
+    int numMoved;
 }
 
 - (VirtualEnvironment *) initWithARViewController:(ARViewController *)vc;

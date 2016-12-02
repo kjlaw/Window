@@ -65,6 +65,7 @@
 #import <AR/sys/CameraVideo.h>
 
 @interface ARViewController : UIViewController <CameraVideoTookPictureDelegate> {
+    NSString *modelPath;
 }
 
 - (IBAction)start;

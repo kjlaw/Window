@@ -129,6 +129,24 @@
     const GLfloat lightPosition0[]     =    {1.0f, 1.0f, 2.0f, 0.0f}; // A directional light (i.e. non-positional).
     
     if (_visible) {
+        if(_ve->moveLeft == true && _ve->numMoved <= [_ve->objects count]){
+            if(_ve->numMoved == [_ve->objects count]){
+                _ve->moveLeft = false;
+                _ve->numMoved = 0;
+            } else {
+                _ve->numMoved ++;
+                _localPose.T[12] -= 100.0;
+            }
+        }
+        if(_ve->moveRight == true && _ve->numMoved <= [_ve->objects count]){
+            if(_ve->numMoved == [_ve->objects count]){
+                _ve->moveRight = false;
+                _ve->numMoved = 0;
+            } else {
+                _ve->numMoved ++;
+                _localPose.T[12] += 100.0;
+            }
+        }
         glPushMatrix();
         glMultMatrixf(_poseInEyeSpace.T);
         glMultMatrixf(_localPose.T);

@@ -127,7 +127,7 @@
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    modelPath = @"Data2/models.dat";
     // Init instance variables.
     glView = nil;
     virtualEnvironment = nil;
@@ -142,12 +142,29 @@
     running = FALSE;
     videoPaused = FALSE;
     runLoopTimePrevious = CFAbsoluteTimeGetCurrent();
+    UISwipeGestureRecognizer *swipeLeft = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(didSwipe:)];
+    swipeLeft.direction = UISwipeGestureRecognizerDirectionLeft;
+    [self.view addGestureRecognizer:swipeLeft];
+    
+    UISwipeGestureRecognizer *swipeRight = [[UISwipeGestureRecognizer alloc] initWithTarget:self  action:@selector(didSwipe:)];
+    swipeRight.direction = UISwipeGestureRecognizerDirectionRight;
+    [self.view addGestureRecognizer:swipeRight];
+
 }
 
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
     [self start];
+}
+
+- (void)didSwipe:(UISwipeGestureRecognizer*)swipe{
+    
+    if (swipe.direction == UISwipeGestureRecognizerDirectionLeft) {
+        self.virtualEnvironment->moveLeft = true;
+    } else if (swipe.direction == UISwipeGestureRecognizerDirectionRight) {
+        self.virtualEnvironment->moveRight = true;
+    }
 }
 
 // On iOS 6.0 and later, we must explicitly report which orientations this view controller supports.
@@ -320,8 +337,7 @@ static void startCallback(void *userData)
     [cameraVideo setTookPictureDelegateUserData:NULL];
     
     // Other ARToolKit setup.
-    // HERE
-    //arSetMarkerExtractionMode(gARHandle, AR_USE_TRACKING_HISTORY_V2);
+    arSetMarkerExtractionMode(gARHandle, AR_USE_TRACKING_HISTORY_V2);
     //arSetMarkerExtractionMode(gARHandle, AR_NOUSE_TRACKING_HISTORY);
     //arSetLabelingThreshMode(gARHandle, AR_LABELING_THRESH_MODE_MANUAL); // Uncomment to use  manual thresholding.
     
@@ -367,21 +383,20 @@ static void startCallback(void *userData)
     arPattAttach(gARHandle, gARPattHandle);
     
     // Load marker(s).
-    // HERE
-//    NSString *markerConfigDataFilename = @"Data2/markers.dat";
-//    int mode;
-//    if ((markers = [ARMarker newMarkersFromConfigDataFile:markerConfigDataFilename arPattHandle:gARPattHandle arPatternDetectionMode:&mode]) == nil) {
-//        NSLog(@"Error loading markers.\n");
-//        [self stop];
-//        return;
-//    }
-//#ifdef DEBUG
-//    NSLog(@"Marker count = %d\n", [markers count]);
-//#endif
-//    // Set the pattern detection mode (template (pictorial) vs. matrix (barcode) based on
-//    // the marker types as defined in the marker config. file.
-//    arSetPatternDetectionMode(gARHandle, mode); // Default = AR_TEMPLATE_MATCHING_COLOR
-//
+    NSString *markerConfigDataFilename = @"Data2/markers.dat";
+    int mode;
+    if ((markers = [ARMarker newMarkersFromConfigDataFile:markerConfigDataFilename arPattHandle:gARPattHandle arPatternDetectionMode:&mode]) == nil) {
+        NSLog(@"Error loading markers.\n");
+        [self stop];
+        return;
+    }
+#ifdef DEBUG
+    NSLog(@"Marker count = %d\n", [markers count]);
+#endif
+    // Set the pattern detection mode (template (pictorial) vs. matrix (barcode) based on
+    // the marker types as defined in the marker config. file.
+    arSetPatternDetectionMode(gARHandle, mode); // Default = AR_TEMPLATE_MATCHING_COLOR
+
     // Other application-wide marker options. Once set, these apply to all markers in use in the application.
     // If you are using standard ARToolKit picture (template) markers, leave commented to use the defaults.
     // If you are usign a different marker design (see http://www.artoolworks.com/support/app/marker.php )
@@ -391,20 +406,29 @@ static void startCallback(void *userData)
     //arSetMatrixCodeType(gARHandle, AR_MATRIX_CODE_3x3); // Default = AR_MATRIX_CODE_3x3
     
     // Set up the virtual environment.
-    // HERE
     self.virtualEnvironment = [[[VirtualEnvironment alloc] initWithARViewController:self] autorelease];
-   // [self.virtualEnvironment addObjectsFromObjectListFile:@"Data2/models.dat" connectToARMarkers:markers];
+   [self.virtualEnvironment addObjectsFromObjectListFile:modelPath connectToARMarkers:markers];
     
     // Because in this example we're not currently assigning a world coordinate system
     // (we're just using local marker coordinate systems), set the camera pose now, to
     // the default (i.e. the identity matrix).
-    float pose[16] = {1.0f, 0.0f, 0.0f, 0.0f,  0.0f, 1.0f, 0.0f, 0.0f,  0.0f, 0.0f, 1.0f, 0.0f,  0.0f, 0.0f, 0.0f, 1.0f};
-    [glView setCameraPose:pose];
-    ARdouble dub = 0.5f;
-    VEObjectOBJ *myobj = [[VEObjectOBJ alloc] initFromFile:@"Data2/models/Barrel_Construction.obj" translation:&dub rotation:&dub scale:&dub];
-    //myobj.visible = TRUE;
-    [self.virtualEnvironment addObject:myobj];
-    [myobj setVisible:TRUE];
+//    float pose[16] = {1.0f, 0.0f, 0.0f, 0.0f,  0.0f, 1.0f, 0.0f, 0.0f,  0.0f, 0.0f, 1.0f, 0.0f,  0.0f, 0.0f, 0.0f, 1.0f};
+//    [glView setCameraPose:pose];
+//    ARdouble translation[3], rotation[4], scale[3];
+//    translation[0] = 0.5f;
+//    translation[1] = 0.5f;
+//    translation[2] = -2.5f;
+//    rotation[0] = 0.0f;
+//    rotation[1] = 0.0f;
+//    rotation[2] = 0.0f;
+//    rotation[3] = 0.0f;
+//    scale[0] = 1.0f;
+//    scale[1] = 1.0f;
+//    scale[2] = 1.0f;
+//    VEObjectOBJ *myobj = [[VEObjectOBJ alloc] initFromFile:@"Data2/models/Barrel_Construction.obj" translation:translation rotation:rotation scale:scale];
+//    //myobj.visible = TRUE;
+//    [self.virtualEnvironment addObject:myobj];
+//    [myobj setVisible:TRUE];
 
     
     // For FPS statistics.

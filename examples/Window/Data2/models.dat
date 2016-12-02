@@ -4,25 +4,25 @@ models/Tree_z_Icon_3.obj
 0.0 0.0 0.0
 90.0 1.0 0.0 0.0
 1.016 1.016 1.016
-MARKER 1
+MARKER 3
 
 models/Kiosk_Food_Cart.obj
-0.0 0.0 0.0
+100.0 0.0 0.0
 90.0 1.0 0.0 0.0
 1.016 1.016 1.016
-MARKER 2
+MARKER 3
 
 models/Table_Picnic_Standard.obj
-0.0 0.0 0.0
+200.0 0.0 0.0
 90.0 1.0 0.0 0.0
 1.016 1.016 1.016
 MARKER 3
 
 models/Wall_Brick_Curved.obj
-0.0 0.0 0.0
+300.0 0.0 0.0
 90.0 1.0 0.0 0.0
 1.016 1.016 1.016
-MARKER 4
+MARKER 3
 
 # Lots of spare models
 models/Boulder_Small_Gray.obj

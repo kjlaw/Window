@@ -134,8 +134,8 @@ static char *get_buff(char *buf, int n, FILE *fp, int skipblanks)
 @implementation VirtualEnvironment {
 @private
     ARViewController *arViewController;
-    NSMutableArray *objects;
 }
+
 
 @synthesize arViewController;
 
@@ -156,6 +156,9 @@ static char *get_buff(char *buf, int n, FILE *fp, int skipblanks)
         
         objects = [[NSMutableArray alloc] init];
     }
+    moveLeft = false;
+    moveRight = false;
+    numMoved = 0;
     return (self);
 }
 

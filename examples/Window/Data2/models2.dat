@@ -1,0 +1,25 @@
+4
+
+models/Tree_z_Icon_3.obj
+-100.0 0.0 0.0
+90.0 1.0 0.0 0.0
+1.016 1.016 1.016
+MARKER 1
+
+models/Kiosk_Food_Cart.obj
+0.0 0.0 0.0
+90.0 1.0 0.0 0.0
+1.016 1.016 1.016
+MARKER 1
+
+models/Table_Picnic_Standard.obj
+100.0 0.0 0.0
+90.0 1.0 0.0 0.0
+1.016 1.016 1.016
+MARKER 1
+
+models/Wall_Brick_Curved.obj
+200.0 0.0 0.0
+90.0 1.0 0.0 0.0
+1.016 1.016 1.016
+MARKER 1
