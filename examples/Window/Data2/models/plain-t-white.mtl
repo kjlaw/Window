@@ -1,0 +1,15 @@
+newmtl T_shirt_male_obj:T_shirt1
+Ns 12.0000
+Ni 1.5000
+d 1.0000
+Tr 1.0000
+Tf 1.0000 1.0000 1.0000
+illum 2
+Ka 0.0000 0.0000 0.0000
+Kd 0.6667 0.6667 0.6667
+Ks 0.0000 0.0000 0.0000
+Ke 0.0000 0.0000 0.0000
+map_Ka T-shirt_textures\T-shirt_color.jpeg
+map_Kd T-shirt_textures\T-shirt_color.jpeg
+map_bump T-shirt_textures\T-shirt_bump.jpeg
+bump T-shirt_textures\T-shirt_bump.jpeg

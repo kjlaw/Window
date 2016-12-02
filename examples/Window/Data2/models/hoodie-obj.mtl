@@ -1,0 +1,16 @@
+newmtl Shirt_male_obj:Shirt_green
+#newmtl Shirt_green
+Ns 12.0000
+Ni 1.5000
+d 1.0000
+Tr 1.0000
+Tf 1.0000 1.0000 1.0000
+illum 2
+Ka 0.0000 0.0000 0.0000
+Kd 0.6667 0.6667 0.6667
+Ks 0.0000 0.0000 0.0000
+Ke 0.0000 0.0000 0.0000
+map_Ka "Shirt\Shirt_color-green.psd"
+map_Kd "Shirt\Shirt_color-green.psd"
+map_bump "Shirt\Shirt_bump.psd"
+bump "Shirt\Shirt_bump.psd"
