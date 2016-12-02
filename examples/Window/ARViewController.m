@@ -50,6 +50,7 @@
 #import <AR/gsub_es.h>
 #import "../ARAppCore/ARMarkerSquare.h"
 #import "../ARAppCore/ARMarkerMulti.h"
+#import "VEObjectOBJ.h"
 
 #define VIEW_DISTANCE_MIN        5.0f          // Objects closer to the camera than this will not be displayed.
 #define VIEW_DISTANCE_MAX        2000.0f        // Objects further away from the camera than this will not be displayed.
@@ -230,6 +231,8 @@ static void startCallback(void *userData)
 
 - (void) start2
 {
+    NSLog(@"start2 called");
+
     // Find the size of the window.
     int xsize, ysize;
     if (ar2VideoGetSize(gVid, &xsize, &ysize) < 0) {
@@ -316,8 +319,9 @@ static void startCallback(void *userData)
     [cameraVideo setTookPictureDelegate:self];
     [cameraVideo setTookPictureDelegateUserData:NULL];
     
-    // Other ARToolKit setup. 
-    arSetMarkerExtractionMode(gARHandle, AR_USE_TRACKING_HISTORY_V2);
+    // Other ARToolKit setup.
+    // HERE
+    //arSetMarkerExtractionMode(gARHandle, AR_USE_TRACKING_HISTORY_V2);
     //arSetMarkerExtractionMode(gARHandle, AR_NOUSE_TRACKING_HISTORY);
     //arSetLabelingThreshMode(gARHandle, AR_LABELING_THRESH_MODE_MANUAL); // Uncomment to use  manual thresholding.
     
@@ -363,20 +367,21 @@ static void startCallback(void *userData)
     arPattAttach(gARHandle, gARPattHandle);
     
     // Load marker(s).
-    NSString *markerConfigDataFilename = @"Data2/markers.dat";
-    int mode;
-    if ((markers = [ARMarker newMarkersFromConfigDataFile:markerConfigDataFilename arPattHandle:gARPattHandle arPatternDetectionMode:&mode]) == nil) {
-        NSLog(@"Error loading markers.\n");
-        [self stop];
-        return;
-    }
-#ifdef DEBUG
-    NSLog(@"Marker count = %d\n", [markers count]);
-#endif
-    // Set the pattern detection mode (template (pictorial) vs. matrix (barcode) based on
-    // the marker types as defined in the marker config. file.
-    arSetPatternDetectionMode(gARHandle, mode); // Default = AR_TEMPLATE_MATCHING_COLOR
-
+    // HERE
+//    NSString *markerConfigDataFilename = @"Data2/markers.dat";
+//    int mode;
+//    if ((markers = [ARMarker newMarkersFromConfigDataFile:markerConfigDataFilename arPattHandle:gARPattHandle arPatternDetectionMode:&mode]) == nil) {
+//        NSLog(@"Error loading markers.\n");
+//        [self stop];
+//        return;
+//    }
+//#ifdef DEBUG
+//    NSLog(@"Marker count = %d\n", [markers count]);
+//#endif
+//    // Set the pattern detection mode (template (pictorial) vs. matrix (barcode) based on
+//    // the marker types as defined in the marker config. file.
+//    arSetPatternDetectionMode(gARHandle, mode); // Default = AR_TEMPLATE_MATCHING_COLOR
+//
     // Other application-wide marker options. Once set, these apply to all markers in use in the application.
     // If you are using standard ARToolKit picture (template) markers, leave commented to use the defaults.
     // If you are usign a different marker design (see http://www.artoolworks.com/support/app/marker.php )
@@ -386,14 +391,21 @@ static void startCallback(void *userData)
     //arSetMatrixCodeType(gARHandle, AR_MATRIX_CODE_3x3); // Default = AR_MATRIX_CODE_3x3
     
     // Set up the virtual environment.
+    // HERE
     self.virtualEnvironment = [[[VirtualEnvironment alloc] initWithARViewController:self] autorelease];
-    [self.virtualEnvironment addObjectsFromObjectListFile:@"Data2/models.dat" connectToARMarkers:markers];
+   // [self.virtualEnvironment addObjectsFromObjectListFile:@"Data2/models.dat" connectToARMarkers:markers];
     
     // Because in this example we're not currently assigning a world coordinate system
     // (we're just using local marker coordinate systems), set the camera pose now, to
     // the default (i.e. the identity matrix).
     float pose[16] = {1.0f, 0.0f, 0.0f, 0.0f,  0.0f, 1.0f, 0.0f, 0.0f,  0.0f, 0.0f, 1.0f, 0.0f,  0.0f, 0.0f, 0.0f, 1.0f};
     [glView setCameraPose:pose];
+    ARdouble dub = 0.5f;
+    VEObjectOBJ *myobj = [[VEObjectOBJ alloc] initFromFile:@"Data2/models/Barrel_Construction.obj" translation:&dub rotation:&dub scale:&dub];
+    //myobj.visible = TRUE;
+    [self.virtualEnvironment addObject:myobj];
+    [myobj setVisible:TRUE];
+
     
     // For FPS statistics.
     arUtilTimerReset();
