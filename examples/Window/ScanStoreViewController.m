@@ -128,6 +128,18 @@
     
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    [self.navigationController setNavigationBarHidden:YES];
+    [super viewWillAppear:animated];
+}
+
+- (void)viewDidDisappear:(BOOL)animated {
+    [[scanAreaButton layer] setBorderColor:[UIColor redColor].CGColor];
+    [startShoppingButton setHidden:YES];
+    [self.navigationController setNavigationBarHidden:NO];
+
+}
+
 
 // User clicked camera
 -(void)tapDetected{

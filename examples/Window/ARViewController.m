@@ -108,25 +108,30 @@
     self.wantsFullScreenLayout = YES;
     
     // This will be overlaid with the actual AR view.
-//    NSString *irisImage = nil;
-//    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
-//        irisImage = @"Iris-iPad.png";
-//    }  else { // UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone
-//        CGSize result = [[UIScreen mainScreen] bounds].size;
-//        if (result.height == 568) {
-//            irisImage = @"Iris-568h.png"; // iPhone 5, iPod touch 5th Gen, etc.
-//        } else { // result.height == 480
-//            irisImage = @"Iris.png";
-//        }
-//    }
-//    UIView *irisView = [[[UIImageView alloc] initWithImage:[UIImage imageNamed:irisImage]] autorelease];
+    NSString *irisImage = nil;
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+        irisImage = @"Iris-iPad.png";
+    }  else { // UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone
+        CGSize result = [[UIScreen mainScreen] bounds].size;
+        if (result.height == 568) {
+            irisImage = @"Iris-568h.png"; // iPhone 5, iPod touch 5th Gen, etc.
+        } else { // result.height == 480
+            irisImage = @"Iris.png";
+        }
+    }
+    UIView *irisView = [[[UIImageView alloc] initWithImage:[UIImage imageNamed:irisImage]] autorelease];
     
-    UIView* irisView = [[UIView alloc] initWithFrame:CGRectMake(0,
-                                                                0,
-                                                                [[UIScreen mainScreen] applicationFrame].size.width,
-                                                                [[UIScreen mainScreen] applicationFrame].size.height)];
+//    UIView* irisView = [[UIView alloc] initWithFrame:CGRectMake(0,
+//                                                                0,
+//                                                                [[UIScreen mainScreen] applicationFrame].size.width,
+//                                                                [[UIScreen mainScreen] applicationFrame].size.height)];
     irisView.userInteractionEnabled = YES;
     self.view = irisView;
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [self.navigationController setNavigationBarHidden:YES];
+    [super viewWillAppear:animated];
 }
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
@@ -253,6 +258,8 @@ static void startCallback(void *userData)
 - (void) start2
 {
     NSLog(@"start2 called");
+    
+    [self.navigationController setNavigationBarHidden:NO];
 
     // Find the size of the window.
     int xsize, ysize;
