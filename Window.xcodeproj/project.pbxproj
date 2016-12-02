@@ -354,6 +354,12 @@
 		4AF9712E1B5F5709001BFEB5 /* hough_similarity_voting.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4AF9707A1B5F5708001BFEB5 /* hough_similarity_voting.cpp */; };
 		7B3081C11DEE94E900A3162A /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7B3081C01DEE92BB00A3162A /* Storyboard.storyboard */; };
 		7B8F16E81DF15D8F00FA7378 /* ScanStoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B8F16E71DF15D8F00FA7378 /* ScanStoreViewController.m */; };
+		7B8F16EB1DF165CF00FA7378 /* FilterOptionsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B8F16EA1DF165CF00FA7378 /* FilterOptionsTableViewController.m */; };
+		7B8F16EE1DF165E000FA7378 /* FilterGenderTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B8F16ED1DF165E000FA7378 /* FilterGenderTableViewController.m */; };
+		7B8F16F11DF165EE00FA7378 /* FilterStyleTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B8F16F01DF165EE00FA7378 /* FilterStyleTableViewController.m */; };
+		7B8F16F41DF165F800FA7378 /* FilterSizeTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B8F16F31DF165F800FA7378 /* FilterSizeTableViewController.m */; };
+		7B8F16F71DF1660200FA7378 /* FilterColorTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B8F16F61DF1660200FA7378 /* FilterColorTableViewController.m */; };
+		7B8F16FA1DF1660D00FA7378 /* FilterPriceTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B8F16F91DF1660D00FA7378 /* FilterPriceTableViewController.m */; };
 		7F798A8B4F8E171F423F07E8 /* libPods-ARUtil.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F74E60D96CC225B69ADA20C /* libPods-ARUtil.a */; };
 		80E88110AED5386DE2C25E65 /* libPods-ARgsub_es2.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F8168B1AA876CFACA73B072 /* libPods-ARgsub_es2.a */; };
 		82C55E401397A0A30FD09787 /* libPods-ARMulti.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 27E2D5C18F248B6B67AA15EE /* libPods-ARMulti.a */; };
@@ -2276,6 +2282,18 @@
 		7B3081C01DEE92BB00A3162A /* Storyboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Storyboard.storyboard; sourceTree = "<group>"; };
 		7B8F16E61DF15D8F00FA7378 /* ScanStoreViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScanStoreViewController.h; sourceTree = "<group>"; };
 		7B8F16E71DF15D8F00FA7378 /* ScanStoreViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScanStoreViewController.m; sourceTree = "<group>"; };
+		7B8F16E91DF165CF00FA7378 /* FilterOptionsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FilterOptionsTableViewController.h; sourceTree = "<group>"; };
+		7B8F16EA1DF165CF00FA7378 /* FilterOptionsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FilterOptionsTableViewController.m; sourceTree = "<group>"; };
+		7B8F16EC1DF165E000FA7378 /* FilterGenderTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FilterGenderTableViewController.h; sourceTree = "<group>"; };
+		7B8F16ED1DF165E000FA7378 /* FilterGenderTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FilterGenderTableViewController.m; sourceTree = "<group>"; };
+		7B8F16EF1DF165EE00FA7378 /* FilterStyleTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FilterStyleTableViewController.h; sourceTree = "<group>"; };
+		7B8F16F01DF165EE00FA7378 /* FilterStyleTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FilterStyleTableViewController.m; sourceTree = "<group>"; };
+		7B8F16F21DF165F800FA7378 /* FilterSizeTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FilterSizeTableViewController.h; sourceTree = "<group>"; };
+		7B8F16F31DF165F800FA7378 /* FilterSizeTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FilterSizeTableViewController.m; sourceTree = "<group>"; };
+		7B8F16F51DF1660200FA7378 /* FilterColorTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FilterColorTableViewController.h; sourceTree = "<group>"; };
+		7B8F16F61DF1660200FA7378 /* FilterColorTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FilterColorTableViewController.m; sourceTree = "<group>"; };
+		7B8F16F81DF1660D00FA7378 /* FilterPriceTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FilterPriceTableViewController.h; sourceTree = "<group>"; };
+		7B8F16F91DF1660D00FA7378 /* FilterPriceTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FilterPriceTableViewController.m; sourceTree = "<group>"; };
 		7C81638A39638EA648840758 /* Pods-ARMulti.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ARMulti.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ARMulti/Pods-ARMulti.debug.xcconfig"; sourceTree = "<group>"; };
 		7F74E60D96CC225B69ADA20C /* libPods-ARUtil.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ARUtil.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		819EF64F1BA5B58F1E2243CE /* Pods-Window.distribution.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Window.distribution.xcconfig"; path = "Pods/Target Support Files/Pods-Window/Pods-Window.distribution.xcconfig"; sourceTree = "<group>"; };
@@ -2534,6 +2552,18 @@
 				4A2F730A1178414800F35FA7 /* ARViewController.m */,
 				7B8F16E61DF15D8F00FA7378 /* ScanStoreViewController.h */,
 				7B8F16E71DF15D8F00FA7378 /* ScanStoreViewController.m */,
+				7B8F16E91DF165CF00FA7378 /* FilterOptionsTableViewController.h */,
+				7B8F16EA1DF165CF00FA7378 /* FilterOptionsTableViewController.m */,
+				7B8F16EC1DF165E000FA7378 /* FilterGenderTableViewController.h */,
+				7B8F16ED1DF165E000FA7378 /* FilterGenderTableViewController.m */,
+				7B8F16EF1DF165EE00FA7378 /* FilterStyleTableViewController.h */,
+				7B8F16F01DF165EE00FA7378 /* FilterStyleTableViewController.m */,
+				7B8F16F21DF165F800FA7378 /* FilterSizeTableViewController.h */,
+				7B8F16F31DF165F800FA7378 /* FilterSizeTableViewController.m */,
+				7B8F16F51DF1660200FA7378 /* FilterColorTableViewController.h */,
+				7B8F16F61DF1660200FA7378 /* FilterColorTableViewController.m */,
+				7B8F16F81DF1660D00FA7378 /* FilterPriceTableViewController.h */,
+				7B8F16F91DF1660D00FA7378 /* FilterPriceTableViewController.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -5955,6 +5985,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7B8F16EB1DF165CF00FA7378 /* FilterOptionsTableViewController.m in Sources */,
 				4AF101DF180BFC9900A922DE /* arLabelingSubDBI3C.c in Sources */,
 				4AF101CC180BFC9100A922DE /* mMul.c in Sources */,
 				4AF101C1180BFC9100A922DE /* mAlloc.c in Sources */,
@@ -5965,6 +5996,7 @@
 				4AF10205180BFC9900A922DE /* arLabelingSubEBI3C.c in Sources */,
 				4AF101E6180BFC9900A922DE /* arLabelingSubDBICY.c in Sources */,
 				4AF101AF180BFC9100A922DE /* ar3DCreateHandle.c in Sources */,
+				7B8F16F41DF165F800FA7378 /* FilterSizeTableViewController.m in Sources */,
 				4AF10200180BFC9900A922DE /* arLabelingSubDWRA3C.c in Sources */,
 				4AF101B0180BFC9100A922DE /* ar3DUtil.c in Sources */,
 				4AF1021C180BFC9900A922DE /* arLabelingSubEWI3CA5551.c in Sources */,
@@ -5975,7 +6007,9 @@
 				4AF101B3180BFC9100A922DE /* arDetectMarker2.c in Sources */,
 				4AF101BB180BFC9100A922DE /* arPattAttach.c in Sources */,
 				4AF101D1180BFC9100A922DE /* paramChangeSize.c in Sources */,
+				7B8F16FA1DF1660D00FA7378 /* FilterPriceTableViewController.m in Sources */,
 				4AF101FC180BFC9900A922DE /* arLabelingSubDWR3C565.c in Sources */,
+				7B8F16EE1DF165E000FA7378 /* FilterGenderTableViewController.m in Sources */,
 				4AF101F4180BFC9900A922DE /* arLabelingSubDWI3CA.c in Sources */,
 				4AF10214180BFC9900A922DE /* arLabelingSubEBRC.c in Sources */,
 				7B8F16E81DF15D8F00FA7378 /* ScanStoreViewController.m in Sources */,
@@ -5988,6 +6022,7 @@
 				4AF1021D180BFC9900A922DE /* arLabelingSubEWIA3C.c in Sources */,
 				4AF101B7180BFC9100A922DE /* arGetTransMat.c in Sources */,
 				4AF1020B180BFC9900A922DE /* arLabelingSubEBIC.c in Sources */,
+				7B8F16F71DF1660200FA7378 /* FilterColorTableViewController.m in Sources */,
 				4AF1021B180BFC9900A922DE /* arLabelingSubEWI3CA4444.c in Sources */,
 				4AF101EF180BFC9900A922DE /* arLabelingSubDBRCY.c in Sources */,
 				4AF1021F180BFC9900A922DE /* arLabelingSubEWICY.c in Sources */,
@@ -6003,6 +6038,7 @@
 				4AF101D4180BFC9100A922DE /* paramDisp.c in Sources */,
 				4AF101C5180BFC9100A922DE /* mAllocTrans.c in Sources */,
 				4AF101C0180BFC9100A922DE /* arUtil.c in Sources */,
+				7B8F16F11DF165EE00FA7378 /* FilterStyleTableViewController.m in Sources */,
 				4AF101EE180BFC9900A922DE /* arLabelingSubDBRC.c in Sources */,
 				4AF101EC180BFC9900A922DE /* arLabelingSubDBR3CA5551.c in Sources */,
 				4AF101C6180BFC9100A922DE /* mAllocUnit.c in Sources */,
