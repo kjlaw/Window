@@ -353,6 +353,7 @@
 		4AF9712D1B5F5709001BFEB5 /* freak.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4AF970771B5F5708001BFEB5 /* freak.cpp */; };
 		4AF9712E1B5F5709001BFEB5 /* hough_similarity_voting.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4AF9707A1B5F5708001BFEB5 /* hough_similarity_voting.cpp */; };
 		7B3081C11DEE94E900A3162A /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7B3081C01DEE92BB00A3162A /* Storyboard.storyboard */; };
+		7B8F16E81DF15D8F00FA7378 /* ScanStoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B8F16E71DF15D8F00FA7378 /* ScanStoreViewController.m */; };
 		7F798A8B4F8E171F423F07E8 /* libPods-ARUtil.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F74E60D96CC225B69ADA20C /* libPods-ARUtil.a */; };
 		80E88110AED5386DE2C25E65 /* libPods-ARgsub_es2.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F8168B1AA876CFACA73B072 /* libPods-ARgsub_es2.a */; };
 		82C55E401397A0A30FD09787 /* libPods-ARMulti.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 27E2D5C18F248B6B67AA15EE /* libPods-ARMulti.a */; };
@@ -2273,6 +2274,8 @@
 		78BB3F2108E4837000D7CA2D /* videoConfig.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = videoConfig.h; sourceTree = "<group>"; };
 		78BB3F5208E483CB00D7CA2D /* Data */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Data; sourceTree = "<group>"; };
 		7B3081C01DEE92BB00A3162A /* Storyboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Storyboard.storyboard; sourceTree = "<group>"; };
+		7B8F16E61DF15D8F00FA7378 /* ScanStoreViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScanStoreViewController.h; sourceTree = "<group>"; };
+		7B8F16E71DF15D8F00FA7378 /* ScanStoreViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScanStoreViewController.m; sourceTree = "<group>"; };
 		7C81638A39638EA648840758 /* Pods-ARMulti.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ARMulti.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ARMulti/Pods-ARMulti.debug.xcconfig"; sourceTree = "<group>"; };
 		7F74E60D96CC225B69ADA20C /* libPods-ARUtil.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ARUtil.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		819EF64F1BA5B58F1E2243CE /* Pods-Window.distribution.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Window.distribution.xcconfig"; path = "Pods/Target Support Files/Pods-Window/Pods-Window.distribution.xcconfig"; sourceTree = "<group>"; };
@@ -2315,12 +2318,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4A2F72F1117840A600F35FA7 /* QuartzCore.framework in Frameworks */,
 				4AF6B87E13B380EA00F983E7 /* libARgsub_es.a in Frameworks */,
 				4AF6B88013B380EA00F983E7 /* libARMulti.a in Frameworks */,
 				4AF6B88213B380EA00F983E7 /* libEden.a in Frameworks */,
 				4ACEFC48130AEC9A009D1DA0 /* libjpeg.a in Frameworks */,
 				4A941D361AE5DCF6000FA802 /* libARvideo.a in Frameworks */,
-				4A2F72F1117840A600F35FA7 /* QuartzCore.framework in Frameworks */,
 				4A2F72F2117840A600F35FA7 /* CoreGraphics.framework in Frameworks */,
 				4A941D291AE5DCE6000FA802 /* libARICP.a in Frameworks */,
 				4A2F72F3117840A600F35FA7 /* OpenGLES.framework in Frameworks */,
@@ -2529,6 +2532,8 @@
 				4A2F73061178414800F35FA7 /* ARApp2Delegate.m */,
 				4A2F73091178414800F35FA7 /* ARViewController.h */,
 				4A2F730A1178414800F35FA7 /* ARViewController.m */,
+				7B8F16E61DF15D8F00FA7378 /* ScanStoreViewController.h */,
+				7B8F16E71DF15D8F00FA7378 /* ScanStoreViewController.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -5261,7 +5266,7 @@
 				LastUpgradeCheck = 0720;
 				TargetAttributes = {
 					4A2F72D7117840A600F35FA7 = {
-						DevelopmentTeam = ALM4357QZ2;
+						DevelopmentTeam = UPY629UR3V;
 					};
 				};
 			};
@@ -5973,6 +5978,7 @@
 				4AF101FC180BFC9900A922DE /* arLabelingSubDWR3C565.c in Sources */,
 				4AF101F4180BFC9900A922DE /* arLabelingSubDWI3CA.c in Sources */,
 				4AF10214180BFC9900A922DE /* arLabelingSubEBRC.c in Sources */,
+				7B8F16E81DF15D8F00FA7378 /* ScanStoreViewController.m in Sources */,
 				4AF10211180BFC9900A922DE /* arLabelingSubEBR3CA4444.c in Sources */,
 				4AF101C8180BFC9100A922DE /* mDisp.c in Sources */,
 				4AF101B6180BFC9100A922DE /* arGetMarkerInfo.c in Sources */,
@@ -6387,11 +6393,11 @@
 			baseConfigurationReference = A6712A6397C547613C52218C /* Pods-Window.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				DEVELOPMENT_TEAM = ALM4357QZ2;
+				DEVELOPMENT_TEAM = UPY629UR3V;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = examples/Window/ARApp2_Prefix.pch;
 				INFOPLIST_FILE = "$(SRCROOT)/examples/Window/Info.plist";
-				PRODUCT_BUNDLE_IDENTIFIER = com.merfrog.Window2;
+				PRODUCT_BUNDLE_IDENTIFIER = com.merfrog.Window;
 				PRODUCT_NAME = Window;
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -6403,11 +6409,11 @@
 			baseConfigurationReference = B4834C3A8883AD4570823964 /* Pods-Window.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				DEVELOPMENT_TEAM = ALM4357QZ2;
+				DEVELOPMENT_TEAM = UPY629UR3V;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = examples/Window/ARApp2_Prefix.pch;
 				INFOPLIST_FILE = "$(SRCROOT)/examples/Window/Info.plist";
-				PRODUCT_BUNDLE_IDENTIFIER = com.merfrog.Window2;
+				PRODUCT_BUNDLE_IDENTIFIER = com.merfrog.Window;
 				PRODUCT_NAME = Window;
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -6420,11 +6426,11 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = examples/Window/dist.plist;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
-				DEVELOPMENT_TEAM = ALM4357QZ2;
+				DEVELOPMENT_TEAM = UPY629UR3V;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = examples/Window/ARApp2_Prefix.pch;
 				INFOPLIST_FILE = "$(SRCROOT)/examples/Window/Info.plist";
-				PRODUCT_BUNDLE_IDENTIFIER = com.merfrog.Window2;
+				PRODUCT_BUNDLE_IDENTIFIER = com.merfrog.Window;
 				PRODUCT_NAME = Window;
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
