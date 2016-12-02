@@ -14,6 +14,18 @@
 
 @implementation FilterOptionsTableViewController
 
+- (IBAction)applyFilter:(UIBarButtonItem *)sender {
+    // TODO apply filter (currently filters are saved to NSUserData when user hits save within submenu)
+    
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (IBAction)cancel:(UIBarButtonItem *)sender {
+    // TODO don't apply filters (currently filters are saved to NSUserData when user hits save within submenu)
+    
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     

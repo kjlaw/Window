@@ -269,8 +269,16 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Filter By" id="YKF-hb-wJX">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="Daq-5x-gVJ"/>
-                        <barButtonItem key="rightBarButtonItem" title="Apply" id="k5D-TT-TM1"/>
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="Daq-5x-gVJ">
+                            <connections>
+                                <action selector="cancel:" destination="IzG-tl-A47" id="4qI-W6-tgG"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Apply" id="k5D-TT-TM1">
+                            <connections>
+                                <action selector="applyFilter:" destination="IzG-tl-A47" id="JfJ-Hk-8FB"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xjg-FN-ZCz" userLabel="First Responder" sceneMemberID="firstResponder"/>
