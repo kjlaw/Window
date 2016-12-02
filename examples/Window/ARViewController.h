@@ -66,6 +66,7 @@
 
 @interface ARViewController : UIViewController <CameraVideoTookPictureDelegate> {
     NSString *modelPath;
+    UITouch *startPosition;
 }
 
 - (IBAction)start;

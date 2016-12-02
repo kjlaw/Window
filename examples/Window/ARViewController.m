@@ -149,7 +149,6 @@
     UISwipeGestureRecognizer *swipeRight = [[UISwipeGestureRecognizer alloc] initWithTarget:self  action:@selector(didSwipe:)];
     swipeRight.direction = UISwipeGestureRecognizerDirectionRight;
     [self.view addGestureRecognizer:swipeRight];
-
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -159,7 +158,7 @@
 }
 
 - (void)didSwipe:(UISwipeGestureRecognizer*)swipe{
-    
+
     if (swipe.direction == UISwipeGestureRecognizerDirectionLeft) {
         self.virtualEnvironment->moveLeft = true;
     } else if (swipe.direction == UISwipeGestureRecognizerDirectionRight) {

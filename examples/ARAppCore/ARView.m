@@ -371,7 +371,7 @@ NSString *const ARViewTouchNotification = @"ARViewTouchNotification";
             if (touchDelegate) {
                 if ([touchDelegate respondsToSelector:@selector(handleTouchAtLocation:tapCount:)]) {
                     [touchDelegate handleTouchAtLocation:location tapCount:numTaps];
-                }    
+                }
             }
         } // phase match.
     } // touches.
