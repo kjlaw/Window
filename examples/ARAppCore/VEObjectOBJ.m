@@ -120,26 +120,6 @@
     [super willBeRemovedFromEnvironment:environment];
 }
 
--(void) fillPose:(ARdouble* [16]) pose
-{
-    pose[0] = 1;
-    pose[1] = 0;
-    pose[2] = 0;
-    pose[3] = 0;
-    pose[4] = 0;
-    pose[5] = 1;
-    pose[6] = 0;
-    pose[7] = 0;
-    pose[8] = 0;
-    pose[9] = 0;
-    pose[10] = 1;
-    pose[11] = 0;
-    pose[12] = 0;
-    pose[13] = 0;
-    pose[14] = 0;
-    pose[15] = 1;
-}
-
 -(void) draw:(NSNotification *)notification
 {
     // Lighting setup.
@@ -148,57 +128,45 @@
     const GLfloat lightWhite75[]        =    {0.75, 0.75, 0.75, 1.0};    // RGBA all on three quarters.
     const GLfloat lightPosition0[]     =    {1.0f, 1.0f, 2.0f, 0.0f}; // A directional light (i.e. non-positional).
     
-    if(_ve.arViewController.glView->showDetail == YES){
-        VEObjectOBJ * obj = (VEObjectOBJ *) _ve->objects[0];
-        if( obj->glmModel == glmModel && glmModel != NULL){
-            NSLog(@"HEYY");
-            ARdouble* pose[16];
-            ARdouble val = -0.06599;
-            pose[0] = &val;
-            val = 0.713;
-            pose[1] = &val;
-            val = -0.6979;
-            pose[2] = &val;
-            pose[3] = 0;
-            val = -0.198405;
-            pose[4] = &val;
-            val = -0.6949;
-            pose[5] = &val;
-            pose[6] = &val;
-            pose[7] = 0;
-            val = -0.97789;
-            pose[8] = &val;
-            val = 0.0928;
-            pose[9] = &val;
-            val = 0.18733;
-            pose[10] = &val;
-            pose[11] = 0;
-            val = 82.97743;
-            pose[12] = &val;
-            val = -16.8155;
-            pose[13] = &val;
-            val = -610.43;
-            pose[14] = &val;
-            pose[15] = 1;
-            //glPushMatrix();
-            //glMultMatrixf(pose);
-            pose[0] = 1;
-            pose[1] = 0;
-            pose[2] = 0;
-            pose[3] = 0;
-            pose[4] = 0;
-            pose[5] = 1;
-            pose[6] = 0;
-            pose[7] = 0;
-            pose[8] = 0;
-            pose[9] = 0;
-            pose[10] = 1;
-            pose[11] = 0;
-            pose[12] = 0;
-            pose[13] = 0;
-            pose[14] = 0;
-            pose[15] = 1;
-            //[self fillPose:detailPose];
+//    if(_ve.arViewController.glView->showDetail == YES){
+//        VEObjectOBJ * obj = (VEObjectOBJ *) _ve->objects[0];
+//        if( obj->glmModel == glmModel && glmModel != NULL){
+//            ARdouble pose[16];
+//            pose[0] = 0.018;
+//            pose[1] = 1.0;
+//            pose[2] = -0.0255;
+//            pose[3] = 0;
+//            pose[4] = -0.12509;
+//            pose[5] = -0.018366;
+//            pose[6] = -1.0;
+//            pose[7] = 0;
+//            pose[8] = -1.0;
+//            pose[9] = 0.021673;
+//            pose[10] = 0.12422;
+//            pose[11] = 0;
+//            pose[12] = 137.0;
+//            pose[13] = 0.0;
+//            pose[14] = -339.0;
+//            pose[15] = 1;
+//            glPushMatrix();
+//            glMultMatrixf(pose);
+//            pose[0] = 1;
+//            pose[1] = 0;
+//            pose[2] = 0;
+//            pose[3] = 0;
+//            pose[4] = 0;
+//            pose[5] = 1;
+//            pose[6] = 0;
+//            pose[7] = 0;
+//            pose[8] = 0;
+//            pose[9] = 0;
+//            pose[10] = 1;
+//            pose[11] = 0;
+//            pose[12] = 0;
+//            pose[13] = 0;
+//            pose[14] = 0;
+//            pose[15] = 1;
+//            //[self fillPose:detailPose];
 //            glMultMatrixf(pose);
 //            if (_lit) {
 //                glLightfv(GL_LIGHT0, GL_DIFFUSE, lightWhite100);
@@ -218,8 +186,9 @@
 //            } else glStateCacheDisableLighting();
 //            glmDrawArrays(glmModel, 0);
 //            glPopMatrix();
-        }
-    } else if (_visible) {
+//        }
+    //} else
+if (_visible) {
         if(_ve->moveLeft == true && _ve->numMoved <= [_ve->objects count]){
             if(_ve->numMoved == [_ve->objects count]){
                 _ve->moveLeft = false;

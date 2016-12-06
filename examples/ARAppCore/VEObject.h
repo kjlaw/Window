@@ -54,11 +54,12 @@
 
 @interface VEObject : NSObject {
 @protected
-    VirtualEnvironment *_ve; // Reference to containing environment.
     BOOL _drawable;
     BOOL _lit;
     BOOL _transparent;
     BOOL _visible;
+@public
+    VirtualEnvironment *_ve; // Reference to containing environment.
     ARPose _pose;
     ARPose _localPose;
     ARPose _poseInEyeSpace;

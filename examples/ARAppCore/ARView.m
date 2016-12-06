@@ -442,7 +442,7 @@ NSString *const ARViewTouchNotification = @"ARViewTouchNotification";
     
     // Find INVERSE(PROJECTION * MODELVIEW).
     EdenMathMultMatrix(A, projection, cameraPose);
-    if (EdenMathInvertMatrix(m, A)) {
+    if (!EdenMathInvertMatrix(m, A)) {
         
         // Next, normalise point to viewport range [-1.0, 1.0], and with depth -1.0 (i.e. at near clipping plane).
         p[0] = (point.x - viewPort[viewPortIndexLeft]) * 2.0f / viewPort[viewPortIndexWidth] - 1.0f; // (winx - viewport[0]) * 2 / viewport[2] - 1.0;
@@ -452,7 +452,9 @@ NSString *const ARViewTouchNotification = @"ARViewTouchNotification";
         
         // Calculate the point's world coordinates.
         EdenMathMultMatrixByVector(q, m, p);
-        
+        NSLog(@"------------------");
+        NSLog(@"Making ray 1");
+
         if (q[3] != 0.0f) {
             rayPoint1.v[0] = q[0] / q[3];
             rayPoint1.v[1] = q[1] / q[3];
@@ -460,7 +462,7 @@ NSString *const ARViewTouchNotification = @"ARViewTouchNotification";
             
             // Next, a second point with depth 1.0 (i.e. at far clipping plane).
             p[2] = 1.0f; // 2 * winz - 1.0;
-            
+            NSLog(@"Making ray 2");
             // Calculate the point's world coordinates.
             EdenMathMultMatrixByVector(q, m, p);
             if (q[3] != 0.0f) {
@@ -468,6 +470,29 @@ NSString *const ARViewTouchNotification = @"ARViewTouchNotification";
                 rayPoint2.v[0] = q[0] / q[3];
                 rayPoint2.v[1] = q[1] / q[3];
                 rayPoint2.v[2] = q[2] / q[3];
+                for (int i = 0; i < [self.arViewController.glView.arViewController.virtualEnvironment->objects count]; i++) {
+                    VEObject * obj = (VEObject *)self.arViewController.glView.arViewController.virtualEnvironment->objects[i];
+                    for (int i = 0; i < [obj->_ve->objects count]; i++) {
+                        VEObject * obj2 = (VEObject *) obj->_ve->objects[i];
+                        if([obj2 isIntersectedByRayFromPoint:rayPoint1 toPoint:rayPoint2]){
+                            NSLog(@"intersected");
+                        }
+                    }
+                }
+                for (int i = 0; i < [self.arViewController.virtualEnvironment->objects count]; i++) {
+                    VEObject * obj = (VEObject *) self.arViewController.virtualEnvironment->objects[i];
+                    for (int i = 0; i < [obj->_ve->objects count]; i++) {
+                        VEObject * obj2 = (VEObject *) obj->_ve->objects[i];
+                        if([obj2 isIntersectedByRayFromPoint:rayPoint1 toPoint:rayPoint2]){
+                            NSLog(@"intersected");
+                        }
+                    }
+//                    if([obj isIntersectedByRayFromPoint:rayPoint1 toPoint:rayPoint2]){
+//                        NSLog(@"intersected");
+//                    }
+                }
+                NSLog(@"Boo ya");
+                NSLog(@"------------------");
                 
                 rayIsValid = TRUE;
                 return;
@@ -482,7 +507,6 @@ NSString *const ARViewTouchNotification = @"ARViewTouchNotification";
     CGPoint locationFlippedY = CGPointMake(location.x, self.surfaceSize.height - location.y);
     NSLog(@"Touch at CG location (%.1f,%.1f), surfaceSize.height makes it (%.1f,%.1f) with y flipped.\n", location.x, location.y, locationFlippedY.x, locationFlippedY.y);
     showDetail = !showDetail;
-    
     [self convertPointInViewToRay:locationFlippedY];
     if (rayIsValid) {
         [[NSNotificationCenter defaultCenter] postNotificationName:ARViewTouchNotification object:self];
