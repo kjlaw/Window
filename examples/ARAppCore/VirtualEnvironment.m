@@ -155,6 +155,7 @@ static char *get_buff(char *buf, int n, FILE *fp, int skipblanks)
         }
         
         objects = [[NSMutableArray alloc] init];
+        arViewController.glView->objects = objects;
     }
     moveLeft = false;
     moveRight = false;

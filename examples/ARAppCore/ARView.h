@@ -107,14 +107,18 @@ typedef enum {
     ARViewContentAlignModeBottomRight,
 } ARViewContentAlignMode;
 
-@interface ARView : EAGLView <ARViewTouchDelegate> {
+//@interface ARView : EAGLView <ARViewTouchDelegate> {
+@interface ARView : EAGLView {
 @public
     BOOL showDetail;
+    NSMutableArray *objects;
+    float projection[16];
 }
 
 - (id) initWithFrame:(CGRect)frame pixelFormat:(NSString*)format depthFormat:(EAGLDepthFormat)depth withStencil:(BOOL)stencil preserveBackbuffer:(BOOL)retained;
 @property float *cameraLens;
 @property float *cameraPose;
+//@property float *projection;
 @property(readonly) GLint *viewPort;
 - (void) drawView:(id)sender;
 
@@ -131,7 +135,7 @@ typedef enum {
 @property ARViewContentAlignMode contentAlignMode; // Defaults to ARViewContentAlignModeCenter.
 
 // Interaction.
-@property(nonatomic, assign) id <ARViewTouchDelegate> touchDelegate;
+//@property(nonatomic, assign) id <ARViewTouchDelegate> touchDelegate;
 @property(nonatomic, readonly) BOOL rayIsValid;
 @property(nonatomic, readonly) ARVec3 rayPoint1;
 @property(nonatomic, readonly) ARVec3 rayPoint2;
