@@ -65,6 +65,7 @@
     NSMutableArray *objects;
     Boolean moveLeft;
     Boolean moveRight;
+    Boolean wantsDetail;
     int numMoved;
 }
 

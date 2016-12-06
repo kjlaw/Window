@@ -158,6 +158,7 @@ static char *get_buff(char *buf, int n, FILE *fp, int skipblanks)
     }
     moveLeft = false;
     moveRight = false;
+    wantsDetail = false;
     numMoved = 0;
     return (self);
 }

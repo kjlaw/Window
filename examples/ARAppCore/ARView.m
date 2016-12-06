@@ -69,7 +69,6 @@ NSString *const ARViewTouchNotification = @"ARViewTouchNotification";
 @implementation ARView {
     
     ARViewController *arViewController;
-    
     float cameraLens[16];
     float cameraPose[16];
     BOOL cameraPoseValid;
@@ -112,6 +111,8 @@ NSString *const ARViewTouchNotification = @"ARViewTouchNotification";
         contentAlignMode = ARViewContentAlignModeCenter;
 
         cameraPoseValid = NO;
+        
+        showDetail = NO;
         
         // Init gestures.
         [self setMultipleTouchEnabled:YES];
@@ -479,7 +480,8 @@ NSString *const ARViewTouchNotification = @"ARViewTouchNotification";
 - (void) handleTouchAtLocation:(CGPoint)location tapCount:(NSUInteger)tapCount
 {
     CGPoint locationFlippedY = CGPointMake(location.x, self.surfaceSize.height - location.y);
-    //NSLog(@"Touch at CG location (%.1f,%.1f), surfaceSize.height makes it (%.1f,%.1f) with y flipped.\n", location.x, location.y, locationFlippedY.x, locationFlippedY.y);
+    NSLog(@"Touch at CG location (%.1f,%.1f), surfaceSize.height makes it (%.1f,%.1f) with y flipped.\n", location.x, location.y, locationFlippedY.x, locationFlippedY.y);
+    showDetail = !showDetail;
     
     [self convertPointInViewToRay:locationFlippedY];
     if (rayIsValid) {

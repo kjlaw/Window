@@ -108,6 +108,8 @@ typedef enum {
 } ARViewContentAlignMode;
 
 @interface ARView : EAGLView <ARViewTouchDelegate> {
+@public
+    BOOL showDetail;
 }
 
 - (id) initWithFrame:(CGRect)frame pixelFormat:(NSString*)format depthFormat:(EAGLDepthFormat)depth withStencil:(BOOL)stencil preserveBackbuffer:(BOOL)retained;
