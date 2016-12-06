@@ -353,6 +353,7 @@
 		4AF9712D1B5F5709001BFEB5 /* freak.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4AF970771B5F5708001BFEB5 /* freak.cpp */; };
 		4AF9712E1B5F5709001BFEB5 /* hough_similarity_voting.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4AF9707A1B5F5708001BFEB5 /* hough_similarity_voting.cpp */; };
 		7B3081C11DEE94E900A3162A /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7B3081C01DEE92BB00A3162A /* Storyboard.storyboard */; };
+		7B70D7171DF6533200EC22F5 /* ContactsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B70D7161DF6533200EC22F5 /* ContactsTableViewController.m */; };
 		7B8F16E81DF15D8F00FA7378 /* ScanStoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B8F16E71DF15D8F00FA7378 /* ScanStoreViewController.m */; };
 		7B8F16EB1DF165CF00FA7378 /* FilterOptionsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B8F16EA1DF165CF00FA7378 /* FilterOptionsTableViewController.m */; };
 		7B8F16EE1DF165E000FA7378 /* FilterGenderTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B8F16ED1DF165E000FA7378 /* FilterGenderTableViewController.m */; };
@@ -2280,6 +2281,8 @@
 		78BB3F2108E4837000D7CA2D /* videoConfig.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = videoConfig.h; sourceTree = "<group>"; };
 		78BB3F5208E483CB00D7CA2D /* Data */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Data; sourceTree = "<group>"; };
 		7B3081C01DEE92BB00A3162A /* Storyboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Storyboard.storyboard; sourceTree = "<group>"; };
+		7B70D7151DF6533200EC22F5 /* ContactsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactsTableViewController.h; sourceTree = "<group>"; };
+		7B70D7161DF6533200EC22F5 /* ContactsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactsTableViewController.m; sourceTree = "<group>"; };
 		7B8F16E61DF15D8F00FA7378 /* ScanStoreViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScanStoreViewController.h; sourceTree = "<group>"; };
 		7B8F16E71DF15D8F00FA7378 /* ScanStoreViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScanStoreViewController.m; sourceTree = "<group>"; };
 		7B8F16E91DF165CF00FA7378 /* FilterOptionsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FilterOptionsTableViewController.h; sourceTree = "<group>"; };
@@ -2564,6 +2567,8 @@
 				7B8F16F61DF1660200FA7378 /* FilterColorTableViewController.m */,
 				7B8F16F81DF1660D00FA7378 /* FilterPriceTableViewController.h */,
 				7B8F16F91DF1660D00FA7378 /* FilterPriceTableViewController.m */,
+				7B70D7151DF6533200EC22F5 /* ContactsTableViewController.h */,
+				7B70D7161DF6533200EC22F5 /* ContactsTableViewController.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -5999,6 +6004,7 @@
 				7B8F16F41DF165F800FA7378 /* FilterSizeTableViewController.m in Sources */,
 				4AF10200180BFC9900A922DE /* arLabelingSubDWRA3C.c in Sources */,
 				4AF101B0180BFC9100A922DE /* ar3DUtil.c in Sources */,
+				7B70D7171DF6533200EC22F5 /* ContactsTableViewController.m in Sources */,
 				4AF1021C180BFC9900A922DE /* arLabelingSubEWI3CA5551.c in Sources */,
 				4AF101BA180BFC9100A922DE /* arLabeling.c in Sources */,
 				4AF101C3180BFC9100A922DE /* mAllocInv.c in Sources */,
