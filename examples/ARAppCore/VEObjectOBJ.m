@@ -162,6 +162,7 @@
             } else {
                 pose[12] = 157.0;
             }
+
             if([[globals.centers objectForKey:@"hoodie-obj.obj"]  isEqual: @"centered"] && [self.name isEqual:@"hoodie-obj.obj"]){
                 pose[13] = -150.0;
             } else {
@@ -251,7 +252,7 @@
                     if(globals.rightShifts != 0) globals.rightShifts -= 1;
                 } else {
                     _ve->numMoved ++;
-                    _localPose.T[12] -= _poseInEyeSpace.T[12];
+                    _localPose.T[12] -= 50+ _poseInEyeSpace.T[12];
                     if([[globals.centers objectForKey:self.name]  isEqual: @"centered"] && globals.newMove){
                         [globals.centers setValue:@"not" forKey:self.name];
                         NSLog(@"Removed center flag");
@@ -271,7 +272,7 @@
                     if(globals.leftShifts != 0) globals.leftShifts -= 1;
                 } else {
                     _ve->numMoved ++;
-                    _localPose.T[12] += _poseInEyeSpace.T[12];
+                    _localPose.T[12] += 50 + _poseInEyeSpace.T[12];
                     if([[globals.centers objectForKey:self.name]  isEqual: @"centered"] && globals.newMove){
                         [globals.centers setValue:@"not" forKey:self.name];
                         NSLog(@"Removed center flag");
