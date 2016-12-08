@@ -424,7 +424,35 @@ static void startCallback(void *userData)
     //arSetLabelingMode(gARHandle, AR_LABELING_BLACK_REGION); // Default = AR_LABELING_BLACK_REGION
     //arSetBorderSize(gARHandle, 0.25f); // Default = 0.25f
     //arSetMatrixCodeType(gARHandle, AR_MATRIX_CODE_3x3); // Default = AR_MATRIX_CODE_3x3
-    
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    NSMutableArray *arr = [userDefaults objectForKey:@"genderIndexPathRows"];
+    NSLog(@"%@", arr);
+    Boolean showWomen = false;
+    Boolean showMen = false;
+    Boolean showNeutral = false;
+    for(int i= 0; i < [arr count]; i ++){
+        switch ((int)[arr[i] integerValue]) {
+            case 0:
+                showMen = true;
+                break;
+            case 1:
+                showWomen = true;
+                break;
+            case 2:
+                showNeutral = true;
+                break;
+            default:
+                break;
+        }
+    }
+    if(showWomen){
+        modelPath = @"Data2/models2.dat";
+    } else if(showMen){
+        modelPath = @"Data2/models.dat";
+    }
+    if(showMen && showWomen){
+        modelPath = @"Data2/bothGenders.dat";
+    }
     // Set up the virtual environment.
     self.virtualEnvironment = [[[VirtualEnvironment alloc] initWithARViewController:self] autorelease];
    [self.virtualEnvironment addObjectsFromObjectListFile:modelPath connectToARMarkers:markers];

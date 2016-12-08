@@ -226,6 +226,8 @@ static char *get_buff(char *buf, int n, FILE *fp, int skipblanks)
         fclose(fp);
         return (objectsAdded);
     }
+    GlobalVars *globals = [GlobalVars sharedInstance];
+    globals.numObjects = numObjects;
     
 #ifdef DEBUG
     NSLog(@"Reading %d objects.\n", numObjects);

@@ -21,6 +21,8 @@
 @synthesize newMove = _newMove;
 @synthesize inDetail = _inDetail;
 @synthesize centers = _centers;
+@synthesize numObjects = _numObjects;
+
 
 
 + (GlobalVars *)sharedInstance {
@@ -36,6 +38,7 @@
     self = [super init];
     if (self) {
         _clicked = false;
+        numObjects = 0;
         showTop = false;
         showBottom = false;
         cycle = 0;

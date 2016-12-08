@@ -244,7 +244,9 @@
             }
         }
         if(_ve.arViewController.glView->showDetail == NO ){
-            if(_ve->moveLeft == true && _ve->numMoved <= [_ve->objects count] && globals.leftShifts < 1){
+            int minNumber = (globals.numObjects)/2;
+            if (globals.numObjects == 1) minNumber = 0;
+            if(_ve->moveLeft == true && _ve->numMoved <= [_ve->objects count] && globals.leftShifts < minNumber){
                 if(_ve->numMoved == [_ve->objects count]){
                     _ve->moveLeft = false;
                     _ve->numMoved = 0;
@@ -264,7 +266,7 @@
                     }
                 }
             }
-            if(_ve->moveRight == true && _ve->numMoved <= [_ve->objects count] && globals.rightShifts < 1){
+            if(_ve->moveRight == true && _ve->numMoved <= [_ve->objects count] && globals.rightShifts < minNumber){
                 if(_ve->numMoved == [_ve->objects count]){
                     _ve->moveRight = false;
                     _ve->numMoved = 0;
