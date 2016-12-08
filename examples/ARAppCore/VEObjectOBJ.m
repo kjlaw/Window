@@ -143,6 +143,7 @@
     }
     
     if(_ve.arViewController.glView->showDetail == YES){
+        [_ve.arViewController showDetailViewUI];
         if((([self.name isEqualToString:@"cool-jeans.obj"] && globals.showBottom) ||( ([self.name isEqualToString:@"hoodie-obj.obj"] || [self.name isEqualToString:@"plain-t-white.obj"]) && globals.showTop)) && [[globals.centers objectForKey:self.name]  isEqual: @"centered"]){
             ARdouble pose[16];
             pose[0] = 0.018;
@@ -244,6 +245,7 @@
             }
         }
         if(_ve.arViewController.glView->showDetail == NO ){
+            [_ve.arViewController hideDetailViewUI];
             if(_ve->moveLeft == true && _ve->numMoved <= [_ve->objects count] && globals.leftShifts < 1){
                 if(_ve->numMoved == [_ve->objects count]){
                     _ve->moveLeft = false;

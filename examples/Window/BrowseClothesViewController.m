@@ -8,6 +8,7 @@
 
 #import "BrowseClothesViewController.h"
 #import "ContactsTableViewController.h"
+#import "ARViewController.h"
 
 @interface BrowseClothesViewController ()
 
@@ -33,6 +34,11 @@
     return image;
 }
 
+- (IBAction)backButtonPressed:(UIButton *)sender {
+    ARViewController *arvc = (ARViewController *)[self.childViewControllers objectAtIndex:0];
+    arvc.glView->showDetail = NO;
+    [arvc hideDetailViewUI];
+}
 
 #pragma mark - Navigation
 

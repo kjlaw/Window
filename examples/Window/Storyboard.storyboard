@@ -28,7 +28,7 @@
                                     <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Stb-xp-2lX">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                                         <connections>
-                                            <segue destination="KRN-5u-UGh" kind="embed" id="xwg-DM-QPB"/>
+                                            <segue destination="KRN-5u-UGh" kind="embed" identifier="" id="xwg-DM-QPB"/>
                                         </connections>
                                     </containerView>
                                 </subviews>
@@ -46,6 +46,15 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kac-rb-Lj2">
+                                <rect key="frame" x="325" y="28" width="34" height="30"/>
+                                <state key="normal" title="Back">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="backButtonPressed:" destination="BTK-ZT-CRs" eventType="touchUpInside" id="KRP-Xs-Bxl"/>
+                                </connections>
+                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4WD-xx-nCG">
                                 <rect key="frame" x="324" y="28" width="35" height="30"/>
                                 <state key="normal" title="Filter">
@@ -56,7 +65,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="GAP" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6tQ-tS-vCG">
-                                <rect key="frame" x="167" y="33" width="40.5" height="23"/>
+                                <rect key="frame" x="167" y="33" width="41" height="23"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="19"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
@@ -79,11 +88,13 @@
                             <constraint firstAttribute="trailingMargin" secondItem="Vex-8I-Tz8" secondAttribute="trailing" id="AAl-BP-NYx"/>
                             <constraint firstItem="kUR-3K-gO5" firstAttribute="top" secondItem="Ylk-KQ-gOo" secondAttribute="bottom" constant="8" id="CgH-uT-ppD"/>
                             <constraint firstAttribute="trailingMargin" secondItem="J1v-dc-z4c" secondAttribute="trailing" constant="-16" id="Eh9-Tk-NjE"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="kac-rb-Lj2" secondAttribute="trailing" id="IYj-Fc-ngr"/>
                             <constraint firstItem="4WD-xx-nCG" firstAttribute="top" secondItem="Ylk-KQ-gOo" secondAttribute="bottom" constant="8" id="Oxd-Ej-rvp"/>
                             <constraint firstItem="Ufw-Y2-Iqt" firstAttribute="top" secondItem="Vex-8I-Tz8" secondAttribute="bottom" constant="8" id="PP8-HZ-KJt"/>
                             <constraint firstItem="Ufw-Y2-Iqt" firstAttribute="top" secondItem="J1v-dc-z4c" secondAttribute="bottom" id="QNH-zP-oPy"/>
                             <constraint firstItem="6tQ-tS-vCG" firstAttribute="centerX" secondItem="1NN-rb-dcQ" secondAttribute="centerX" id="U65-pB-o5I"/>
                             <constraint firstItem="J1v-dc-z4c" firstAttribute="leading" secondItem="1NN-rb-dcQ" secondAttribute="leadingMargin" constant="-16" id="ijI-oA-Cqb"/>
+                            <constraint firstItem="kac-rb-Lj2" firstAttribute="top" secondItem="Ylk-KQ-gOo" secondAttribute="bottom" constant="8" id="nbB-hV-yob"/>
                             <constraint firstAttribute="trailingMargin" secondItem="4WD-xx-nCG" secondAttribute="trailing" id="pl1-S1-CYc"/>
                             <constraint firstItem="6tQ-tS-vCG" firstAttribute="top" secondItem="Ylk-KQ-gOo" secondAttribute="bottom" constant="13" id="yfo-HK-3mL"/>
                         </constraints>
@@ -92,6 +103,8 @@
                         <barButtonItem key="rightBarButtonItem" title="Filter" id="l1d-wc-5Et"/>
                     </navigationItem>
                     <connections>
+                        <outlet property="backButton" destination="kac-rb-Lj2" id="wUd-PZ-TOe"/>
+                        <outlet property="filterButton" destination="4WD-xx-nCG" id="tt0-w0-8xf"/>
                         <outlet property="snapshotView" destination="J1v-dc-z4c" id="Gvt-8W-LUL"/>
                     </connections>
                 </viewController>

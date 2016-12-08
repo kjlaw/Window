@@ -72,6 +72,8 @@
 - (IBAction)start;
 - (IBAction)stop;
 - (void) processFrame:(AR2VideoBufferT *)buffer;
+- (void)showDetailViewUI;
+- (void)hideDetailViewUI;
 
 @property (readonly) ARView *glView;
 @property (readonly) NSMutableArray *markers;

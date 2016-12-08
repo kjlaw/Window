@@ -52,6 +52,7 @@
 #import "../ARAppCore/ARMarkerMulti.h"
 #import "VEObjectOBJ.h"
 #import <Eden/EdenMath.h>
+#import "BrowseClothesViewController.h"
 
 
 #define VIEW_DISTANCE_MIN        5.0f          // Objects closer to the camera than this will not be displayed.
@@ -579,6 +580,20 @@ static void startCallback(void *userData)
 {
     arSetLabelingMode(gARHandle, (markersHaveWhiteBorders ? AR_LABELING_WHITE_REGION : AR_LABELING_BLACK_REGION));
 }
+
+- (void)showDetailViewUI {
+    BrowseClothesViewController *browsevc = (BrowseClothesViewController *)self.parentViewController;
+    [browsevc.backButton setHidden:NO];
+    [browsevc.filterButton setHidden:YES];
+}
+
+- (void)hideDetailViewUI {
+    BrowseClothesViewController *browsevc = (BrowseClothesViewController *)self.parentViewController;
+    [browsevc.backButton setHidden:YES];
+    [browsevc.filterButton setHidden:NO];
+}
+
+
 
 //
 //// Handles the start of a touch
