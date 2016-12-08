@@ -157,7 +157,7 @@
                                     <constraint firstAttribute="height" constant="28" id="RXH-WX-Vuo"/>
                                     <constraint firstAttribute="width" constant="28" id="cAz-k1-5nu"/>
                                 </constraints>
-                                <state key="normal" backgroundImage="profile_gray.png">
+                                <state key="normal" backgroundImage="window_gray.png">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -482,7 +482,7 @@
         <scene sceneID="gVp-Op-Pp4">
             <objects>
                 <navigationController id="81z-np-3Bq" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="oEl-bg-9Vi">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="oEl-bg-9Vi">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -1244,7 +1244,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="bYl-B0-1to" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="kUa-gq-WgD">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="kUa-gq-WgD">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -1469,12 +1469,11 @@
     <resources>
         <image name="close_gray.png" width="69" height="69"/>
         <image name="options_gray.png" width="63" height="59"/>
-        <image name="profile_gray.png" width="65" height="65"/>
         <image name="profile_gray_solid.png" width="270" height="270"/>
         <image name="share.png" width="230" height="230"/>
         <image name="window_gray.png" width="517" height="517"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="uap-hs-zD5"/>
+        <segue reference="TZy-jR-hc7"/>
     </inferredMetricsTieBreakers>
 </document>

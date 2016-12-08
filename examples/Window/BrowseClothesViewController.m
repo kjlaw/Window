@@ -42,7 +42,8 @@
 
 - (IBAction)backButtonPressed:(UIButton *)sender {
     ARViewController *arvc = (ARViewController *)[self.childViewControllers objectAtIndex:0];
-    arvc.glView->showDetail = NO;
+    GlobalVars *globals = [GlobalVars sharedInstance];
+    globals.clicked = YES;
     [arvc hideDetailViewUI];
 }
 
