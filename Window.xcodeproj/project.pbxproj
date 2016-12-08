@@ -353,6 +353,7 @@
 		4AF9712D1B5F5709001BFEB5 /* freak.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4AF970771B5F5708001BFEB5 /* freak.cpp */; };
 		4AF9712E1B5F5709001BFEB5 /* hough_similarity_voting.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4AF9707A1B5F5708001BFEB5 /* hough_similarity_voting.cpp */; };
 		7B3081C11DEE94E900A3162A /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7B3081C01DEE92BB00A3162A /* Storyboard.storyboard */; };
+		7B70D7171DF6533200EC22F5 /* ContactsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B70D7161DF6533200EC22F5 /* ContactsTableViewController.m */; };
 		7B8F16E81DF15D8F00FA7378 /* ScanStoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B8F16E71DF15D8F00FA7378 /* ScanStoreViewController.m */; };
 		7B8F16EB1DF165CF00FA7378 /* FilterOptionsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B8F16EA1DF165CF00FA7378 /* FilterOptionsTableViewController.m */; };
 		7B8F16EE1DF165E000FA7378 /* FilterGenderTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B8F16ED1DF165E000FA7378 /* FilterGenderTableViewController.m */; };
@@ -360,6 +361,10 @@
 		7B8F16F41DF165F800FA7378 /* FilterSizeTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B8F16F31DF165F800FA7378 /* FilterSizeTableViewController.m */; };
 		7B8F16F71DF1660200FA7378 /* FilterColorTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B8F16F61DF1660200FA7378 /* FilterColorTableViewController.m */; };
 		7B8F16FA1DF1660D00FA7378 /* FilterPriceTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B8F16F91DF1660D00FA7378 /* FilterPriceTableViewController.m */; };
+		7B98FC911DF8F32E003CCFF9 /* BrowseClothesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B98FC901DF8F32E003CCFF9 /* BrowseClothesViewController.m */; };
+		7B98FC931DF8FAD8003CCFF9 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B98FC921DF8FAD8003CCFF9 /* MessageUI.framework */; };
+		7B98FC951DF8FAE1003CCFF9 /* Contacts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B98FC941DF8FAE1003CCFF9 /* Contacts.framework */; };
+		7B98FC961DF8FD7D003CCFF9 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A875C9B1B608BE2002A00A1 /* MobileCoreServices.framework */; };
 		7F798A8B4F8E171F423F07E8 /* libPods-ARUtil.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F74E60D96CC225B69ADA20C /* libPods-ARUtil.a */; };
 		80E88110AED5386DE2C25E65 /* libPods-ARgsub_es2.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F8168B1AA876CFACA73B072 /* libPods-ARgsub_es2.a */; };
 		82C55E401397A0A30FD09787 /* libPods-ARMulti.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 27E2D5C18F248B6B67AA15EE /* libPods-ARMulti.a */; };
@@ -2281,6 +2286,8 @@
 		78BB3F2108E4837000D7CA2D /* videoConfig.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = videoConfig.h; sourceTree = "<group>"; };
 		78BB3F5208E483CB00D7CA2D /* Data */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Data; sourceTree = "<group>"; };
 		7B3081C01DEE92BB00A3162A /* Storyboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Storyboard.storyboard; sourceTree = "<group>"; };
+		7B70D7151DF6533200EC22F5 /* ContactsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactsTableViewController.h; sourceTree = "<group>"; };
+		7B70D7161DF6533200EC22F5 /* ContactsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactsTableViewController.m; sourceTree = "<group>"; };
 		7B8F16E61DF15D8F00FA7378 /* ScanStoreViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScanStoreViewController.h; sourceTree = "<group>"; };
 		7B8F16E71DF15D8F00FA7378 /* ScanStoreViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScanStoreViewController.m; sourceTree = "<group>"; };
 		7B8F16E91DF165CF00FA7378 /* FilterOptionsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FilterOptionsTableViewController.h; sourceTree = "<group>"; };
@@ -2295,6 +2302,10 @@
 		7B8F16F61DF1660200FA7378 /* FilterColorTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FilterColorTableViewController.m; sourceTree = "<group>"; };
 		7B8F16F81DF1660D00FA7378 /* FilterPriceTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FilterPriceTableViewController.h; sourceTree = "<group>"; };
 		7B8F16F91DF1660D00FA7378 /* FilterPriceTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FilterPriceTableViewController.m; sourceTree = "<group>"; };
+		7B98FC8F1DF8F32E003CCFF9 /* BrowseClothesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BrowseClothesViewController.h; sourceTree = "<group>"; };
+		7B98FC901DF8F32E003CCFF9 /* BrowseClothesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BrowseClothesViewController.m; sourceTree = "<group>"; };
+		7B98FC921DF8FAD8003CCFF9 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
+		7B98FC941DF8FAE1003CCFF9 /* Contacts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Contacts.framework; path = System/Library/Frameworks/Contacts.framework; sourceTree = SDKROOT; };
 		7C81638A39638EA648840758 /* Pods-ARMulti.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ARMulti.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ARMulti/Pods-ARMulti.debug.xcconfig"; sourceTree = "<group>"; };
 		7F74E60D96CC225B69ADA20C /* libPods-ARUtil.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ARUtil.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		819EF64F1BA5B58F1E2243CE /* Pods-Window.distribution.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Window.distribution.xcconfig"; path = "Pods/Target Support Files/Pods-Window/Pods-Window.distribution.xcconfig"; sourceTree = "<group>"; };
@@ -2339,6 +2350,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7B98FC961DF8FD7D003CCFF9 /* MobileCoreServices.framework in Frameworks */,
+				7B98FC951DF8FAE1003CCFF9 /* Contacts.framework in Frameworks */,
+				7B98FC931DF8FAD8003CCFF9 /* MessageUI.framework in Frameworks */,
 				4A2F72F1117840A600F35FA7 /* QuartzCore.framework in Frameworks */,
 				4AF6B87E13B380EA00F983E7 /* libARgsub_es.a in Frameworks */,
 				4AF6B88013B380EA00F983E7 /* libARMulti.a in Frameworks */,
@@ -2492,6 +2506,8 @@
 		3A54CEAA8D5D4E0BD55BF29D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				7B98FC941DF8FAE1003CCFF9 /* Contacts.framework */,
+				7B98FC921DF8FAD8003CCFF9 /* MessageUI.framework */,
 				33371574AA9CC966CF7BD4F7 /* libPods-AR.a */,
 				0B522CCBA82B05813FB069F3 /* libPods-AR2.a */,
 				0FE8DCCCDF2614AE62B44401 /* libPods-ARICP.a */,
@@ -2567,6 +2583,10 @@
 				7B8F16F61DF1660200FA7378 /* FilterColorTableViewController.m */,
 				7B8F16F81DF1660D00FA7378 /* FilterPriceTableViewController.h */,
 				7B8F16F91DF1660D00FA7378 /* FilterPriceTableViewController.m */,
+				7B70D7151DF6533200EC22F5 /* ContactsTableViewController.h */,
+				7B70D7161DF6533200EC22F5 /* ContactsTableViewController.m */,
+				7B98FC8F1DF8F32E003CCFF9 /* BrowseClothesViewController.h */,
+				7B98FC901DF8F32E003CCFF9 /* BrowseClothesViewController.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -6004,6 +6024,7 @@
 				7B8F16F41DF165F800FA7378 /* FilterSizeTableViewController.m in Sources */,
 				4AF10200180BFC9900A922DE /* arLabelingSubDWRA3C.c in Sources */,
 				4AF101B0180BFC9100A922DE /* ar3DUtil.c in Sources */,
+				7B70D7171DF6533200EC22F5 /* ContactsTableViewController.m in Sources */,
 				4AF1021C180BFC9900A922DE /* arLabelingSubEWI3CA5551.c in Sources */,
 				4AF101BA180BFC9100A922DE /* arLabeling.c in Sources */,
 				4AF101C3180BFC9100A922DE /* mAllocInv.c in Sources */,
@@ -6047,6 +6068,7 @@
 				4AF101EE180BFC9900A922DE /* arLabelingSubDBRC.c in Sources */,
 				4AF101EC180BFC9900A922DE /* arLabelingSubDBR3CA5551.c in Sources */,
 				4AF101C6180BFC9100A922DE /* mAllocUnit.c in Sources */,
+				7B98FC911DF8F32E003CCFF9 /* BrowseClothesViewController.m in Sources */,
 				4AF101F0180BFC9900A922DE /* arLabelingSubDBRYC.c in Sources */,
 				4AF1020C180BFC9900A922DE /* arLabelingSubEBICY.c in Sources */,
 				4AF10227180BFC9900A922DE /* arLabelingSubEWRC.c in Sources */,
