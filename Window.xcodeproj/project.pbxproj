@@ -376,6 +376,8 @@
 		7B98FCB41DF9853B003CCFF9 /* profile_gray.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B98FCB31DF9853B003CCFF9 /* profile_gray.png */; };
 		7B98FCB61DF9C47C003CCFF9 /* window_gray.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B98FCB51DF9C47C003CCFF9 /* window_gray.png */; };
 		7B98FCB91DF9E446003CCFF9 /* MenuTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B98FCB81DF9E446003CCFF9 /* MenuTableViewController.m */; };
+		7B98FCBD1DF9E73A003CCFF9 /* profile_gray_solid.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B98FCBC1DF9E73A003CCFF9 /* profile_gray_solid.png */; };
+		7B98FCC01DFA0462003CCFF9 /* ProfileTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B98FCBF1DFA0462003CCFF9 /* ProfileTableViewController.m */; };
 		7F798A8B4F8E171F423F07E8 /* libPods-ARUtil.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F74E60D96CC225B69ADA20C /* libPods-ARUtil.a */; };
 		80E88110AED5386DE2C25E65 /* libPods-ARgsub_es2.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F8168B1AA876CFACA73B072 /* libPods-ARgsub_es2.a */; };
 		82C55E401397A0A30FD09787 /* libPods-ARMulti.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 27E2D5C18F248B6B67AA15EE /* libPods-ARMulti.a */; };
@@ -2329,6 +2331,9 @@
 		7B98FCB51DF9C47C003CCFF9 /* window_gray.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = window_gray.png; sourceTree = "<group>"; };
 		7B98FCB71DF9E446003CCFF9 /* MenuTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuTableViewController.h; sourceTree = "<group>"; };
 		7B98FCB81DF9E446003CCFF9 /* MenuTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuTableViewController.m; sourceTree = "<group>"; };
+		7B98FCBC1DF9E73A003CCFF9 /* profile_gray_solid.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = profile_gray_solid.png; sourceTree = "<group>"; };
+		7B98FCBE1DFA0462003CCFF9 /* ProfileTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileTableViewController.h; sourceTree = "<group>"; };
+		7B98FCBF1DFA0462003CCFF9 /* ProfileTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileTableViewController.m; sourceTree = "<group>"; };
 		7C81638A39638EA648840758 /* Pods-ARMulti.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ARMulti.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ARMulti/Pods-ARMulti.debug.xcconfig"; sourceTree = "<group>"; };
 		7F74E60D96CC225B69ADA20C /* libPods-ARUtil.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ARUtil.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		819EF64F1BA5B58F1E2243CE /* Pods-Window.distribution.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Window.distribution.xcconfig"; path = "Pods/Target Support Files/Pods-Window/Pods-Window.distribution.xcconfig"; sourceTree = "<group>"; };
@@ -2612,6 +2617,8 @@
 				7B98FC901DF8F32E003CCFF9 /* BrowseClothesViewController.m */,
 				7B98FCB71DF9E446003CCFF9 /* MenuTableViewController.h */,
 				7B98FCB81DF9E446003CCFF9 /* MenuTableViewController.m */,
+				7B98FCBE1DFA0462003CCFF9 /* ProfileTableViewController.h */,
+				7B98FCBF1DFA0462003CCFF9 /* ProfileTableViewController.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -2633,6 +2640,7 @@
 				7B98FCA11DF9770D003CCFF9 /* options_solid.png */,
 				7B98FCA51DF97813003CCFF9 /* options_outline.png */,
 				7B98FCA71DF981A6003CCFF9 /* close_gray.png */,
+				7B98FCBC1DF9E73A003CCFF9 /* profile_gray_solid.png */,
 				7B98FCB11DF9851F003CCFF9 /* options.png */,
 				7B98FCAB1DF981AD003CCFF9 /* options_gray.png */,
 				7B98FCB51DF9C47C003CCFF9 /* window_gray.png */,
@@ -5411,6 +5419,7 @@
 				4A74154F123C1CEC00F9D05A /* Iris.png in Resources */,
 				4A741551123C1CEC00F9D05A /* Icon.png in Resources */,
 				4A221CE9134C9EB20054BB06 /* Icon@2x.png in Resources */,
+				7B98FCBD1DF9E73A003CCFF9 /* profile_gray_solid.png in Resources */,
 				7B98FCAC1DF981AD003CCFF9 /* options_gray.png in Resources */,
 				4A221CE5134C9EB20054BB06 /* Icon-72.png in Resources */,
 				4A221CE7134C9EB20054BB06 /* Icon-Small.png in Resources */,
@@ -5906,6 +5915,7 @@
 				4A33B6E118ADB9A40028A979 /* VirtualEnvironment.m in Sources */,
 				4A33B6D118ADB93D0028A979 /* VEObjectOBJ.m in Sources */,
 				4A33B6C818ADB86E0028A979 /* EAGLView.m in Sources */,
+				7B98FCC01DFA0462003CCFF9 /* ProfileTableViewController.m in Sources */,
 				4A33B70918ADC8700028A979 /* ARView.m in Sources */,
 				4A33B6EA18ADBA510028A979 /* ARMarker.m in Sources */,
 			);
