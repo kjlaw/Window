@@ -585,12 +585,14 @@ static void startCallback(void *userData)
     BrowseClothesViewController *browsevc = (BrowseClothesViewController *)self.parentViewController;
     [browsevc.backButton setHidden:NO];
     [browsevc.filterButton setHidden:YES];
+    [browsevc.menuButton setHidden:YES];
 }
 
 - (void)hideDetailViewUI {
     BrowseClothesViewController *browsevc = (BrowseClothesViewController *)self.parentViewController;
     [browsevc.backButton setHidden:YES];
     [browsevc.filterButton setHidden:NO];
+    [browsevc.menuButton setHidden:NO];
 }
 
 

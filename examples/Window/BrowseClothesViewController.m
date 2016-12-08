@@ -18,7 +18,13 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    
+    _storeLabel.layer.masksToBounds = YES;
+    _storeLabel.layer.cornerRadius = 12.0;
+    
+//    [_filterButton setFrame:CGRectMake(30, 30, 30, 30)];
+//    UIImage *image = [UIImage imageNamed:@"options.png"] ;
+//    [_filterButton setBackgroundImage:image forState:UIControlStateNormal];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -51,4 +57,8 @@
     }
 }
 
+- (void)dealloc {
+    [_storeLabel release];
+    [super dealloc];
+}
 @end

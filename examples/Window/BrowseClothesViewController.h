@@ -13,5 +13,7 @@
 @property (nonatomic, retain) IBOutlet UIView *snapshotView;
 @property (nonatomic, retain) IBOutlet UIButton *backButton;
 @property (nonatomic, retain) IBOutlet UIButton *filterButton;
+@property (nonatomic, retain) IBOutlet UILabel *storeLabel;
+@property (nonatomic, retain) IBOutlet UIButton *menuButton;
 
 @end
