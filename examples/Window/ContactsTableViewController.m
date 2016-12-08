@@ -9,6 +9,7 @@
 #import "ContactsTableViewController.h"
 #import <Contacts/Contacts.h>
 #import <MessageUI/MessageUI.h>
+#import <MobileCoreServices/MobileCoreServices.h>
 
 @interface ContactsTableViewController () <MFMessageComposeViewControllerDelegate>
 
@@ -79,6 +80,11 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (IBAction)cancel:(UIBarButtonItem *)sender {
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -124,14 +130,18 @@
     }
     NSArray *recipients = [NSArray arrayWithArray:selectedRecipients];
     
-    [self sendText:recipients withMessage:@"test"];
+    [self sendText:recipients];
 }
 
-- (void)sendText:(NSArray *)recipients withMessage:(NSString *)message {
+- (void)sendText:(NSArray *)recipients {
     MFMessageComposeViewController *messageController = [[MFMessageComposeViewController alloc] init];
     messageController.messageComposeDelegate = self;
     [messageController setRecipients:recipients];
-    [messageController setBody:message];
+    
+    if (_snapshotImage != nil) {
+        NSData *attachment = UIImagePNGRepresentation(_snapshotImage);
+        [messageController addAttachmentData:attachment typeIdentifier:(NSString *)kUTTypePNG filename:@"window_clothes.png"];
+    }
     
     // Present message view controller on screen
     [self presentViewController:messageController animated:YES completion:nil];
@@ -156,7 +166,10 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
-
+- (void)dealloc {
+    [_snapshotImage release];
+    [super dealloc];
+}
 
 /*
  // Override to support conditional editing of the table view.

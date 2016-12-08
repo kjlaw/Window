@@ -13,7 +13,7 @@
         <!--GAP-->
         <scene sceneID="klx-0K-FLv">
             <objects>
-                <viewController id="BTK-ZT-CRs" sceneMemberID="viewController">
+                <viewController id="BTK-ZT-CRs" customClass="BrowseClothesViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Ylk-KQ-gOo"/>
                         <viewControllerLayoutGuide type="bottom" id="Ufw-Y2-Iqt"/>
@@ -22,12 +22,24 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Stb-xp-2lX">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="J1v-dc-z4c">
                                 <rect key="frame" x="0.0" y="20" width="375" height="647"/>
-                                <connections>
-                                    <segue destination="KRN-5u-UGh" kind="embed" id="xwg-DM-QPB"/>
-                                </connections>
-                            </containerView>
+                                <subviews>
+                                    <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Stb-xp-2lX">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                                        <connections>
+                                            <segue destination="KRN-5u-UGh" kind="embed" id="xwg-DM-QPB"/>
+                                        </connections>
+                                    </containerView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="Stb-xp-2lX" secondAttribute="bottom" id="BnV-Ke-Lts"/>
+                                    <constraint firstItem="Stb-xp-2lX" firstAttribute="top" secondItem="J1v-dc-z4c" secondAttribute="top" id="FpY-70-WLU"/>
+                                    <constraint firstAttribute="trailing" secondItem="Stb-xp-2lX" secondAttribute="trailing" id="lmq-FJ-nu3"/>
+                                    <constraint firstItem="Stb-xp-2lX" firstAttribute="leading" secondItem="J1v-dc-z4c" secondAttribute="leading" id="mab-Xz-gfL"/>
+                                </constraints>
+                            </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kUR-3K-gO5">
                                 <rect key="frame" x="16" y="28" width="39" height="30"/>
                                 <state key="normal" title="Menu">
@@ -56,22 +68,22 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="NhJ-ea-E1h" kind="show" id="afG-KI-qTl"/>
+                                    <segue destination="NhJ-ea-E1h" kind="show" identifier="ShareSegue" id="afG-KI-qTl"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="Ufw-Y2-Iqt" firstAttribute="top" secondItem="Stb-xp-2lX" secondAttribute="bottom" id="0lM-Sc-yka"/>
                             <constraint firstAttribute="leadingMargin" secondItem="kUR-3K-gO5" secondAttribute="leading" id="6Hh-6e-rX4"/>
+                            <constraint firstItem="J1v-dc-z4c" firstAttribute="top" secondItem="Ylk-KQ-gOo" secondAttribute="bottom" id="7aj-Cd-6JJ"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Vex-8I-Tz8" secondAttribute="trailing" id="AAl-BP-NYx"/>
                             <constraint firstItem="kUR-3K-gO5" firstAttribute="top" secondItem="Ylk-KQ-gOo" secondAttribute="bottom" constant="8" id="CgH-uT-ppD"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="J1v-dc-z4c" secondAttribute="trailing" constant="-16" id="Eh9-Tk-NjE"/>
                             <constraint firstItem="4WD-xx-nCG" firstAttribute="top" secondItem="Ylk-KQ-gOo" secondAttribute="bottom" constant="8" id="Oxd-Ej-rvp"/>
                             <constraint firstItem="Ufw-Y2-Iqt" firstAttribute="top" secondItem="Vex-8I-Tz8" secondAttribute="bottom" constant="8" id="PP8-HZ-KJt"/>
+                            <constraint firstItem="Ufw-Y2-Iqt" firstAttribute="top" secondItem="J1v-dc-z4c" secondAttribute="bottom" id="QNH-zP-oPy"/>
                             <constraint firstItem="6tQ-tS-vCG" firstAttribute="centerX" secondItem="1NN-rb-dcQ" secondAttribute="centerX" id="U65-pB-o5I"/>
-                            <constraint firstItem="Stb-xp-2lX" firstAttribute="top" secondItem="Ylk-KQ-gOo" secondAttribute="bottom" id="VVn-Jq-jlG"/>
-                            <constraint firstItem="Stb-xp-2lX" firstAttribute="leading" secondItem="1NN-rb-dcQ" secondAttribute="leadingMargin" constant="-16" id="b1J-L0-nfd"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="Stb-xp-2lX" secondAttribute="trailing" constant="-16" id="i3r-dK-XMM"/>
+                            <constraint firstItem="J1v-dc-z4c" firstAttribute="leading" secondItem="1NN-rb-dcQ" secondAttribute="leadingMargin" constant="-16" id="ijI-oA-Cqb"/>
                             <constraint firstAttribute="trailingMargin" secondItem="4WD-xx-nCG" secondAttribute="trailing" id="pl1-S1-CYc"/>
                             <constraint firstItem="6tQ-tS-vCG" firstAttribute="top" secondItem="Ylk-KQ-gOo" secondAttribute="bottom" constant="13" id="yfo-HK-3mL"/>
                         </constraints>
@@ -79,6 +91,9 @@
                     <navigationItem key="navigationItem" title="GAP" id="KYK-YQ-5pm">
                         <barButtonItem key="rightBarButtonItem" title="Filter" id="l1d-wc-5Et"/>
                     </navigationItem>
+                    <connections>
+                        <outlet property="snapshotView" destination="J1v-dc-z4c" id="Gvt-8W-LUL"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="00q-ok-p3A" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1022,6 +1037,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Share with Friends" id="dNy-Vk-Wai">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="DJp-xV-xQ3">
+                            <connections>
+                                <action selector="cancel:" destination="h14-80-rcU" id="EZl-1I-YBE"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Send" id="T9B-8l-FIc">
                             <connections>
                                 <action selector="sendTapped:" destination="h14-80-rcU" id="eSo-3A-TQ3"/>

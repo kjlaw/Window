@@ -11,7 +11,8 @@
 @interface ContactsTableViewController : UITableViewController {
     
     NSMutableArray *contactList;
-    
 }
+
+@property (nonatomic, retain) UIImage *snapshotImage;
 
 @end
