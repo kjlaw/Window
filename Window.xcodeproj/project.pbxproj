@@ -5321,7 +5321,7 @@
 				LastUpgradeCheck = 0720;
 				TargetAttributes = {
 					4A2F72D7117840A600F35FA7 = {
-						DevelopmentTeam = ALM4357QZ2;
+						DevelopmentTeam = UPY629UR3V;
 					};
 				};
 			};
@@ -6457,11 +6457,11 @@
 			baseConfigurationReference = A6712A6397C547613C52218C /* Pods-Window.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				DEVELOPMENT_TEAM = ALM4357QZ2;
+				DEVELOPMENT_TEAM = UPY629UR3V;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = examples/Window/ARApp2_Prefix.pch;
 				INFOPLIST_FILE = "$(SRCROOT)/examples/Window/Info.plist";
-				PRODUCT_BUNDLE_IDENTIFIER = com.merfrog.Window2;
+				PRODUCT_BUNDLE_IDENTIFIER = com.merfrog.Window;
 				PRODUCT_NAME = Window;
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -6473,11 +6473,11 @@
 			baseConfigurationReference = B4834C3A8883AD4570823964 /* Pods-Window.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				DEVELOPMENT_TEAM = ALM4357QZ2;
+				DEVELOPMENT_TEAM = UPY629UR3V;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = examples/Window/ARApp2_Prefix.pch;
 				INFOPLIST_FILE = "$(SRCROOT)/examples/Window/Info.plist";
-				PRODUCT_BUNDLE_IDENTIFIER = com.merfrog.Window2;
+				PRODUCT_BUNDLE_IDENTIFIER = com.merfrog.Window;
 				PRODUCT_NAME = Window;
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -6490,11 +6490,11 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = examples/Window/dist.plist;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
-				DEVELOPMENT_TEAM = ALM4357QZ2;
+				DEVELOPMENT_TEAM = UPY629UR3V;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = examples/Window/ARApp2_Prefix.pch;
 				INFOPLIST_FILE = "$(SRCROOT)/examples/Window/Info.plist";
-				PRODUCT_BUNDLE_IDENTIFIER = com.merfrog.Window2;
+				PRODUCT_BUNDLE_IDENTIFIER = com.merfrog.Window;
 				PRODUCT_NAME = Window;
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
