@@ -498,13 +498,11 @@ NSString *const ARViewTouchNotification = @"ARViewTouchNotification";
 
 - (void) handleTouchAtLocation:(CGPoint)location tapCount:(NSUInteger)tapCount
 {
-    NSLog(@"%lu", (unsigned long)tapCount);
-    if(tapCount >= 2){
+    if(tapCount < 2){
         return;
     }
     CGPoint locationFlippedY = CGPointMake(location.x, self.surfaceSize.height - location.y);
     NSLog(@"Touch at CG location (%.1f,%.1f), surfaceSize.height makes it (%.1f,%.1f) with y flipped.\n", location.x, location.y, locationFlippedY.x, locationFlippedY.y);
-    //showDetail = !showDetail;
     //[self convertPointInViewToRay:locationFlippedY];
     GlobalVars *globals = [GlobalVars sharedInstance];
     globals.clicked = true;

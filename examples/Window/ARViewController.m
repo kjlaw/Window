@@ -181,6 +181,7 @@
 
 - (void)didSwipe:(UISwipeGestureRecognizer*)swipe{
     GlobalVars *globals = [GlobalVars sharedInstance];
+    if(globals.inDetail) return;
     globals.newMove =true;
     globals.clicked = false;
     if (swipe.direction == UISwipeGestureRecognizerDirectionLeft) {

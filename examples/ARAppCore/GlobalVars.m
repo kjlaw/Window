@@ -19,7 +19,8 @@
 @synthesize rightShifts = _rightShifts;
 @synthesize leftShifts = _leftShifts;
 @synthesize newMove = _newMove;
-
+@synthesize inDetail = _inDetail;
+@synthesize centers = _centers;
 
 
 + (GlobalVars *)sharedInstance {
@@ -41,6 +42,13 @@
         rightShifts = 0;
         leftShifts = 0;
         newMove = false;
+        inDetail = false;
+        _centers = [[NSMutableDictionary alloc] init];
+
+        //centers = [NSMutableDictionary dictionary];
+        [_centers setObject:@"centered" forKey:@"cool-jeans.obj"];
+        [_centers setObject:@"centered" forKey:@"plain-t-white.obj"];
+        [_centers setObject:@"out" forKey:@"hoodie-obj.obj"];
     }
     return self;
 }

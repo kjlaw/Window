@@ -136,14 +136,14 @@
     }
     if(globals.clicked && !_ve->moveLeft && !_ve->moveRight && _ve.arViewController.glView->showDetail == YES){
         _ve.arViewController.glView->showDetail = NO;
+        globals.inDetail = false;
         globals.clicked = false;
         globals.showTop = false;
         globals.showBottom = false;
     }
     
     if(_ve.arViewController.glView->showDetail == YES){
-        NSLog(@"%@", self.name);
-        if((([self.name isEqualToString:@"cool-jeans.obj"] && globals.showBottom) ||( ([self.name isEqualToString:@"hoodie-obj.obj"] || [self.name isEqualToString:@"plain-t-white.obj"]) && globals.showTop)) && self->centered){
+        if((([self.name isEqualToString:@"cool-jeans.obj"] && globals.showBottom) ||( ([self.name isEqualToString:@"hoodie-obj.obj"] || [self.name isEqualToString:@"plain-t-white.obj"]) && globals.showTop)) && [[globals.centers objectForKey:self.name]  isEqual: @"centered"]){
             ARdouble pose[16];
             pose[0] = 0.018;
             pose[1] = 1.0;
@@ -158,11 +158,15 @@
             pose[10] = 0.12422;
             pose[11] = 0;
             if([self.name isEqualToString:@"cool-jeans.obj"]){
-                pose[12] = 100.0;
+                pose[12] = 40.0;
             } else {
                 pose[12] = 157.0;
             }
-            pose[13] = 0.0;
+            if([[globals.centers objectForKey:@"hoodie-obj.obj"]  isEqual: @"centered"] && [self.name isEqual:@"hoodie-obj.obj"]){
+                pose[13] = -150.0;
+            } else {
+                pose[13] = 0.0;
+            }
             pose[14] = -339.0;
             pose[15] = 1;
             glPushMatrix();
@@ -218,6 +222,7 @@
                 if(self->centered){
                     NSLog(@"centered");
                     _ve.arViewController.glView->showDetail = YES;
+                    globals.inDetail = true;
                     globals.clicked = false;
                     if(globals.rP1->v[1] < 250){
                         NSLog(@"top");
@@ -238,32 +243,42 @@
             }
         }
         if(_ve.arViewController.glView->showDetail == NO ){
-            if(_ve->moveLeft == true && _ve->numMoved <= [_ve->objects count]){
+            if(_ve->moveLeft == true && _ve->numMoved <= [_ve->objects count] && globals.leftShifts < 1){
                 if(_ve->numMoved == [_ve->objects count]){
                     _ve->moveLeft = false;
                     _ve->numMoved = 0;
+                    globals.leftShifts += 1;
+                    if(globals.rightShifts != 0) globals.rightShifts -= 1;
                 } else {
                     _ve->numMoved ++;
-                    _localPose.T[12] -= 100.0;
-                    if(self->centered && globals.newMove){
-                        self->centered = false;
+                    _localPose.T[12] -= _poseInEyeSpace.T[12];
+                    if([[globals.centers objectForKey:self.name]  isEqual: @"centered"] && globals.newMove){
+                        [globals.centers setValue:@"not" forKey:self.name];
+                        NSLog(@"Removed center flag");
                     } else if (globals.newMove){
-                        self->centered = true;
+                        [globals.centers setValue:@"centered" forKey:self.name];
+                        NSLog(@"Set center flag");
+                    } else {
                         globals.newMove = false;
                     }
                 }
             }
-            if(_ve->moveRight == true && _ve->numMoved <= [_ve->objects count]){
+            if(_ve->moveRight == true && _ve->numMoved <= [_ve->objects count] && globals.rightShifts < 1){
                 if(_ve->numMoved == [_ve->objects count]){
                     _ve->moveRight = false;
                     _ve->numMoved = 0;
+                    globals.rightShifts += 1;
+                    if(globals.leftShifts != 0) globals.leftShifts -= 1;
                 } else {
                     _ve->numMoved ++;
-                    _localPose.T[12] += 100.0;
-                    if(self->centered && globals.newMove){
-                        self->centered = false;
+                    _localPose.T[12] += _poseInEyeSpace.T[12];
+                    if([[globals.centers objectForKey:self.name]  isEqual: @"centered"] && globals.newMove){
+                        [globals.centers setValue:@"not" forKey:self.name];
+                        NSLog(@"Removed center flag");
                     } else if (globals.newMove){
-                        self->centered = true;
+                        [globals.centers setValue:@"centered" forKey:self.name];
+                        NSLog(@"Set center flag");
+                    } else {
                         globals.newMove = false;
                     }
                 }

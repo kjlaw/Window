@@ -20,6 +20,8 @@
     int rightShifts;
     int leftShifts;
     Boolean newMove;
+    Boolean inDetail;
+    NSMutableDictionary *centers;
 }
 
 + (GlobalVars *)sharedInstance;
@@ -28,6 +30,10 @@
 @property(nonatomic, readwrite) Boolean *showTop;
 @property(nonatomic, readwrite) Boolean *showBottom;
 @property(nonatomic, readwrite) Boolean newMove;
+@property(nonatomic, readwrite) Boolean inDetail;
+@property(strong, nonatomic, readwrite) NSMutableDictionary *centers;
+
+
 
 
 @property(nonatomic, readwrite) ARVec3 *rP1;
