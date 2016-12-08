@@ -93,13 +93,13 @@
     ARVec3 rayPoint2;
     
     // Interaction.
-    id <ARViewTouchDelegate> touchDelegate;
+   // id <ARViewTouchDelegate> touchDelegate;
 }
 
 @synthesize glView, virtualEnvironment, markers;
 @synthesize arglContextSettings;
 @synthesize running, runLoopInterval;
-@synthesize touchDelegate;
+//@synthesize touchDelegate;
 
 /*
  // The designated initializer.  Override if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
@@ -162,7 +162,7 @@
     runLoopTimePrevious = CFAbsoluteTimeGetCurrent();
     // Init gestures.
    // [self setMultipleTouchEnabled:YES];
-    [self setTouchDelegate:self];
+   // [self setTouchDelegate:self];
     UISwipeGestureRecognizer *swipeLeft = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(didSwipe:)];
     swipeLeft.direction = UISwipeGestureRecognizerDirectionLeft;
     [self.view addGestureRecognizer:swipeLeft];
@@ -170,6 +170,7 @@
     UISwipeGestureRecognizer *swipeRight = [[UISwipeGestureRecognizer alloc] initWithTarget:self  action:@selector(didSwipe:)];
     swipeRight.direction = UISwipeGestureRecognizerDirectionRight;
     [self.view addGestureRecognizer:swipeRight];
+    
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -179,7 +180,9 @@
 }
 
 - (void)didSwipe:(UISwipeGestureRecognizer*)swipe{
-
+    GlobalVars *globals = [GlobalVars sharedInstance];
+    globals.newMove =true;
+    globals.clicked = false;
     if (swipe.direction == UISwipeGestureRecognizerDirectionLeft) {
         self.virtualEnvironment->moveLeft = true;
     } else if (swipe.direction == UISwipeGestureRecognizerDirectionRight) {
@@ -374,7 +377,6 @@ static void startCallback(void *userData)
     arglCameraFrustumRHf(&gCparamLT->param, VIEW_DISTANCE_MIN, VIEW_DISTANCE_MAX, frustum);
     [glView setCameraLens:frustum];
     glView.contentFlipV = flipV;
-    
     // Set up content positioning.
     glView.contentScaleMode = ARViewContentScaleModeFill;
     glView.contentAlignMode = ARViewContentAlignModeCenter;
@@ -582,153 +584,154 @@ static void startCallback(void *userData)
     arSetLabelingMode(gARHandle, (markersHaveWhiteBorders ? AR_LABELING_WHITE_REGION : AR_LABELING_BLACK_REGION));
 }
 
-// Handles the start of a touch
-- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
-{
-    NSArray*        array = [touches allObjects];
-    UITouch*        touch;
-    NSUInteger        i;
-    CGPoint            location;
-    NSUInteger      numTaps;
-    
-#ifdef DEBUG
-    //NSLog(@"[EAGLView touchesBegan].\n");
-#endif
-    
-    for (i = 0; i < [array count]; ++i) {
-        touch = [array objectAtIndex:i];
-        if (touch.phase == UITouchPhaseBegan) {
-            location = [touch locationInView:self.glView];
-            numTaps = [touch tapCount];
-            if (touchDelegate) {
-                if ([touchDelegate respondsToSelector:@selector(handleTouchAtLocation:tapCount:)]) {
-                    [touchDelegate handleTouchAtLocation:location tapCount:numTaps];
-                }
-            }
-        } // phase match.
-    } // touches.
-}
-
-// Handles the continuation of a touch.
-- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
-{
-    NSArray*        array = [touches allObjects];
-    UITouch*        touch;
-    NSUInteger        i;
-    
-#ifdef DEBUG
-    //NSLog(@"[EAGLView touchesMoved].\n");
-#endif
-    
-    for (i = 0; i < [array count]; ++i) {
-        touch = [array objectAtIndex:i];
-        if (touch.phase == UITouchPhaseMoved) {
-            // Can do something appropriate for a moving touch here.
-        } // phase match.
-    } // touches.
-}
-
-// Handles the end of a touch event.
-- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
-{
-    NSArray*        array = [touches allObjects];
-    UITouch*        touch;
-    NSUInteger        i;
-    
-#ifdef DEBUG
-    //NSLog(@"[EAGLView touchesEnded].\n");
-#endif
-    
-    for (i = 0; i < [array count]; ++i) {
-        touch = [array objectAtIndex:i];
-        if (touch.phase == UITouchPhaseEnded) {
-            // Can do something appropriate for end of touch here.
-        } // phase match.
-    } // touches.
-}
-
-- (void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event
-{
-    NSArray*        array = [touches allObjects];
-    UITouch*        touch;
-    NSUInteger        i;
-    
-#ifdef DEBUG
-    //NSLog(@"[EAGLView touchesCancelled].\n");
-#endif
-    
-    for (i = 0; i < [array count]; ++i) {
-        touch = [array objectAtIndex:i];
-        if (touch.phase == UITouchPhaseCancelled) {
-            // Can do something appropriate for cancellation of a touch (e.g. by a system event) here.
-        } // phase match.
-    } // touches.
-}
-
-
-- (void)convertPointInViewToRay:(CGPoint)point
-{
-    
-    float m[16], A[16];
-    float p[4], q[4];
-    
-
-    
-    // Find INVERSE(PROJECTION * MODELVIEW).
-
-    float* cam = self.glView.cameraPose;
-    float* proj = self.glView->projection;
-    EdenMathMultMatrix(A, self.glView.cameraPose, self.glView->projection);
-    if (!EdenMathInvertMatrix(m, A)) {
-        
-        // Next, normalise point to viewport range [-1.0, 1.0], and with depth -1.0 (i.e. at near clipping plane).
-        p[0] = (point.x - glView.viewPort[viewPortIndexLeft]) * 2.0f / glView.viewPort[viewPortIndexWidth] - 1.0f; // (winx - viewport[0]) * 2 / viewport[2] - 1.0;
-        p[1] = (point.y - glView.viewPort[viewPortIndexBottom]) * 2.0f / glView.viewPort[viewPortIndexHeight] - 1.0f; // (winy - viewport[1]) * 2 / viewport[3] - 1.0;
-        p[2] = -1.0f; // 2 * winz - 1.0;
-        p[3] = 1.0f;
-        
-        // Calculate the point's world coordinates.
-        EdenMathMultMatrixByVector(q, m, p);
-        NSLog(@"------------------");
-        NSLog(@"Making ray 1");
-        
-        if (q[3] != 0.0f) {
-            rayPoint1.v[0] = q[0] / q[3];
-            rayPoint1.v[1] = q[1] / q[3];
-            rayPoint1.v[2] = q[2] / q[3];
-            
-            // Next, a second point with depth 1.0 (i.e. at far clipping plane).
-            p[2] = 1.0f; // 2 * winz - 1.0;
-            NSLog(@"Making ray 2");
-            // Calculate the point's world coordinates.
-            EdenMathMultMatrixByVector(q, m, p);
-            if (q[3] != 0.0f) {
-                
-                rayPoint2.v[0] = q[0] / q[3];
-                rayPoint2.v[1] = q[1] / q[3];
-                rayPoint2.v[2] = q[2] / q[3];
-                
-                for (int i = 0; i < [self.glView->objects count]; i++) {
-                    VEObject * obj = (VEObject *) self.glView->objects[i];
-                    if([obj isIntersectedByRayFromPoint:rayPoint1 toPoint:rayPoint2]){
-                        NSLog(@"intersected");
-                    }
-                }
-                NSLog(@"Boo ya");
-                NSLog(@"------------------");
-                
-                return;
-            }
-        }
-    }
-}
-
-- (void) handleTouchAtLocation:(CGPoint)location tapCount:(NSUInteger)tapCount
-{
-    CGPoint locationFlippedY = CGPointMake(location.x, glView.surfaceSize.height - location.y);
-    NSLog(@"ARVIEWCONTROLLER - Touch at CG location (%.1f,%.1f), surfaceSize.height makes it (%.1f,%.1f) with y flipped.\n", location.x, location.y, locationFlippedY.x, locationFlippedY.y);
-    //showDetail = !showDetail;
-    [self convertPointInViewToRay:locationFlippedY];
-}
+//
+//// Handles the start of a touch
+//- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+//{
+//    NSArray*        array = [touches allObjects];
+//    UITouch*        touch;
+//    NSUInteger        i;
+//    CGPoint            location;
+//    NSUInteger      numTaps;
+//    
+//#ifdef DEBUG
+//    //NSLog(@"[EAGLView touchesBegan].\n");
+//#endif
+//    
+//    for (i = 0; i < [array count]; ++i) {
+//        touch = [array objectAtIndex:i];
+//        if (touch.phase == UITouchPhaseBegan) {
+//            location = [touch locationInView:self.glView];
+//            numTaps = [touch tapCount];
+//            if (touchDelegate) {
+//                if ([touchDelegate respondsToSelector:@selector(handleTouchAtLocation:tapCount:)]) {
+//                    [touchDelegate handleTouchAtLocation:location tapCount:numTaps];
+//                }
+//            }
+//        } // phase match.
+//    } // touches.
+//}
+//
+//// Handles the continuation of a touch.
+//- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
+//{
+//    NSArray*        array = [touches allObjects];
+//    UITouch*        touch;
+//    NSUInteger        i;
+//    
+//#ifdef DEBUG
+//    //NSLog(@"[EAGLView touchesMoved].\n");
+//#endif
+//    
+//    for (i = 0; i < [array count]; ++i) {
+//        touch = [array objectAtIndex:i];
+//        if (touch.phase == UITouchPhaseMoved) {
+//            // Can do something appropriate for a moving touch here.
+//        } // phase match.
+//    } // touches.
+//}
+//
+//// Handles the end of a touch event.
+//- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
+//{
+//    NSArray*        array = [touches allObjects];
+//    UITouch*        touch;
+//    NSUInteger        i;
+//    
+//#ifdef DEBUG
+//    //NSLog(@"[EAGLView touchesEnded].\n");
+//#endif
+//    
+//    for (i = 0; i < [array count]; ++i) {
+//        touch = [array objectAtIndex:i];
+//        if (touch.phase == UITouchPhaseEnded) {
+//            // Can do something appropriate for end of touch here.
+//        } // phase match.
+//    } // touches.
+//}
+//
+//- (void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event
+//{
+//    NSArray*        array = [touches allObjects];
+//    UITouch*        touch;
+//    NSUInteger        i;
+//    
+//#ifdef DEBUG
+//    //NSLog(@"[EAGLView touchesCancelled].\n");
+//#endif
+//    
+//    for (i = 0; i < [array count]; ++i) {
+//        touch = [array objectAtIndex:i];
+//        if (touch.phase == UITouchPhaseCancelled) {
+//            // Can do something appropriate for cancellation of a touch (e.g. by a system event) here.
+//        } // phase match.
+//    } // touches.
+//}
+//
+//
+//- (void)convertPointInViewToRay:(CGPoint)point
+//{
+//    
+//    float m[16], A[16];
+//    float p[4], q[4];
+//    
+//
+//    
+//    // Find INVERSE(PROJECTION * MODELVIEW).
+//
+//    float* cam = self.glView.cameraPose;
+//    float* proj = self.glView->projection;
+//    EdenMathMultMatrix(A, self.glView.cameraPose, self.glView->projection);
+//    if (!EdenMathInvertMatrix(m, A)) {
+//        
+//        // Next, normalise point to viewport range [-1.0, 1.0], and with depth -1.0 (i.e. at near clipping plane).
+//        p[0] = (point.x - glView.viewPort[viewPortIndexLeft]) * 2.0f / glView.viewPort[viewPortIndexWidth] - 1.0f; // (winx - viewport[0]) * 2 / viewport[2] - 1.0;
+//        p[1] = (point.y - glView.viewPort[viewPortIndexBottom]) * 2.0f / glView.viewPort[viewPortIndexHeight] - 1.0f; // (winy - viewport[1]) * 2 / viewport[3] - 1.0;v
+//        p[2] = -1.0f; // 2 * winz - 1.0;
+//        p[3] = 1.0f;
+//        
+//        // Calculate the point's world coordinates.
+//        EdenMathMultMatrixByVector(q, m, p);
+//        NSLog(@"------------------");
+//        NSLog(@"Making ray 1");
+//        
+//        if (q[3] != 0.0f) {
+//            rayPoint1.v[0] = q[0] / q[3];
+//            rayPoint1.v[1] = q[1] / q[3];
+//            rayPoint1.v[2] = q[2] / q[3];
+//            
+//            // Next, a second point with depth 1.0 (i.e. at far clipping plane).
+//            p[2] = 1.0f; // 2 * winz - 1.0;
+//            NSLog(@"Making ray 2");
+//            // Calculate the point's world coordinates.
+//            EdenMathMultMatrixByVector(q, m, p);
+//            if (q[3] != 0.0f) {
+//                
+//                rayPoint2.v[0] = q[0] / q[3];
+//                rayPoint2.v[1] = q[1] / q[3];
+//                rayPoint2.v[2] = q[2] / q[3];
+//                
+//                for (int i = 0; i < [self.glView->objects count]; i++) {
+//                    VEObject * obj = (VEObject *) self.glView->objects[i];
+//                    if([obj isIntersectedByRayFromPoint:rayPoint1 toPoint:rayPoint2]){
+//                        NSLog(@"intersected");
+//                    }
+//                }
+//                NSLog(@"Boo ya");
+//                NSLog(@"------------------");
+//                
+//                return;
+//            }
+//        }
+//    }
+//}
+//
+//- (void) handleTouchAtLocation:(CGPoint)location tapCount:(NSUInteger)tapCount
+//{
+//    CGPoint locationFlippedY = CGPointMake(location.x, glView.surfaceSize.height - location.y);
+//    NSLog(@"ARVIEWCONTROLLER - Touch at CG location (%.1f,%.1f), surfaceSize.height makes it (%.1f,%.1f) with y flipped.\n", location.x, location.y, locationFlippedY.x, locationFlippedY.y);
+//    //showDetail = !showDetail;
+//    [self convertPointInViewToRay:locationFlippedY];
+//}
 
 @end

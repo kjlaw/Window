@@ -56,7 +56,6 @@
 #import <sys/param.h> // MAXPATHLEN
 #import <Eden/EdenMath.h>
 #import "VEObject.h"
-
 // --------
 //
 // A registry of VEObject types.
@@ -155,7 +154,6 @@ static char *get_buff(char *buf, int n, FILE *fp, int skipblanks)
         }
         
         objects = [[NSMutableArray alloc] init];
-        arViewController.glView->objects = objects;
     }
     moveLeft = false;
     moveRight = false;
@@ -168,7 +166,6 @@ static char *get_buff(char *buf, int n, FILE *fp, int skipblanks)
 {
     [objects makeObjectsPerformSelector:@selector(willBeRemovedFromEnvironment:) withObject:self];
     [objects release];
-
     // Go through the VEObject registry and call +virtualEnvironmentWillBeDestroyed
     // on any objects that implement it.
     VEObjectRegistryEntry_t *entry = registry;
@@ -358,6 +355,10 @@ static char *get_buff(char *buf, int n, FILE *fp, int skipblanks)
             tempObject.visible = FALSE; // Child objects will not be initially visible.
             [autoParent addChild:tempObject];
         }
+        if(objectsAdded < 2){
+            tempObject->centered = true;
+        }
+        //globalObjects
         [self addObject:tempObject];
         
         [tempObject release];

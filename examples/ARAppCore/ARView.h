@@ -64,6 +64,7 @@
 
 #import "EAGLView.h"
 #import "ARMarker.h" // ARVec3
+#import "GlobalVars.h"
 
 @class ARViewController;
 
@@ -107,11 +108,10 @@ typedef enum {
     ARViewContentAlignModeBottomRight,
 } ARViewContentAlignMode;
 
-//@interface ARView : EAGLView <ARViewTouchDelegate> {
-@interface ARView : EAGLView {
+@interface ARView : EAGLView <ARViewTouchDelegate> {
+//@interface ARView : EAGLView {
 @public
     BOOL showDetail;
-    NSMutableArray *objects;
     float projection[16];
 }
 
@@ -135,7 +135,7 @@ typedef enum {
 @property ARViewContentAlignMode contentAlignMode; // Defaults to ARViewContentAlignModeCenter.
 
 // Interaction.
-//@property(nonatomic, assign) id <ARViewTouchDelegate> touchDelegate;
+@property(nonatomic, assign) id <ARViewTouchDelegate> touchDelegate;
 @property(nonatomic, readonly) BOOL rayIsValid;
 @property(nonatomic, readonly) ARVec3 rayPoint1;
 @property(nonatomic, readonly) ARVec3 rayPoint2;

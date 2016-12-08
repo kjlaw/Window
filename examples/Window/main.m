@@ -49,8 +49,10 @@
 #import <UIKit/UIKit.h>
 #import "ARApp2Delegate.h"
 
+NSMutableArray *globalObjs;
+
 int main(int argc, char *argv[]) {
-    
+    globalObjs = [[NSMutableArray alloc ]init];
     NSAutoreleasePool * pool = [[NSAutoreleasePool alloc] init];
     int retVal = UIApplicationMain(argc, argv, nil, NSStringFromClass([ARApp2Delegate class]));
     [pool release];

@@ -57,6 +57,7 @@
 #define VIEW_DISTANCE_MIN        5.0f          // Objects closer to the camera than this will not be displayed.
 #define VIEW_DISTANCE_MAX        2000.0f        // Objects further away from the camera than this will not be displayed.
 
+extern NSMutableArray *globalObjs;
 
 @class ARViewController;
 

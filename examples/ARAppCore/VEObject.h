@@ -63,6 +63,7 @@
     ARPose _pose;
     ARPose _localPose;
     ARPose _poseInEyeSpace;
+    Boolean centered;
 }
 
 // Designated initialiser.

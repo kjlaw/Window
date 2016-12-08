@@ -74,6 +74,7 @@
 - (id) initFromFile:(NSString *)file translation:(const ARdouble [3])translation rotation:(const ARdouble [4])rotation scale:(const ARdouble [3])scale config:(char *)config
 {
     if ((self = [super init])) {
+        centered = false;
         _ve = nil;
         _drawable = FALSE;
         _lit = TRUE;

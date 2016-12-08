@@ -364,6 +364,7 @@
 		80E88110AED5386DE2C25E65 /* libPods-ARgsub_es2.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F8168B1AA876CFACA73B072 /* libPods-ARgsub_es2.a */; };
 		82C55E401397A0A30FD09787 /* libPods-ARMulti.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 27E2D5C18F248B6B67AA15EE /* libPods-ARMulti.a */; };
 		8C189E8A1D6901D25C6E81B4 /* libPods-ARosg.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 83F5729DE3F849708667BC45 /* libPods-ARosg.a */; };
+		951060AC1DF7D7B0000833BE /* GlobalVars.m in Sources */ = {isa = PBXBuildFile; fileRef = 951060AB1DF7D7B0000833BE /* GlobalVars.m */; };
 		AD74CF29E3201F99DB524CA5 /* libPods-KPM.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DE1B01AC886774B0777CACA9 /* libPods-KPM.a */; };
 		AF30B2A7A019643FC097957F /* libPods-ARvideo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 645EE12E67B0246AEE3B28C1 /* libPods-ARvideo.a */; };
 		D52168E6D55765A9E6AA4CAC /* libPods-AR.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 33371574AA9CC966CF7BD4F7 /* libPods-AR.a */; };
@@ -2300,6 +2301,8 @@
 		83F5729DE3F849708667BC45 /* libPods-ARosg.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ARosg.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8426D2210BE9D08512DC541C /* Pods-KPM.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KPM.release.xcconfig"; path = "Pods/Target Support Files/Pods-KPM/Pods-KPM.release.xcconfig"; sourceTree = "<group>"; };
 		927E0090B35021F6B1D2FE73 /* Pods-ARgsub_es2.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ARgsub_es2.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ARgsub_es2/Pods-ARgsub_es2.debug.xcconfig"; sourceTree = "<group>"; };
+		951060AA1DF7D7B0000833BE /* GlobalVars.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GlobalVars.h; sourceTree = "<group>"; };
+		951060AB1DF7D7B0000833BE /* GlobalVars.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GlobalVars.m; sourceTree = "<group>"; };
 		9687EF09D102CAD05599579F /* Pods-ARUtil.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ARUtil.release.xcconfig"; path = "Pods/Target Support Files/Pods-ARUtil/Pods-ARUtil.release.xcconfig"; sourceTree = "<group>"; };
 		9F3A9379AAB67F804E1A0BE8 /* Pods-AR2.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AR2.release.xcconfig"; path = "Pods/Target Support Files/Pods-AR2/Pods-AR2.release.xcconfig"; sourceTree = "<group>"; };
 		A6712A6397C547613C52218C /* Pods-Window.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Window.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Window/Pods-Window.debug.xcconfig"; sourceTree = "<group>"; };
@@ -2651,6 +2654,8 @@
 				4A33B6B918ADB7C50028A979 /* osgPlugins.h */,
 				4A33B6B718ADB7C50028A979 /* EAGLView.h */,
 				4A33B6B818ADB7C50028A979 /* EAGLView.m */,
+				951060AA1DF7D7B0000833BE /* GlobalVars.h */,
+				951060AB1DF7D7B0000833BE /* GlobalVars.m */,
 			);
 			path = ARAppCore;
 			sourceTree = "<group>";
@@ -6109,6 +6114,7 @@
 				4AF101CD180BFC9100A922DE /* mPCA.c in Sources */,
 				4AF10220180BFC9900A922DE /* arLabelingSubEWIYC.c in Sources */,
 				4AF101E8180BFC9900A922DE /* arLabelingSubDBR3C.c in Sources */,
+				951060AC1DF7D7B0000833BE /* GlobalVars.m in Sources */,
 				4AF101FE180BFC9900A922DE /* arLabelingSubDWR3CA4444.c in Sources */,
 				4AF101E2180BFC9900A922DE /* arLabelingSubDBI3CA4444.c in Sources */,
 				4AF101DD180BFC9100A922DE /* vInnerP.c in Sources */,

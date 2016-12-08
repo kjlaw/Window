@@ -60,6 +60,7 @@
 
 #import "ARView.h"
 #import "ARViewController.h"
+#import "GlobalVars.h"
 
 @implementation VEObjectOBJ {
     GLMmodel *glmModel;
@@ -120,6 +121,8 @@
     [super willBeRemovedFromEnvironment:environment];
 }
 
+
+
 -(void) draw:(NSNotification *)notification
 {
     // Lighting setup.
@@ -127,107 +130,169 @@
     const GLfloat lightWhite100[]        =    {1.00, 1.00, 1.00, 1.0};    // RGBA all on full.
     const GLfloat lightWhite75[]        =    {0.75, 0.75, 0.75, 1.0};    // RGBA all on three quarters.
     const GLfloat lightPosition0[]     =    {1.0f, 1.0f, 2.0f, 0.0f}; // A directional light (i.e. non-positional).
+    GlobalVars *globals = [GlobalVars sharedInstance];
+    if(_ve->moveLeft || _ve->moveRight){
+        globals.clicked = false;
+    }
+    if(globals.clicked && !_ve->moveLeft && !_ve->moveRight && _ve.arViewController.glView->showDetail == YES){
+        _ve.arViewController.glView->showDetail = NO;
+        globals.clicked = false;
+        globals.showTop = false;
+        globals.showBottom = false;
+    }
     
-//    if(_ve.arViewController.glView->showDetail == YES){
-//        VEObjectOBJ * obj = (VEObjectOBJ *) _ve->objects[0];
-//        if( obj->glmModel == glmModel && glmModel != NULL){
-//            ARdouble pose[16];
-//            pose[0] = 0.018;
-//            pose[1] = 1.0;
-//            pose[2] = -0.0255;
-//            pose[3] = 0;
-//            pose[4] = -0.12509;
-//            pose[5] = -0.018366;
-//            pose[6] = -1.0;
-//            pose[7] = 0;
-//            pose[8] = -1.0;
-//            pose[9] = 0.021673;
-//            pose[10] = 0.12422;
-//            pose[11] = 0;
-//            pose[12] = 137.0;
-//            pose[13] = 0.0;
-//            pose[14] = -339.0;
-//            pose[15] = 1;
-//            glPushMatrix();
-//            glMultMatrixf(pose);
-//            pose[0] = 1;
-//            pose[1] = 0;
-//            pose[2] = 0;
-//            pose[3] = 0;
-//            pose[4] = 0;
-//            pose[5] = 1;
-//            pose[6] = 0;
-//            pose[7] = 0;
-//            pose[8] = 0;
-//            pose[9] = 0;
-//            pose[10] = 1;
-//            pose[11] = 0;
-//            pose[12] = 0;
-//            pose[13] = 0;
-//            pose[14] = 0;
-//            pose[15] = 1;
-//            //[self fillPose:detailPose];
-//            glMultMatrixf(pose);
-//            if (_lit) {
-//                glLightfv(GL_LIGHT0, GL_DIFFUSE, lightWhite100);
-//                glLightfv(GL_LIGHT0, GL_SPECULAR, lightWhite100);
-//                glLightfv(GL_LIGHT0, GL_AMBIENT, lightWhite75);            // Default ambient = {0,0,0,0}.
-//                glLightfv(GL_LIGHT0, GL_POSITION, lightPosition0);
-//                glEnable(GL_LIGHT0);
-//                glDisable(GL_LIGHT1);
-//                glDisable(GL_LIGHT2);
-//                glDisable(GL_LIGHT3);
-//                glDisable(GL_LIGHT4);
-//                glDisable(GL_LIGHT5);
-//                glDisable(GL_LIGHT6);
-//                glDisable(GL_LIGHT7);
-//                glShadeModel(GL_SMOOTH);                // Do not flat shade polygons.
-//                glStateCacheEnableLighting();
-//            } else glStateCacheDisableLighting();
-//            glmDrawArrays(glmModel, 0);
-//            glPopMatrix();
-//        }
-    //} else
-if (_visible) {
-        if(_ve->moveLeft == true && _ve->numMoved <= [_ve->objects count]){
-            if(_ve->numMoved == [_ve->objects count]){
-                _ve->moveLeft = false;
-                _ve->numMoved = 0;
+    if(_ve.arViewController.glView->showDetail == YES){
+        NSLog(@"%@", self.name);
+        if((([self.name isEqualToString:@"cool-jeans.obj"] && globals.showBottom) ||( ([self.name isEqualToString:@"hoodie-obj.obj"] || [self.name isEqualToString:@"plain-t-white.obj"]) && globals.showTop)) && self->centered){
+            ARdouble pose[16];
+            pose[0] = 0.018;
+            pose[1] = 1.0;
+            pose[2] = -0.0255;
+            pose[3] = 0;
+            pose[4] = -0.12509;
+            pose[5] = -0.018366;
+            pose[6] = -1.0;
+            pose[7] = 0;
+            pose[8] = -1.0;
+            pose[9] = 0.021673;
+            pose[10] = 0.12422;
+            pose[11] = 0;
+            if([self.name isEqualToString:@"cool-jeans.obj"]){
+                pose[12] = 100.0;
             } else {
-                _ve->numMoved ++;
-                _localPose.T[12] -= 100.0;
+                pose[12] = 157.0;
+            }
+            pose[13] = 0.0;
+            pose[14] = -339.0;
+            pose[15] = 1;
+            glPushMatrix();
+            glMultMatrixf(pose);
+            pose[0] = 1;
+            pose[1] = 0;
+            pose[2] = 0;
+            pose[3] = 0;
+            pose[4] = 0;
+            pose[5] = 1;
+            pose[6] = 0;
+            pose[7] = 0;
+            pose[8] = 0;
+            pose[9] = 0;
+            pose[10] = 1;
+            pose[11] = 0;
+            pose[12] = 0;
+            pose[13] = 0;
+            pose[14] = 0;
+            pose[15] = 1;
+            //[self fillPose:detailPose];
+            glMultMatrixf(pose);
+            if (_lit) {
+                glLightfv(GL_LIGHT0, GL_DIFFUSE, lightWhite100);
+                glLightfv(GL_LIGHT0, GL_SPECULAR, lightWhite100);
+                glLightfv(GL_LIGHT0, GL_AMBIENT, lightWhite75);            // Default ambient = {0,0,0,0}.
+                glLightfv(GL_LIGHT0, GL_POSITION, lightPosition0);
+                glEnable(GL_LIGHT0);
+                glDisable(GL_LIGHT1);
+                glDisable(GL_LIGHT2);
+                glDisable(GL_LIGHT3);
+                glDisable(GL_LIGHT4);
+                glDisable(GL_LIGHT5);
+                glDisable(GL_LIGHT6);
+                glDisable(GL_LIGHT7);
+                glShadeModel(GL_SMOOTH);                // Do not flat shade polygons.
+                glStateCacheEnableLighting();
+            } else glStateCacheDisableLighting();
+            glmDrawArrays(glmModel, 0);
+            glPopMatrix();
+        }
+    }
+
+    if (_visible) {
+        
+        
+        
+        if(globals.clicked){
+             if(!_ve->moveLeft && !_ve->moveRight){
+                NSLog(@"clicked!");
+                globals.cycle += 1;
+                //Check if obj is centered
+                if(self->centered){
+                    NSLog(@"centered");
+                    _ve.arViewController.glView->showDetail = YES;
+                    globals.clicked = false;
+                    if(globals.rP1->v[1] < 250){
+                        NSLog(@"top");
+                        globals.showTop = true;
+                    } else {
+                        NSLog(@"bottom");
+                        globals.showBottom = true;
+                    }
+                }
+                if(globals.cycle == (int)[_ve->objects count]){
+                    globals.clicked = false;
+                    globals.rP1 = nil;
+                    globals.rP2 = nil;
+                    globals.cycle = 0;
+                }
+            } else {
+                globals.clicked = false;
             }
         }
-        if(_ve->moveRight == true && _ve->numMoved <= [_ve->objects count]){
-            if(_ve->numMoved == [_ve->objects count]){
-                _ve->moveRight = false;
-                _ve->numMoved = 0;
-            } else {
-                _ve->numMoved ++;
-                _localPose.T[12] += 100.0;
+        if(_ve.arViewController.glView->showDetail == NO ){
+            if(_ve->moveLeft == true && _ve->numMoved <= [_ve->objects count]){
+                if(_ve->numMoved == [_ve->objects count]){
+                    _ve->moveLeft = false;
+                    _ve->numMoved = 0;
+                } else {
+                    _ve->numMoved ++;
+                    _localPose.T[12] -= 100.0;
+                    if(self->centered && globals.newMove){
+                        self->centered = false;
+                    } else if (globals.newMove){
+                        self->centered = true;
+                        globals.newMove = false;
+                    }
+                }
             }
+            if(_ve->moveRight == true && _ve->numMoved <= [_ve->objects count]){
+                if(_ve->numMoved == [_ve->objects count]){
+                    _ve->moveRight = false;
+                    _ve->numMoved = 0;
+                } else {
+                    _ve->numMoved ++;
+                    _localPose.T[12] += 100.0;
+                    if(self->centered && globals.newMove){
+                        self->centered = false;
+                    } else if (globals.newMove){
+                        self->centered = true;
+                        globals.newMove = false;
+                    }
+                }
+            }
+            glPushMatrix();
+            glMultMatrixf(_poseInEyeSpace.T);
+            glMultMatrixf(_localPose.T);
+            if (_lit) {
+                glLightfv(GL_LIGHT0, GL_DIFFUSE, lightWhite100);
+                glLightfv(GL_LIGHT0, GL_SPECULAR, lightWhite100);
+                glLightfv(GL_LIGHT0, GL_AMBIENT, lightWhite75);            // Default ambient = {0,0,0,0}.
+                glLightfv(GL_LIGHT0, GL_POSITION, lightPosition0);
+                glEnable(GL_LIGHT0);
+                glDisable(GL_LIGHT1);
+                glDisable(GL_LIGHT2);
+                glDisable(GL_LIGHT3);
+                glDisable(GL_LIGHT4);
+                glDisable(GL_LIGHT5);
+                glDisable(GL_LIGHT6);
+                glDisable(GL_LIGHT7);
+                glShadeModel(GL_SMOOTH);                // Do not flat shade polygons.
+                glStateCacheEnableLighting();
+            } else glStateCacheDisableLighting();
+            glmDrawArrays(glmModel, 0);
+            glPopMatrix();
         }
-        glPushMatrix();
-        glMultMatrixf(_poseInEyeSpace.T);
-        glMultMatrixf(_localPose.T);
-        if (_lit) {
-            glLightfv(GL_LIGHT0, GL_DIFFUSE, lightWhite100);
-            glLightfv(GL_LIGHT0, GL_SPECULAR, lightWhite100);
-            glLightfv(GL_LIGHT0, GL_AMBIENT, lightWhite75);            // Default ambient = {0,0,0,0}.
-            glLightfv(GL_LIGHT0, GL_POSITION, lightPosition0);
-            glEnable(GL_LIGHT0);
-            glDisable(GL_LIGHT1);
-            glDisable(GL_LIGHT2);
-            glDisable(GL_LIGHT3);
-            glDisable(GL_LIGHT4);
-            glDisable(GL_LIGHT5);
-            glDisable(GL_LIGHT6);
-            glDisable(GL_LIGHT7);
-            glShadeModel(GL_SMOOTH);                // Do not flat shade polygons.
-            glStateCacheEnableLighting();
-        } else glStateCacheDisableLighting();
-        glmDrawArrays(glmModel, 0);
-        glPopMatrix();
+    } else {
+        GlobalVars *globals = [GlobalVars sharedInstance];
+        globals.clicked = false;
     }
 }
 

@@ -64,7 +64,7 @@
 #import "../ARAppCore/VirtualEnvironment.h"
 #import <AR/sys/CameraVideo.h>
 
-@interface ARViewController : UIViewController <CameraVideoTookPictureDelegate, ARViewTouchDelegate> {
+@interface ARViewController : UIViewController <CameraVideoTookPictureDelegate> {
     NSString *modelPath;
     UITouch *startPosition;
 }
@@ -91,7 +91,7 @@
 
 @property (nonatomic) BOOL markersHaveWhiteBorders;
 
-@property(nonatomic, assign) id <ARViewTouchDelegate> touchDelegate;
+//@property(nonatomic, assign) id <ARViewTouchDelegate> touchDelegate;
 
 
 @end
