@@ -269,9 +269,11 @@ static void startCallback(void *userData)
 }
 
 - (void) start2
+
 {
-    NSLog(@"start2 called");
-    
+    GlobalVars *globals = [GlobalVars sharedInstance];
+
+    globals.setFilterBanner = true;
     [self.navigationController setNavigationBarHidden:NO];
 
     // Find the size of the window.
@@ -449,11 +451,14 @@ static void startCallback(void *userData)
     }
     if(showWomen){
         modelPath = @"Data2/models2.dat";
+        globals.setFilterBanner = false;
     } else if(showMen){
         modelPath = @"Data2/models.dat";
+        globals.setFilterBanner = false;
     }
     if(showMen && showWomen){
         modelPath = @"Data2/bothGenders.dat";
+        globals.setFilterBanner = false;
     }
     
     NSMutableArray *colorArr = [userDefaults objectForKey:@"colorIndexPathRows"];
@@ -482,34 +487,54 @@ static void startCallback(void *userData)
     }
     if(showMen && showWomen && red && !pink && !gray && !blue){
         modelPath = @"Data2/redmodels.dat";
+        globals.setFilterBanner = false;
     } else if(showMen && red && !pink && !gray && !blue){
         modelPath = @"Data2/redmalemodels.dat";
+        globals.setFilterBanner = false;
     } else if(showWomen && red && !pink && !gray && !blue){
         modelPath = @"Data2/redfemalemodels.dat";
+        globals.setFilterBanner = false;
     }
     
     if(showMen && showWomen && !red && !pink && !gray && blue){
         modelPath = @"Data2/bluemodels.dat";
+        globals.setFilterBanner = false;
     } else if(showMen && !red && !pink && !gray && blue){
         modelPath = @"Data2/bluemalemodels.dat";
+        globals.setFilterBanner = false;
     } else if(showWomen && !red && !pink && !gray && blue){
         modelPath = @"Data2/bluefemalemodels.dat";
+        globals.setFilterBanner = false;
     }
     
     if(showMen && showWomen && !red && !pink && gray && !blue){
         modelPath = @"Data2/graymodels.dat";
+        globals.setFilterBanner = false;
     } else if(showMen && !red && !pink && gray && !blue){
         modelPath = @"Data2/graymalemodels.dat";
+        globals.setFilterBanner = false;
     } else if(showWomen && !red && !pink && gray && !blue){
         modelPath = @"Data2/grayfemalemodels.dat";
+        globals.setFilterBanner = false;
     }
     
     if(showMen && showWomen && red && !pink && !gray && blue){
+        globals.setFilterBanner = false;
         modelPath = @"Data2/redbluemodels.dat";
     } else if(showMen && red && !pink && !gray && blue){
+        globals.setFilterBanner = false;
         modelPath = @"Data2/redbluemalemodels.dat";
     } else if(showWomen && red && !pink && !gray && blue){
+        globals.setFilterBanner = false;
         modelPath = @"Data2/redbluefemalemodels.dat";
+    }
+    
+    if(showMen && showWomen && !red && pink && !gray && !blue){
+        globals.setFilterBanner = false;
+        modelPath = @"Data2/pinkfemalemodels.dat";
+    } else if(showWomen && !red && pink && !gray && !blue){
+        globals.setFilterBanner = false;
+        modelPath = @"Data2/pinkfemalemodels.dat";
     }
     
     NSMutableArray *styleArr = [userDefaults objectForKey:@"styleIndexPathRows"];
@@ -537,12 +562,21 @@ static void startCallback(void *userData)
     }
     
     if(showWomen && formal){
+        globals.setFilterBanner = false;
+        modelPath = @"Data2/fancywomenmodels.dat";
+    }
+    if(formal && !showWomen && !showMen){
+        globals.setFilterBanner = false;
         modelPath = @"Data2/fancywomenmodels.dat";
     }
 
     // Clear out price to item mapping
     [itemPriceMapping removeAllObjects];
     
+    
+    if(globals.setFilterBanner){
+        modelPath = @"Data2/nothing.dat";
+    }
     // Set up the virtual environment.
     self.virtualEnvironment = [[[VirtualEnvironment alloc] initWithARViewController:self] autorelease];
    [self.virtualEnvironment addObjectsFromObjectListFile:modelPath connectToARMarkers:markers];

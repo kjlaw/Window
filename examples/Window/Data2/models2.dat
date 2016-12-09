@@ -1,7 +1,7 @@
 6
 
 models/girlt.obj
-0.0 180.0 0.0
+0.0 180.0 -10.0
 90.0 1.0 0.0 0.0
 3.616 3.616 3.616
 MARKER 2
@@ -25,7 +25,7 @@ models/skirt.obj
 MARKER 2
 
 models/red-sweater.obj
-300.0 150.0 0.0
+300.0 160.0 -10.0
 90.0 1.0 0.0 0.0
 1.516 1.516 1.516
 MARKER 2
