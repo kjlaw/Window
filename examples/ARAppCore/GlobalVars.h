@@ -26,6 +26,7 @@
     ARPose saved;
     Boolean savedPose;
     GLMmodel *model;
+    Boolean setFilterBanner;
 }
 
 + (GlobalVars *)sharedInstance;
@@ -44,6 +45,8 @@
 @property(nonatomic, readwrite) ARPose saved;
 @property(nonatomic, readwrite) Boolean savedPose;
 @property(nonatomic, readwrite) GLMmodel *model;
+@property(nonatomic, readwrite) Boolean setFilterBanner;
+
 
 
 

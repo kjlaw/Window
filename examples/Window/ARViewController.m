@@ -266,9 +266,12 @@ static void startCallback(void *userData)
 }
 
 - (void) start2
+
 {
-    NSLog(@"start2 called");
-    
+    GlobalVars *globals = [GlobalVars sharedInstance];
+
+    globals.setFilterBanner = false;
+    Boolean switched = false;
     [self.navigationController setNavigationBarHidden:NO];
 
     // Find the size of the window.
@@ -448,6 +451,7 @@ static void startCallback(void *userData)
         modelPath = @"Data2/models2.dat";
     } else if(showMen){
         modelPath = @"Data2/models.dat";
+        switched = true;
     }
     if(showMen && showWomen){
         modelPath = @"Data2/bothGenders.dat";
@@ -540,7 +544,10 @@ static void startCallback(void *userData)
     if(showWomen && formal){
         modelPath = @"Data2/fancywomenmodels.dat";
     }
-    
+    if(formal && !showWomen && !showMen){
+        modelPath = @"Data2/fancywomenmodels.dat";
+    }
+    if([modelPath  isEqual: @"modelPath"] && !switched) globals.setFilterBanner = true;
     // Set up the virtual environment.
     self.virtualEnvironment = [[[VirtualEnvironment alloc] initWithARViewController:self] autorelease];
    [self.virtualEnvironment addObjectsFromObjectListFile:modelPath connectToARMarkers:markers];

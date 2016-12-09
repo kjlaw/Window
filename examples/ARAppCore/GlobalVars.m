@@ -24,6 +24,7 @@
 @synthesize saved = _saved;
 @synthesize savedPose = _savedPose;
 @synthesize model = _model;
+@synthesize setFilterBanner = _setFilterBanner;
 
 
 
@@ -51,6 +52,7 @@
         _saved = ARPoseUnity;
         _savedPose = false;
         _model = nil;
+        _setFilterBanner = false;
     }
     return self;
 }
