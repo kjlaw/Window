@@ -42,16 +42,17 @@
         showTop = false;
         showBottom = false;
         cycle = 0;
-        rightShifts = 0;
-        leftShifts = 0;
+        _rightShifts = 0;
+        _leftShifts = 0;
         newMove = false;
         inDetail = false;
         _centers = [[NSMutableDictionary alloc] init];
 
         //centers = [NSMutableDictionary dictionary];
         [_centers setObject:@"centered" forKey:@"cool-jeans.obj"];
-        [_centers setObject:@"centered" forKey:@"plain-t-white.obj"];
-        [_centers setObject:@"out" forKey:@"hoodie-obj.obj"];
+        [_centers setObject:@"centered" forKey:@"blue-shirt.obj"];
+        [_centers setObject:@"out" forKey:@"red-hoodie.obj"];
+        [_centers setObject:@"out" forKey:@"thsirt_v002.obj"];
     }
     return self;
 }

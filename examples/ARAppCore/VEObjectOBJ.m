@@ -143,7 +143,10 @@
     }
     
     if(_ve.arViewController.glView->showDetail == YES){
-        if((([self.name isEqualToString:@"cool-jeans.obj"] && globals.showBottom) ||( ([self.name isEqualToString:@"hoodie-obj.obj"] || [self.name isEqualToString:@"plain-t-white.obj"]) && globals.showTop)) && [[globals.centers objectForKey:self.name]  isEqual: @"centered"]){
+        if( (([self.name isEqualToString:@"cool-jeans.obj"] && globals.showBottom) ||
+            (([self.name isEqualToString:@"red-hoodie.obj"] || [self.name isEqualToString:@"blue-shirt.obj"] ||
+              [self.name isEqualToString:@"thsirt_v002.obj"]) && globals.showTop)) ||
+            [[globals.centers objectForKey:self.name]  isEqual: @"centered"]){
             ARdouble pose[16];
             pose[0] = 0.018;
             pose[1] = 1.0;
@@ -158,12 +161,12 @@
             pose[10] = 0.12422;
             pose[11] = 0;
             if([self.name isEqualToString:@"cool-jeans.obj"]){
-                pose[12] = 40.0;
+                pose[12] = 75.0;
             } else {
-                pose[12] = 157.0;
+                pose[12] = 177.0;
             }
 
-            if([[globals.centers objectForKey:@"hoodie-obj.obj"]  isEqual: @"centered"] && [self.name isEqual:@"hoodie-obj.obj"]){
+            if([[globals.centers objectForKey:@"red-hoodie.obj"]  isEqual: @"centered"] && [self.name isEqual:@"red-hoodie.obj"]){
                 pose[13] = -150.0;
             } else {
                 pose[13] = 0.0;
@@ -212,9 +215,6 @@
     }
 
     if (_visible) {
-        
-        
-        
         if(globals.clicked){
              if(!_ve->moveLeft && !_ve->moveRight){
                 NSLog(@"clicked!");
@@ -245,8 +245,13 @@
         }
         if(_ve.arViewController.glView->showDetail == NO ){
             int minNumber = (globals.numObjects)/2;
-            if (globals.numObjects == 1) minNumber = 0;
-            if(_ve->moveLeft == true && _ve->numMoved <= [_ve->objects count] && globals.leftShifts < minNumber){
+            if (globals.numObjects == 1) {
+                minNumber = 0;
+            } else if(globals.numObjects%2 == 1){
+                minNumber+=1;
+            }
+            
+            if(_ve->moveLeft == true && _ve->numMoved <= [_ve->objects count] && globals.leftShifts < minNumber-1){
                 if(_ve->numMoved == [_ve->objects count]){
                     _ve->moveLeft = false;
                     _ve->numMoved = 0;
@@ -254,7 +259,7 @@
                     if(globals.rightShifts != 0) globals.rightShifts -= 1;
                 } else {
                     _ve->numMoved ++;
-                    _localPose.T[12] -= 50+ _poseInEyeSpace.T[12];
+                    _localPose.T[12] -= _poseInEyeSpace.T[12];
                     if([[globals.centers objectForKey:self.name]  isEqual: @"centered"] && globals.newMove){
                         [globals.centers setValue:@"not" forKey:self.name];
                         NSLog(@"Removed center flag");
@@ -265,6 +270,8 @@
                         globals.newMove = false;
                     }
                 }
+            } else {
+                _ve->moveLeft = false;
             }
             if(_ve->moveRight == true && _ve->numMoved <= [_ve->objects count] && globals.rightShifts < minNumber){
                 if(_ve->numMoved == [_ve->objects count]){
@@ -274,7 +281,7 @@
                     if(globals.leftShifts != 0) globals.leftShifts -= 1;
                 } else {
                     _ve->numMoved ++;
-                    _localPose.T[12] += 50 + _poseInEyeSpace.T[12];
+                    _localPose.T[12] += _poseInEyeSpace.T[12];
                     if([[globals.centers objectForKey:self.name]  isEqual: @"centered"] && globals.newMove){
                         [globals.centers setValue:@"not" forKey:self.name];
                         NSLog(@"Removed center flag");
@@ -285,6 +292,8 @@
                         globals.newMove = false;
                     }
                 }
+            } else {
+                _ve->moveRight = false;
             }
             glPushMatrix();
             glMultMatrixf(_poseInEyeSpace.T);

@@ -33,10 +33,6 @@
 @property(nonatomic, readwrite) Boolean newMove;
 @property(nonatomic, readwrite) Boolean inDetail;
 @property(strong, nonatomic, readwrite) NSMutableDictionary *centers;
-
-
-
-
 @property(nonatomic, readwrite) ARVec3 *rP1;
 @property(nonatomic, readwrite) ARVec3 *rP2;
 @property(nonatomic, readwrite) int cycle;
