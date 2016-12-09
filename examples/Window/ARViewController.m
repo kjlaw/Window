@@ -457,7 +457,6 @@ static void startCallback(void *userData)
     }
     
     NSMutableArray *colorArr = [userDefaults objectForKey:@"colorIndexPathRows"];
-    Boolean black = false;
     Boolean blue = false;
     Boolean pink = false;
     Boolean gray = false;
@@ -465,18 +464,15 @@ static void startCallback(void *userData)
     for(int i= 0; i < [colorArr count]; i ++){
         switch ((int)[colorArr[i] integerValue]) {
             case 0:
-                black = true;
-                break;
-            case 1:
                 blue = true;
                 break;
-            case 2:
+            case 1:
                 pink = true;
                 break;
-            case 3:
+            case 2:
                 gray = true;
                 break;
-            case 4:
+            case 3:
                 NSLog(@"Show red");
                 red = true;
                 break;
@@ -484,35 +480,35 @@ static void startCallback(void *userData)
                 break;
         }
     }
-    if(showMen && showWomen && red && !black && !pink && !gray && !blue){
+    if(showMen && showWomen && red && !pink && !gray && !blue){
         modelPath = @"Data2/redmodels.dat";
-    } else if(showMen && red && !black && !pink && !gray && !blue){
+    } else if(showMen && red && !pink && !gray && !blue){
         modelPath = @"Data2/redmalemodels.dat";
-    } else if(showWomen && red && !black && !pink && !gray && !blue){
+    } else if(showWomen && red && !pink && !gray && !blue){
         modelPath = @"Data2/redfemalemodels.dat";
     }
     
-    if(showMen && showWomen && !red && !black && !pink && !gray && blue){
+    if(showMen && showWomen && !red && !pink && !gray && blue){
         modelPath = @"Data2/bluemodels.dat";
-    } else if(showMen && !red && !black && !pink && !gray && blue){
+    } else if(showMen && !red && !pink && !gray && blue){
         modelPath = @"Data2/bluemalemodels.dat";
-    } else if(showWomen && !red && !black && !pink && !gray && blue){
+    } else if(showWomen && !red && !pink && !gray && blue){
         modelPath = @"Data2/bluefemalemodels.dat";
     }
     
-    if(showMen && showWomen && !red && !black && !pink && gray && !blue){
+    if(showMen && showWomen && !red && !pink && gray && !blue){
         modelPath = @"Data2/graymodels.dat";
-    } else if(showMen && !red && !black && !pink && gray && !blue){
+    } else if(showMen && !red && !pink && gray && !blue){
         modelPath = @"Data2/graymalemodels.dat";
-    } else if(showWomen && !red && !black && !pink && gray && !blue){
+    } else if(showWomen && !red && !pink && gray && !blue){
         modelPath = @"Data2/grayfemalemodels.dat";
     }
     
-    if(showMen && showWomen && red && !black && !pink && !gray && blue){
+    if(showMen && showWomen && red && !pink && !gray && blue){
         modelPath = @"Data2/redbluemodels.dat";
-    } else if(showMen && red && !black && !pink && !gray && blue){
+    } else if(showMen && red && !pink && !gray && blue){
         modelPath = @"Data2/redbluemalemodels.dat";
-    } else if(showWomen && red && !black && !pink && !gray && blue){
+    } else if(showWomen && red && !pink && !gray && blue){
         modelPath = @"Data2/redbluefemalemodels.dat";
     }
     
@@ -723,7 +719,29 @@ static void startCallback(void *userData)
     [browsevc.availableSizes setHidden:NO];
     
     NSLog(@"name: %@", name);
-    NSArray *items = @[@"blue-shirt.obj", @"cool-jeans.obj", @"red-hoodie.obj", @"pink-shirt.obj", @"skirt.obj"];
+    NSArray *items = @[
+                       @"blue-shirt.obj",
+                       @"cool-jeans.obj",
+                       @"red-hoodie.obj",
+                       @"pink-shirt.obj",
+                       @"skirt.obj",
+                       @"black-jeans",
+                       @"girlt.obj",
+                       @"red-women-shirt.obj",
+                       @"blue-women-shirt.obj",
+                       @"gray-women-shirt.obj",
+                       @"red-sweater.obj",
+                       @"blue-sweater.obj",
+                       @"gray-sweater.obj",
+                       @"red-shirt.obj",
+                       @"blue-hoodie.obj",
+                       @"gray-hoodie.obj",
+                       @"gray-suit-pants.obj",
+                       @"gray-suit.obj",
+                       @"brown-suit-pants.obj",
+                       @"brown-suit.obj",
+                       @"stripe-suit.obj",
+                       ];
     int item = (int)[items indexOfObject:name];
     switch (item) {
         case 0:
@@ -740,6 +758,54 @@ static void startCallback(void *userData)
             break;
         case 4:
             [self showDataForObj:@"Maroon Pinstripe Skirt"];
+            break;
+        case 5:
+            [self showDataForObj:@"Faded Black Jeans"];
+            break;
+        case 6:
+            [self showDataForObj:@"Blue & Black Patterned T-shirt"];
+            break;
+        case 7:
+            [self showDataForObj:@"Red Short Sleeve Shirt"];
+            break;
+        case 8:
+            [self showDataForObj:@"Blue Short Sleeve Shirt"];
+            break;
+        case 9:
+            [self showDataForObj:@"Gray Short Sleeve Shirt"];
+            break;
+        case 10:
+            [self showDataForObj:@"Red Turtleneck Sweater"];
+            break;
+        case 11:
+            [self showDataForObj:@"Blue Turtleneck Sweater"];
+            break;
+        case 12:
+            [self showDataForObj:@"Gray Turtleneck Sweater"];
+            break;
+        case 13:
+            [self showDataForObj:@"Red T-shirt"];
+            break;
+        case 14:
+            [self showDataForObj:@"Blue Hoodie"];
+            break;
+        case 15:
+            [self showDataForObj:@"Gray Hoodie"];
+            break;
+        case 16:
+            [self showDataForObj:@"Gray Suit Pants"];
+            break;
+        case 17:
+            [self showDataForObj:@"Gray Suit Jacket"];
+            break;
+        case 18:
+            [self showDataForObj:@"Khaki Suit Pants"];
+            break;
+        case 19:
+            [self showDataForObj:@"Khaki Suit Jacket"];
+            break;
+        case 20:
+            [self showDataForObj:@"Gray Striped Suit Jacket"];
             break;
         default:
             [self showDataForObj:@""];
