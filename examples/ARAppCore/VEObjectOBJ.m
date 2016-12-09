@@ -136,6 +136,14 @@
     if(_ve->moveLeft || _ve->moveRight){
         globals.clicked = false;
     }
+    if([self.name  isEqual: @"nothing.obj"] && globals.clicked){
+        _ve.arViewController.glView->showDetail = NO;
+        globals.inDetail = false;
+        globals.clicked = false;
+        globals.showTop = false;
+        globals.showBottom = false;
+        globals.savedPose = false;
+    }
     globals.curIndex = (int) [_ve->objects indexOfObject:self];
     //This handles when the user clicks to leave the detail view
     //Need to set all detail view booleans to false.
