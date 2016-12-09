@@ -1,10 +1,9 @@
 4
 
-
-models/red-hoodie.obj
-0.0 160.0 0.0
+models/gray-sweater.obj
+0.0 150.0 0.0
 90.0 1.0 0.0 0.0
-7.016 7.016 7.016
+1.516 1.516 1.516
 MARKER 2
 
 models/cool-jeans.obj
@@ -13,10 +12,10 @@ models/cool-jeans.obj
 7.016 7.016 7.016
 MARKER 2
 
-models/red-shirt.obj
-150.0 160.0 0.0
+models/gray-women-shirt.obj
+150.0 175.0 0.0
 90.0 1.0 0.0 0.0
-7.016 7.016 7.016
+4.816 4.816 4.816
 MARKER 2
 
 models/cool-jeans.obj

@@ -1,0 +1,47 @@
+newmtl Suite_obj2:button4
+illum 4
+Kd 0.83 0.83 0.83
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.50
+Ks 0.17 0.17 0.17
+Ns 16.00
+newmtl Suite_obj2:kosulja
+illum 4
+Kd 0.82 0.82 0.82
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.50
+Ks 0.11 0.11 0.11
+Ns 13.00
+newmtl Suite_obj2:suite
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.50
+Ks 0.03 0.03 0.03
+Ns 12.00
+newmtl Suite_obj2:wire_006135006
+illum 4
+Kd 0.02 0.53 0.02
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+Ks 0.35 0.35 0.35
+Ns 32.00
+newmtl Suite_obj2:wire_028028177
+illum 4
+Kd 0.11 0.11 0.69
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+Ks 0.35 0.35 0.35
+Ns 32.00
+newmtl lambert7SG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd suite_color_lines.jpg
+Ni 1.00

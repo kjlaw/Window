@@ -231,6 +231,8 @@ static char *get_buff(char *buf, int n, FILE *fp, int skipblanks)
     globals.savedPose = false;
     globals.index = 0;
     globals.curIndex = 0;
+    globals.newMove = false;
+    globals.cycle = 0;
 
 #ifdef DEBUG
     NSLog(@"Reading %d objects.\n", numObjects);
