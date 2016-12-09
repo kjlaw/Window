@@ -426,24 +426,18 @@ static void startCallback(void *userData)
     //arSetMatrixCodeType(gARHandle, AR_MATRIX_CODE_3x3); // Default = AR_MATRIX_CODE_3x3
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     NSMutableArray *arr = [userDefaults objectForKey:@"genderIndexPathRows"];
-    NSLog(@"Genders: %@", arr);
     Boolean showWomen = false;
     Boolean showMen = false;
     Boolean showNeutral = false;
     for(int i= 0; i < [arr count]; i ++){
         switch ((int)[arr[i] integerValue]) {
             case 0:
-                NSLog(@"Show men");
                 showMen = true;
                 break;
             case 1:
-                NSLog(@"Show women");
-
                 showWomen = true;
                 break;
             case 2:
-                NSLog(@"Show neutral");
-
                 showNeutral = true;
                 break;
             default:
@@ -460,7 +454,6 @@ static void startCallback(void *userData)
     }
     
     NSMutableArray *colorArr = [userDefaults objectForKey:@"colorIndexPathRows"];
-    NSLog(@"Colors: %@", colorArr);
     Boolean black = false;
     Boolean blue = false;
     Boolean pink = false;
@@ -518,6 +511,34 @@ static void startCallback(void *userData)
         modelPath = @"Data2/redbluemalemodels.dat";
     } else if(showWomen && red && !black && !pink && !gray && blue){
         modelPath = @"Data2/redbluefemalemodels.dat";
+    }
+    
+    NSMutableArray *styleArr = [userDefaults objectForKey:@"styleIndexPathRows"];
+    Boolean casual = false;
+    Boolean formal = false;
+    Boolean activewear = false;
+    Boolean seasonal = false;
+    for(int i= 0; i < [styleArr count]; i ++){
+        switch ((int)[styleArr[i] integerValue]) {
+            case 0:
+                casual = true;
+                break;
+            case 1:
+                formal = true;
+                break;
+            case 2:
+                activewear = true;
+                break;
+            case 3:
+                seasonal = true;
+                break;
+            default:
+                break;
+        }
+    }
+    
+    if(showWomen && formal){
+        modelPath = @"Data2/fancywomenmodels.dat";
     }
     
     // Set up the virtual environment.
