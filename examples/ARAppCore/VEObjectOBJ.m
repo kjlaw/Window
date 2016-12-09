@@ -186,6 +186,10 @@
                     pose[12] += 20;
                 }
             }
+            
+            if([self.name containsString:@"suit"]){
+                pose[12] -= 45;
+            }
 
             switch (globals.index) {
                 case 0:
