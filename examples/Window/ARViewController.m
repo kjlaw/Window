@@ -530,6 +530,14 @@ static void startCallback(void *userData)
         modelPath = @"Data2/redbluefemalemodels.dat";
     }
     
+    if(showMen && showWomen && !red && !black && pink && !gray && !blue){
+        globals.setFilterBanner = false;
+        modelPath = @"Data2/pinkfemalemodels.dat";
+    } else if(showWomen && !red && !black && pink && !gray && !blue){
+        globals.setFilterBanner = false;
+        modelPath = @"Data2/pinkfemalemodels.dat";
+    }
+    
     NSMutableArray *styleArr = [userDefaults objectForKey:@"styleIndexPathRows"];
     Boolean casual = false;
     Boolean formal = false;
@@ -562,6 +570,8 @@ static void startCallback(void *userData)
         globals.setFilterBanner = false;
         modelPath = @"Data2/fancywomenmodels.dat";
     }
+    
+    
     if(globals.setFilterBanner){
         modelPath = @"Data2/nothing.dat";
     }

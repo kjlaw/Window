@@ -1,7 +1,7 @@
 8
 
 models/red-sweater.obj
-0.0 150.0 0.0
+0.0 160.0 -10.0
 90.0 1.0 0.0 0.0
 1.516 1.516 1.516
 MARKER 2
@@ -37,7 +37,7 @@ models/cool-jeans.obj
 MARKER 2
 
 models/blue-sweater.obj
-450.0 150.0 0.0
+450.0 160.0 -10.0
 90.0 1.0 0.0 0.0
 1.516 1.516 1.516
 MARKER 2
