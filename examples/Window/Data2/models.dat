@@ -1,6 +1,6 @@
 4
 
-models/plain-t-white.obj
+models/blue-shirt.obj
 0.0 160.0 0.0
 90.0 1.0 0.0 0.0
 6.716 6.716 6.716
@@ -12,13 +12,7 @@ models/cool-jeans.obj
 7.016 7.016 7.016
 MARKER 2
 
-#models/Tree_z_Icon_3.obj
-#0.0 0.0 0.0
-#90.0 1.0 0.0 0.0
-#1.016 1.016 1.016
-#MARKER 2
-
-models/hoodie-obj.obj
+models/red-hoodie.obj
 150.0 160.0 0.0
 90.0 1.0 0.0 0.0
 7.016 7.016 7.016
@@ -29,91 +23,3 @@ models/cool-jeans.obj
 90.0 1.0 0.0 0.0
 7.016 7.016 7.016
 MARKER 2
-
-#models/Table_Picnic_Standard.obj
-#200.0 0.0 0.0
-#90.0 1.0 0.0 0.0
-#1.016 1.016 1.016
-#MARKER 2
-
-#models/Wall_Brick_Curved.obj
-#300.0 0.0 0.0
-#90.0 1.0 0.0 0.0
-#1.016 1.016 1.016
-#MARKER 2
-
-# Lots of spare models
-models/Boulder_Small_Gray.obj
-0.0 0.0 0.0
-90.0 1.0 0.0 0.0
-1.016 1.016 1.016
-
-models/Barrel_Construction.obj
-0.0 0.0 0.0
-90.0 1.0 0.0 0.0
-1.016 1.016 1.016
-
-models/Boulder_Small_Brown.obj
-0.0 0.0 0.0
-90.0 1.0 0.0 0.0
-1.016 1.016 1.016
-
-models/Boulder_Medium_Gray.obj
-0.0 0.0 0.0
-90.0 1.0 0.0 0.0
-1.016 1.016 1.016
-
-models/Boulder_Medium_Brown.obj
-0.0 0.0 0.0
-90.0 1.0 0.0 0.0
-1.016 1.016 1.016
-
-models/Boulder_Large_Gray.obj
-0.0 0.0 0.0
-90.0 1.0 0.0 0.0
-1.016 1.016 1.016
-
-models/Tree_z_Icon_.obj
-0.0 0.0 0.0
-90.0 1.0 0.0 0.0
-1.016 1.016 1.016
-
-models/Tree_z_Icon_2.obj
-0.0 0.0 0.0
-90.0 1.0 0.0 0.0
-1.016 1.016 1.016
-
-models/Tree_z_Icon_4.obj
-0.0 0.0 0.0
-90.0 1.0 0.0 0.0
-1.016 1.016 1.016
-
-models/Tree_z_Icon_5.obj
-0.0 0.0 0.0
-90.0 1.0 0.0 0.0
-1.016 1.016 1.016
-
-models/Tree_z_Icon_6.obj
-0.0 0.0 0.0
-90.0 1.0 0.0 0.0
-1.016 1.016 1.016
-
-models/Tree_z_Icon_7.obj
-0.0 0.0 0.0
-90.0 1.0 0.0 0.0
-1.016 1.016 1.016
-
-models/Bench_Wood_Park.obj
-0.0 0.0 0.0
-90.0 1.0 0.0 0.0
-1.016 1.016 1.016
-
-models/Bench_Tree_Flat_Base.obj
-0.0 0.0 0.0
-90.0 1.0 0.0 0.0
-1.016 1.016 1.016
-
-models/Bridge_Wood_Creek.obj
-0.0 0.0 0.0
-90.0 1.0 0.0 0.0
-1.016 1.016 1.016

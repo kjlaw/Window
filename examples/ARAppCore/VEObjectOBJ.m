@@ -131,20 +131,32 @@
     const GLfloat lightWhite75[]        =    {0.75, 0.75, 0.75, 1.0};    // RGBA all on three quarters.
     const GLfloat lightPosition0[]     =    {1.0f, 1.0f, 2.0f, 0.0f}; // A directional light (i.e. non-positional).
     GlobalVars *globals = [GlobalVars sharedInstance];
+    //If the user swiped make sure we don't try to register a click
     if(_ve->moveLeft || _ve->moveRight){
         globals.clicked = false;
     }
+    if(globals.curIndex == 8) globals.curIndex = 0;
+    //This handles when the user clicks to leave the detail view
+    //Need to set all detail view booleans to false.
     if(globals.clicked && !_ve->moveLeft && !_ve->moveRight && _ve.arViewController.glView->showDetail == YES){
         _ve.arViewController.glView->showDetail = NO;
         globals.inDetail = false;
         globals.clicked = false;
         globals.showTop = false;
         globals.showBottom = false;
+        globals.savedPose = false;
     }
     
+    //If we are in the detail view, load the specified object
     if(_ve.arViewController.glView->showDetail == YES){
         [_ve.arViewController showDetailViewUI];
-        if((([self.name isEqualToString:@"cool-jeans.obj"] && globals.showBottom) ||( ([self.name isEqualToString:@"hoodie-obj.obj"] || [self.name isEqualToString:@"plain-t-white.obj"]) && globals.showTop)) && [[globals.centers objectForKey:self.name]  isEqual: @"centered"]){
+        
+        if(globals.savedPose == false){
+            globals.savedPose = true;
+            globals.saved = _localPose;
+        }
+
+        if( ((globals.curIndex%2 == 1 && globals.showBottom) || (globals.curIndex%2 == 0 && globals.showTop)) && globals.index == globals.curIndex/2){
             ARdouble pose[16];
             pose[0] = 0.018;
             pose[1] = 1.0;
@@ -158,18 +170,30 @@
             pose[9] = 0.021673;
             pose[10] = 0.12422;
             pose[11] = 0;
-            if([self.name isEqualToString:@"cool-jeans.obj"]){
-                pose[12] = 40.0;
+            if(globals.showTop){
+                pose[12] = 150;
             } else {
-                pose[12] = 157.0;
+                pose[12] = 70;
             }
-
-            if([[globals.centers objectForKey:@"hoodie-obj.obj"]  isEqual: @"centered"] && [self.name isEqual:@"hoodie-obj.obj"]){
-                pose[13] = -150.0;
-            } else {
-                pose[13] = 0.0;
+            switch (globals.index) {
+                case 0:
+                    pose[13] = 0.0;
+                    break;
+                case 1:
+                    pose[13] = -150.0;
+                    break;
+                case 2:
+                    pose[13] = -300.0;
+                    break;
+                case 3:
+                    pose[13] = -450.0;
+                    break;
+                    
+                default:
+                    pose[13] = 0.0;
+                    break;
             }
-            pose[14] = -339.0;
+            pose[14] = -330.0;
             pose[15] = 1;
             glPushMatrix();
             glMultMatrixf(pose);
@@ -211,26 +235,19 @@
             glPopMatrix();
         }
     }
-
+    //If the marker is visible (and we aren't in the detail view) load the objects
     if (_visible) {
-        
-        
-        
         if(globals.clicked){
              if(!_ve->moveLeft && !_ve->moveRight){
-                NSLog(@"clicked!");
                 globals.cycle += 1;
                 //Check if obj is centered
                 if(self->centered){
-                    NSLog(@"centered");
                     _ve.arViewController.glView->showDetail = YES;
                     globals.inDetail = true;
                     globals.clicked = false;
                     if(globals.rP1->v[1] < 250){
-                        NSLog(@"top");
                         globals.showTop = true;
                     } else {
-                        NSLog(@"bottom");
                         globals.showBottom = true;
                     }
                 }
@@ -246,45 +263,29 @@
         }
         if(_ve.arViewController.glView->showDetail == NO ){
             [_ve.arViewController hideDetailViewUI];
-            if(_ve->moveLeft == true && _ve->numMoved <= [_ve->objects count] && globals.leftShifts < 1){
+            if(_ve->moveLeft == true && _ve->numMoved <= [_ve->objects count] && globals.index < globals.numObjects/2){
                 if(_ve->numMoved == [_ve->objects count]){
                     _ve->moveLeft = false;
                     _ve->numMoved = 0;
-                    globals.leftShifts += 1;
-                    if(globals.rightShifts != 0) globals.rightShifts -= 1;
+                    globals.index++;
                 } else {
                     _ve->numMoved ++;
-                    _localPose.T[12] -= 50+ _poseInEyeSpace.T[12];
-                    if([[globals.centers objectForKey:self.name]  isEqual: @"centered"] && globals.newMove){
-                        [globals.centers setValue:@"not" forKey:self.name];
-                        NSLog(@"Removed center flag");
-                    } else if (globals.newMove){
-                        [globals.centers setValue:@"centered" forKey:self.name];
-                        NSLog(@"Set center flag");
-                    } else {
-                        globals.newMove = false;
-                    }
+                    _localPose.T[12] -= _poseInEyeSpace.T[12];
                 }
+            } else {
+                _ve->moveLeft = false;
             }
-            if(_ve->moveRight == true && _ve->numMoved <= [_ve->objects count] && globals.rightShifts < 1){
+            if(_ve->moveRight == true && _ve->numMoved <= [_ve->objects count] &&  globals.index > 0){
                 if(_ve->numMoved == [_ve->objects count]){
                     _ve->moveRight = false;
                     _ve->numMoved = 0;
-                    globals.rightShifts += 1;
-                    if(globals.leftShifts != 0) globals.leftShifts -= 1;
+                    globals.index--;
                 } else {
                     _ve->numMoved ++;
-                    _localPose.T[12] += 50 + _poseInEyeSpace.T[12];
-                    if([[globals.centers objectForKey:self.name]  isEqual: @"centered"] && globals.newMove){
-                        [globals.centers setValue:@"not" forKey:self.name];
-                        NSLog(@"Removed center flag");
-                    } else if (globals.newMove){
-                        [globals.centers setValue:@"centered" forKey:self.name];
-                        NSLog(@"Set center flag");
-                    } else {
-                        globals.newMove = false;
-                    }
+                    _localPose.T[12] += _poseInEyeSpace.T[12];
                 }
+            } else {
+                _ve->moveRight = false;
             }
             glPushMatrix();
             glMultMatrixf(_poseInEyeSpace.T);
@@ -312,6 +313,7 @@
         GlobalVars *globals = [GlobalVars sharedInstance];
         globals.clicked = false;
     }
+    globals.curIndex ++;
 }
 
 -(void) dealloc

@@ -1,25 +1,25 @@
 4
 
-models/Tree_z_Icon_3.obj
--100.0 0.0 0.0
+models/girlt.obj
+0.0 180.0 0.0
 90.0 1.0 0.0 0.0
-1.016 1.016 1.016
-MARKER 1
+3.616 3.616 3.616
+MARKER 2
 
-models/Kiosk_Food_Cart.obj
+models/cool-jeans.obj
 0.0 0.0 0.0
 90.0 1.0 0.0 0.0
-1.016 1.016 1.016
-MARKER 1
+7.016 7.016 7.016
+MARKER 2
 
-models/Table_Picnic_Standard.obj
-100.0 0.0 0.0
+models/pink-shirt.obj
+150.0 175.0 0.0
 90.0 1.0 0.0 0.0
-1.016 1.016 1.016
-MARKER 1
+4.816 4.816 4.816
+MARKER 2
 
-models/Wall_Brick_Curved.obj
-200.0 0.0 0.0
+models/skirt.obj
+150.0 62.0 0.0
 90.0 1.0 0.0 0.0
-1.016 1.016 1.016
-MARKER 1
+4.126 4.126 4.126
+MARKER 2

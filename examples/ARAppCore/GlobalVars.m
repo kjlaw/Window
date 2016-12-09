@@ -16,11 +16,14 @@
 @synthesize cycle = _cycle;
 @synthesize showBottom = _showBottom;
 @synthesize showTop = _showTop;
-@synthesize rightShifts = _rightShifts;
-@synthesize leftShifts = _leftShifts;
 @synthesize newMove = _newMove;
 @synthesize inDetail = _inDetail;
-@synthesize centers = _centers;
+@synthesize numObjects = _numObjects;
+@synthesize index = _index;
+@synthesize curIndex = _curIndex;
+@synthesize saved = _saved;
+@synthesize savedPose = _savedPose;
+
 
 
 + (GlobalVars *)sharedInstance {
@@ -36,19 +39,16 @@
     self = [super init];
     if (self) {
         _clicked = false;
+        numObjects = 0;
         showTop = false;
         showBottom = false;
         cycle = 0;
-        rightShifts = 0;
-        leftShifts = 0;
         newMove = false;
         inDetail = false;
-        _centers = [[NSMutableDictionary alloc] init];
-
-        //centers = [NSMutableDictionary dictionary];
-        [_centers setObject:@"centered" forKey:@"cool-jeans.obj"];
-        [_centers setObject:@"centered" forKey:@"plain-t-white.obj"];
-        [_centers setObject:@"out" forKey:@"hoodie-obj.obj"];
+        _index = 0;
+        _curIndex = 0;
+        _saved = ARPoseUnity;
+        _savedPose = false;
     }
     return self;
 }
