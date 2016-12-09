@@ -15,13 +15,16 @@
 @implementation FilterOptionsTableViewController
 
 - (IBAction)applyFilter:(UIBarButtonItem *)sender {
-    // TODO apply filter (currently filters are saved to NSUserData when user hits save within submenu)
+    // copy temp saved filters to official saved filters
+    [self saveTempFilters];
+    [self removeTempSavedFilters];
     
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (IBAction)cancel:(UIBarButtonItem *)sender {
-    // TODO don't apply filters (currently filters are saved to NSUserData when user hits save within submenu)
+    // clear out temp NSUserDefaults
+    [self removeTempSavedFilters];
     
     [self dismissViewControllerAnimated:YES completion:nil];
 }
@@ -30,6 +33,7 @@
     [super viewDidLoad];
     
     [self displaySavedFilters];
+    [self copySavedFiltersToTemp];
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -43,8 +47,122 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)saveTempFilters {
+    // copy temp filters back to real filters
+    
+    NSArray *filterKeys = @[@"genderIndexPathRows", @"styleIndexPathRows", @"sizeIndexPathRows", @"colorIndexPathRows", @"priceIndexPathRows"];
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    
+    for (NSString* key in filterKeys){
+        NSString* newKey = [NSString stringWithFormat:@"%@New", key];
+        NSMutableArray *data = [userDefaults valueForKey:newKey];
+        [self storeData:data forKey:key];
+    }
+}
+
+- (void)removeTempSavedFilters {
+    NSArray *filterKeys = @[@"genderIndexPathRowsNew", @"styleIndexPathRowsNew", @"sizeIndexPathRowsNew", @"colorIndexPathRowsNew", @"priceIndexPathRowsNew"];
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    
+    for (NSString* key in filterKeys){
+        [userDefaults removeObjectForKey:key];
+    }
+    [userDefaults synchronize];
+}
+
+- (void)copySavedFiltersToTemp {
+    // user defaults appended with "New" will be saved to the non-new key when save is pressed, or cleared when cancel is pressed
+    
+    NSArray *filterKeys = @[@"genderIndexPathRows", @"styleIndexPathRows", @"sizeIndexPathRows", @"colorIndexPathRows", @"priceIndexPathRows"];
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    
+    for (NSString* key in filterKeys){
+        NSString* newKey = [NSString stringWithFormat:@"%@New", key];
+        NSMutableArray *data = [userDefaults valueForKey:key];
+        [self storeData:data forKey:newKey];
+    }
+}
+
+- (void)storeData:(NSMutableArray *)data forKey:(NSString *)key {
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    [userDefaults setObject:data forKey:key];
+    [userDefaults synchronize];
+}
+
 - (void)displaySavedFilters {
-    // TODO populate details view from saved filters
+    // populate details label from saved filters
+    
+    NSArray *gender = @[@"Men", @"Women", @"Netural"];
+    NSArray *style = @[@"Casual", @"Formal", @"Activewear", @"Seasonal"];
+    NSArray *size = @[@"X-Small", @"Small", @"Medium", @"Large", @"X-Large"];
+    NSArray *color = @[@"Black", @"Blue", @"Pink", @"Gray", @"Red"];
+    NSArray *price = @[@"Under $50", @"$50 to $100", @"$100 to $250", @"$250 to $500", @"$500 & Above"];
+    
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    
+    NSArray *genderIndexPathRows = [userDefaults arrayForKey:@"genderIndexPathRows"];
+    NSMutableString *genderString = [NSMutableString stringWithString:@""];
+    
+    for (int i = 0; i < genderIndexPathRows.count; i++) {
+        NSInteger row = [genderIndexPathRows[i] integerValue];
+        if (i > 0) {
+            [genderString appendString:@", "];
+        }
+        [genderString appendString:gender[row]];
+    }
+    [self updateGenderFilterDescriptionWithString:genderString];
+    
+    
+    NSArray *styleIndexPathRows = [userDefaults arrayForKey:@"styleIndexPathRows"];
+    NSMutableString *styleString = [NSMutableString stringWithString:@""];
+    
+    for (int i = 0; i < styleIndexPathRows.count; i++) {
+        NSInteger row = [styleIndexPathRows[i] integerValue];
+        if (i > 0) {
+            [styleString appendString:@", "];
+        }
+        [styleString appendString:style[row]];
+    }
+    [self updateStyleFilterDescriptionWithString:styleString];
+    
+    
+    NSArray *sizeIndexPathRows = [userDefaults arrayForKey:@"sizeIndexPathRows"];
+    NSMutableString *sizeString = [NSMutableString stringWithString:@""];
+    
+    for (int i = 0; i < sizeIndexPathRows.count; i++) {
+        NSInteger row = [sizeIndexPathRows[i] integerValue];
+        if (i > 0) {
+            [sizeString appendString:@", "];
+        }
+        [sizeString appendString:size[row]];
+    }
+    [self updateSizeFilterDescriptionWithString:sizeString];
+    
+    
+    NSArray *colorIndexPathRows = [userDefaults arrayForKey:@"colorIndexPathRows"];
+    NSMutableString *colorString = [NSMutableString stringWithString:@""];
+    
+    for (int i = 0; i < colorIndexPathRows.count; i++) {
+        NSInteger row = [colorIndexPathRows[i] integerValue];
+        if (i > 0) {
+            [colorString appendString:@", "];
+        }
+        [colorString appendString:color[row]];
+    }
+    [self updateColorFilterDescriptionWithString:colorString];
+    
+    
+    NSArray *priceIndexPathRows = [userDefaults arrayForKey:@"priceIndexPathRows"];
+    NSMutableString *priceString = [NSMutableString stringWithString:@""];
+    
+    for (int i = 0; i < priceIndexPathRows.count; i++) {
+        NSInteger row = [priceIndexPathRows[i] integerValue];
+        if (i > 0) {
+            [priceString appendString:@", "];
+        }
+        [priceString appendString:price[row]];
+    }
+    [self updatePriceFilterDescriptionWithString:priceString];
 }
 
 - (void)updateGenderFilterDescriptionWithString:(NSString*)string {

@@ -69,14 +69,14 @@
     NSLog(@"storeData");
     // Get the standardUserDefaults object, store your UITableView data array against a key, synchronize the defaults
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-    [userDefaults setObject:selectedIndexPathRows forKey:@"styleIndexPathRows"];
+    [userDefaults setObject:selectedIndexPathRows forKey:@"styleIndexPathRowsNew"];
     [userDefaults synchronize];
 }
 
 - (void)retrieveData {
     NSLog(@"retrieveData");
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-    NSArray *selectedIndexPathRows = [userDefaults arrayForKey:@"styleIndexPathRows"];
+    NSArray *selectedIndexPathRows = [userDefaults arrayForKey:@"styleIndexPathRowsNew"];
     
     for (int i = 0; i < selectedIndexPathRows.count; i++) {
         NSLog(@"row: %ld", (long)[selectedIndexPathRows[i] integerValue]);
