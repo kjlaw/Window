@@ -28,24 +28,39 @@
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    
+    if (self.isMovingFromParentViewController) {
+        [self save];
+    }
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
-- (IBAction)save:(UIBarButtonItem *)sender {
+- (void)save {
     NSArray *selectedIndexPaths = [self.tableView indexPathsForSelectedRows];
     NSMutableArray *selectedIndexPathRows = [NSMutableArray array];
+    NSMutableString *filterString = [NSMutableString stringWithString:@""];
     
     NSMutableArray *selectedFilters = [NSMutableArray array];
     for (int i = 0; i < selectedIndexPaths.count; i++) {
         [selectedIndexPathRows addObject:[NSNumber numberWithInteger:[selectedIndexPaths[i] row]]];
         UITableViewCell *cell = [super tableView:myTableView cellForRowAtIndexPath:selectedIndexPaths[i]];
         [selectedFilters addObject:cell.textLabel.text];
+        if (i > 0) {
+            [filterString appendString:@", "];
+        }
+        [filterString appendString:cell.textLabel.text];
         NSLog(@"selected: %@", cell.textLabel.text);
     }
     
     [self storeData:selectedIndexPathRows];
+    
+    [self.delegate updateColorFilterDescriptionWithString:filterString];
     
     [self.navigationController popViewControllerAnimated:YES];
 }

@@ -266,7 +266,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="NS1-3e-BJZ" kind="show" id="Tud-3p-nHN">
+                                            <segue destination="NS1-3e-BJZ" kind="show" identifier="GenderSegue" id="Tud-3p-nHN">
                                                 <nil key="action"/>
                                             </segue>
                                         </connections>
@@ -295,7 +295,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="8LI-MC-wtW" kind="show" id="Yh4-sS-hev">
+                                            <segue destination="8LI-MC-wtW" kind="show" identifier="StyleSegue" id="Yh4-sS-hev">
                                                 <nil key="action"/>
                                             </segue>
                                         </connections>
@@ -324,7 +324,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="xkc-K2-XfK" kind="show" id="yey-Gl-Qc4">
+                                            <segue destination="xkc-K2-XfK" kind="show" identifier="SizeSegue" id="yey-Gl-Qc4">
                                                 <nil key="action"/>
                                             </segue>
                                         </connections>
@@ -353,7 +353,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="SHv-sh-4Vy" kind="show" id="BHd-7v-Pn8">
+                                            <segue destination="SHv-sh-4Vy" kind="show" identifier="ColorSegue" id="BHd-7v-Pn8">
                                                 <nil key="action"/>
                                             </segue>
                                         </connections>
@@ -382,7 +382,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="dGd-iL-7j7" kind="show" id="12z-sS-l3S">
+                                            <segue destination="dGd-iL-7j7" kind="show" identifier="PriceSegue" id="12z-sS-l3S">
                                                 <nil key="action"/>
                                             </segue>
                                         </connections>
@@ -407,6 +407,13 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="colorCell" destination="qq9-b6-vos" id="Sey-eT-5uW"/>
+                        <outlet property="genderCell" destination="Td8-Yw-BGv" id="9PK-qU-Ozs"/>
+                        <outlet property="priceCell" destination="Sfz-Ws-1N1" id="aO2-lS-jCN"/>
+                        <outlet property="sizeCell" destination="CFy-Gv-va7" id="1Kt-iH-xVv"/>
+                        <outlet property="styleCell" destination="i36-BJ-A4c" id="wHp-Ay-fNV"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xjg-FN-ZCz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -499,13 +506,7 @@
                             <outlet property="delegate" destination="8LI-MC-wtW" id="MKw-wq-kyu"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Style" id="RgI-qS-AUV">
-                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="8Vw-kO-z7F">
-                            <connections>
-                                <action selector="save:" destination="8LI-MC-wtW" id="ZHG-he-I2a"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Style" id="RgI-qS-AUV"/>
                     <connections>
                         <outlet property="myTableView" destination="MbY-ju-TRR" id="qAh-Gt-uOj"/>
                     </connections>
@@ -639,13 +640,7 @@
                             <outlet property="delegate" destination="xkc-K2-XfK" id="YVp-pe-hX7"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Size" id="dOM-pY-Jop">
-                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="HUP-Ux-q2D">
-                            <connections>
-                                <action selector="save:" destination="xkc-K2-XfK" id="4JS-Uh-rXa"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Size" id="dOM-pY-Jop"/>
                     <connections>
                         <outlet property="myTableView" destination="8vs-s3-oFF" id="ECI-Bd-h1A"/>
                     </connections>
@@ -843,13 +838,7 @@
                             <outlet property="delegate" destination="SHv-sh-4Vy" id="3fA-ds-Blg"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Color" id="o8J-eJ-Ttr">
-                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="1NQ-uF-4Rh">
-                            <connections>
-                                <action selector="save:" destination="SHv-sh-4Vy" id="tYs-bW-qOG"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Color" id="o8J-eJ-Ttr"/>
                     <connections>
                         <outlet property="myTableView" destination="oH9-xK-A5g" id="yRZ-3h-IMf"/>
                     </connections>
@@ -962,13 +951,7 @@
                             <outlet property="delegate" destination="dGd-iL-7j7" id="e7o-Yp-8B0"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Price" id="BdY-EX-gIu">
-                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="oRu-xX-SsM">
-                            <connections>
-                                <action selector="save:" destination="dGd-iL-7j7" id="mPR-PW-Kyx"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Price" id="BdY-EX-gIu"/>
                     <connections>
                         <outlet property="myTableView" destination="qs7-SN-8oG" id="Ywl-Vf-hjk"/>
                     </connections>

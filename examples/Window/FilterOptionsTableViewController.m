@@ -29,6 +29,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    [self displaySavedFilters];
+    
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
@@ -39,6 +41,30 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)displaySavedFilters {
+    // TODO populate details view from saved filters
+}
+
+- (void)updateGenderFilterDescriptionWithString:(NSString*)string {
+    _genderCell.detailTextLabel.text = string;
+}
+
+- (void)updateStyleFilterDescriptionWithString:(NSString*)string; {
+    _styleCell.detailTextLabel.text = string;
+}
+
+- (void)updateSizeFilterDescriptionWithString:(NSString*)string; {
+    _sizeCell.detailTextLabel.text = string;
+}
+
+- (void)updateColorFilterDescriptionWithString:(NSString*)string; {
+    _colorCell.detailTextLabel.text = string;
+}
+
+- (void)updatePriceFilterDescriptionWithString:(NSString*)string; {
+    _priceCell.detailTextLabel.text = string;
 }
 
 #pragma mark - Table view data source
@@ -87,14 +113,37 @@
  }
  */
 
-/*
+
  #pragma mark - Navigation
  
  // In a storyboard-based application, you will often want to do a little preparation before navigation
  - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
- // Get the new view controller using [segue destinationViewController].
- // Pass the selected object to the new view controller.
+     if ([[segue identifier] isEqualToString:@"GenderSegue"]) {
+         FilterGenderTableViewController *gendervc = (FilterGenderTableViewController *)segue.destinationViewController;
+         gendervc.delegate = self;
+     } else if ([[segue identifier] isEqualToString:@"StyleSegue"]) {
+         FilterStyleTableViewController *stylevc = (FilterStyleTableViewController *)segue.destinationViewController;
+         stylevc.delegate = self;
+     } else if ([[segue identifier] isEqualToString:@"SizeSegue"]) {
+         FilterSizeTableViewController *sizevc = (FilterSizeTableViewController *)segue.destinationViewController;
+         sizevc.delegate = self;
+     } else if ([[segue identifier] isEqualToString:@"ColorSegue"]) {
+         FilterColorTableViewController *colorvc = (FilterColorTableViewController *)segue.destinationViewController;
+         colorvc.delegate = self;
+     } else if ([[segue identifier] isEqualToString:@"PriceSegue"]) {
+         FilterPriceTableViewController *pricevc = (FilterPriceTableViewController *)segue.destinationViewController;
+         pricevc.delegate = self;
+     }
+     
  }
- */
+ 
 
+- (void)dealloc {
+    [_genderCell release];
+    [_styleCell release];
+    [_sizeCell release];
+    [_colorCell release];
+    [_priceCell release];
+    [super dealloc];
+}
 @end
