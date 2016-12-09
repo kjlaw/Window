@@ -23,6 +23,7 @@
 @synthesize curIndex = _curIndex;
 @synthesize saved = _saved;
 @synthesize savedPose = _savedPose;
+@synthesize model = _model;
 
 
 
@@ -49,6 +50,7 @@
         _curIndex = 0;
         _saved = ARPoseUnity;
         _savedPose = false;
+        _model = nil;
     }
     return self;
 }

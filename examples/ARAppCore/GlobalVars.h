@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "ARMarker.h" // ARVec3
+#import "glm.h"
 
 @interface GlobalVars : NSObject
 {
@@ -24,6 +25,7 @@
     int curIndex;
     ARPose saved;
     Boolean savedPose;
+    GLMmodel *model;
 }
 
 + (GlobalVars *)sharedInstance;
@@ -41,10 +43,7 @@
 @property(nonatomic, readwrite) int curIndex;
 @property(nonatomic, readwrite) ARPose saved;
 @property(nonatomic, readwrite) Boolean savedPose;
-
-
-
-
+@property(nonatomic, readwrite) GLMmodel *model;
 
 
 

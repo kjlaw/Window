@@ -152,11 +152,13 @@
         [_ve.arViewController showDetailViewUI];
         
         if(globals.savedPose == false){
-            globals.savedPose = true;
-            globals.saved = _localPose;
+            if( ((globals.curIndex%2 == 1 && globals.showBottom) || (globals.curIndex%2 == 0 && globals.showTop)) && globals.index == globals.curIndex/2){
+                globals.savedPose = true;
+                globals.model = glmModel;
+            }
         }
 
-        if( ((globals.curIndex%2 == 1 && globals.showBottom) || (globals.curIndex%2 == 0 && globals.showTop)) && globals.index == globals.curIndex/2){
+        if(globals.savedPose){
             ARdouble pose[16];
             pose[0] = 0.018;
             pose[1] = 1.0;
@@ -231,7 +233,7 @@
                 glShadeModel(GL_SMOOTH);                // Do not flat shade polygons.
                 glStateCacheEnableLighting();
             } else glStateCacheDisableLighting();
-            glmDrawArrays(glmModel, 0);
+            glmDrawArrays(globals.model, 0);
             glPopMatrix();
         }
     }
