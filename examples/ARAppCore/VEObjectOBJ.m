@@ -61,6 +61,7 @@
 #import "ARView.h"
 #import "ARViewController.h"
 #import "GlobalVars.h"
+#import <sys/utsname.h>
 
 @implementation VEObjectOBJ {
     GLMmodel *glmModel;
@@ -135,7 +136,7 @@
     if(_ve->moveLeft || _ve->moveRight){
         globals.clicked = false;
     }
-    if(globals.curIndex == 8) globals.curIndex = 0;
+    globals.curIndex = (int) [_ve->objects indexOfObject:self];
     //This handles when the user clicks to leave the detail view
     //Need to set all detail view booleans to false.
     if(globals.clicked && !_ve->moveLeft && !_ve->moveRight && _ve.arViewController.glView->showDetail == YES){
@@ -146,17 +147,14 @@
         globals.showBottom = false;
         globals.savedPose = false;
     }
-    
     //If we are in the detail view, load the specified object
     if(_ve.arViewController.glView->showDetail == YES){
         [_ve.arViewController showDetailViewUI];
-        
-        if(globals.savedPose == false){
-            if( ((globals.curIndex%2 == 1 && globals.showBottom) || (globals.curIndex%2 == 0 && globals.showTop)) && globals.index == globals.curIndex/2){
-                globals.savedPose = true;
+        if(((globals.curIndex%2 == 1 && globals.showBottom) || ((globals.curIndex%2 == 0 ||globals.curIndex%2 == 2) && globals.showTop)) && globals.index == globals.curIndex/2) {
                 globals.model = glmModel;
-            }
+                globals.savedPose = true;
         }
+        
 
         if(globals.savedPose){
             ARdouble pose[16];
@@ -177,6 +175,7 @@
             } else {
                 pose[12] = 70;
             }
+
             switch (globals.index) {
                 case 0:
                     pose[13] = 0.0;
@@ -190,7 +189,18 @@
                 case 3:
                     pose[13] = -450.0;
                     break;
-                    
+                case 4:
+                    pose[13] = -600.0;
+                    break;
+                case 5:
+                    pose[13] = -750.0;
+                    break;
+                case 6:
+                    pose[13] = -900.0;
+                    break;
+                case 7:
+                    pose[13] = -1050.0;
+                    break;
                 default:
                     pose[13] = 0.0;
                     break;
@@ -236,7 +246,7 @@
             glmDrawArrays(globals.model, 0);
             glPopMatrix();
         }
-    }
+    } else
     //If the marker is visible (and we aren't in the detail view) load the objects
     if (_visible) {
         if(globals.clicked){
@@ -315,7 +325,6 @@
         GlobalVars *globals = [GlobalVars sharedInstance];
         globals.clicked = false;
     }
-    globals.curIndex ++;
 }
 
 -(void) dealloc

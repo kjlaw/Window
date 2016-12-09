@@ -1,6 +1,6 @@
 # This file uses centimeters as units for non-parametric coordinates.
 
-mtllib blue-sweater.mtl
+mtllib gray-sweater.mtl
 v 1.946000 79.869598 -3.243000
 v 3.431900 79.913597 -2.380800
 v 3.932000 78.104599 -3.699900
@@ -18819,7 +18819,7 @@ vn -0.182002 0.095901 0.978610
 vn -0.795384 0.303594 -0.524590
 vn -0.905859 0.358384 -0.225790
 vn -0.931119 0.364707 0.002400
-usemtl lambert2SG
+usemtl lambert5SG
 f 1/1/1 2/2/2 3/3/3 4/4/4
 f 5/5/5 6/6/6 7/7/7 8/8/8
 f 9/9/9 10/10/10 11/11/11 12/12/12

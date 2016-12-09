@@ -1,9 +1,9 @@
-10
+8
 
-models/blue-shirt.obj
+models/red-hoodie.obj
 0.0 160.0 0.0
 90.0 1.0 0.0 0.0
-6.716 6.716 6.716
+7.016 7.016 7.016
 MARKER 2
 
 models/cool-jeans.obj
@@ -12,50 +12,39 @@ models/cool-jeans.obj
 7.016 7.016 7.016
 MARKER 2
 
-models/red-hoodie.obj
+models/red-shirt.obj
 150.0 160.0 0.0
 90.0 1.0 0.0 0.0
 7.016 7.016 7.016
 MARKER 2
 
-models/black-jeans.obj
+models/cool-jeans.obj
 150.0 0.0 0.0
 90.0 1.0 0.0 0.0
 7.016 7.016 7.016
 MARKER 2
 
-models/girlt.obj
-300.0 180.0 0.0
+
+models/blue-shirt.obj
+300.0 160.0 0.0
 90.0 1.0 0.0 0.0
-3.616 3.616 3.616
+6.716 6.716 6.716
 MARKER 2
 
-models/black-jeans.obj
+models/cool-jeans.obj
 300.0 0.0 0.0
 90.0 1.0 0.0 0.0
 7.016 7.016 7.016
 MARKER 2
 
-models/pink-shirt.obj
-450.0 175.0 0.0
+models/blue-hoodie.obj
+450.0 160.0 0.0
 90.0 1.0 0.0 0.0
-4.816 4.816 4.816
-MARKER 2
-
-models/skirt.obj
-450.0 62.0 0.0
-90.0 1.0 0.0 0.0
-4.126 4.126 4.126
-MARKER 2
-
-models/red-women-shirt.obj
-600.0 175.0 0.0
-90.0 1.0 0.0 0.0
-4.816 4.816 4.816
+7.016 7.016 7.016
 MARKER 2
 
 models/cool-jeans.obj
-600.0 0.0 0.0
+450.0 0.0 0.0
 90.0 1.0 0.0 0.0
 7.016 7.016 7.016
 MARKER 2

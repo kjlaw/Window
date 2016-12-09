@@ -426,19 +426,24 @@ static void startCallback(void *userData)
     //arSetMatrixCodeType(gARHandle, AR_MATRIX_CODE_3x3); // Default = AR_MATRIX_CODE_3x3
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     NSMutableArray *arr = [userDefaults objectForKey:@"genderIndexPathRows"];
-    NSLog(@"%@", arr);
+    NSLog(@"Genders: %@", arr);
     Boolean showWomen = false;
     Boolean showMen = false;
     Boolean showNeutral = false;
     for(int i= 0; i < [arr count]; i ++){
         switch ((int)[arr[i] integerValue]) {
             case 0:
+                NSLog(@"Show men");
                 showMen = true;
                 break;
             case 1:
+                NSLog(@"Show women");
+
                 showWomen = true;
                 break;
             case 2:
+                NSLog(@"Show neutral");
+
                 showNeutral = true;
                 break;
             default:
@@ -453,6 +458,68 @@ static void startCallback(void *userData)
     if(showMen && showWomen){
         modelPath = @"Data2/bothGenders.dat";
     }
+    
+    NSMutableArray *colorArr = [userDefaults objectForKey:@"colorIndexPathRows"];
+    NSLog(@"Colors: %@", colorArr);
+    Boolean black = false;
+    Boolean blue = false;
+    Boolean pink = false;
+    Boolean gray = false;
+    Boolean red = false;
+    for(int i= 0; i < [colorArr count]; i ++){
+        switch ((int)[colorArr[i] integerValue]) {
+            case 0:
+                black = true;
+                break;
+            case 1:
+                blue = true;
+                break;
+            case 2:
+                pink = true;
+                break;
+            case 3:
+                gray = true;
+                break;
+            case 4:
+                NSLog(@"Show red");
+                red = true;
+                break;
+            default:
+                break;
+        }
+    }
+    if(showMen && showWomen && red && !black && !pink && !gray && !blue){
+        modelPath = @"Data2/redmodels.dat";
+    } else if(showMen && red && !black && !pink && !gray && !blue){
+        modelPath = @"Data2/redmalemodels.dat";
+    } else if(showWomen && red && !black && !pink && !gray && !blue){
+        modelPath = @"Data2/redfemalemodels.dat";
+    }
+    
+    if(showMen && showWomen && !red && !black && !pink && !gray && blue){
+        modelPath = @"Data2/bluemodels.dat";
+    } else if(showMen && !red && !black && !pink && !gray && blue){
+        modelPath = @"Data2/bluemalemodels.dat";
+    } else if(showWomen && !red && !black && !pink && !gray && blue){
+        modelPath = @"Data2/bluefemalemodels.dat";
+    }
+    
+    if(showMen && showWomen && !red && !black && !pink && gray && !blue){
+        modelPath = @"Data2/graymodels.dat";
+    } else if(showMen && !red && !black && !pink && gray && !blue){
+        modelPath = @"Data2/graymalemodels.dat";
+    } else if(showWomen && !red && !black && !pink && gray && !blue){
+        modelPath = @"Data2/grayfemalemodels.dat";
+    }
+    
+    if(showMen && showWomen && red && !black && !pink && !gray && blue){
+        modelPath = @"Data2/redbluemodels.dat";
+    } else if(showMen && red && !black && !pink && !gray && blue){
+        modelPath = @"Data2/redbluemalemodels.dat";
+    } else if(showWomen && red && !black && !pink && !gray && blue){
+        modelPath = @"Data2/redbluefemalemodels.dat";
+    }
+    
     // Set up the virtual environment.
     self.virtualEnvironment = [[[VirtualEnvironment alloc] initWithARViewController:self] autorelease];
    [self.virtualEnvironment addObjectsFromObjectListFile:modelPath connectToARMarkers:markers];
