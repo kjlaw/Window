@@ -145,17 +145,6 @@
         globals.showTop = false;
         globals.showBottom = false;
         globals.savedPose = false;
-//        globals.index = 0;
-//        //centers = [NSMutableDictionary dictionary];
-//        [globals.centers setObject:@"centered" forKey:@"cool-jeans.obj"];
-//        [globals.centers setObject:@"centered" forKey:@"blue-shirt.obj"];
-//        [globals.centers setObject:@"out" forKey:@"red-hoodie.obj"];
-//        [globals.centers setObject:@"out" forKey:@"thsirt_v002.obj"];
-//        [globals.centers setObject:@"out" forKey:@"black-jeans.obj"];
-//        [globals.centers setObject:@"out" forKey:@"pink-shirt.obj"];
-//        [globals.centers setObject:@"out" forKey:@"skirt.obj"];
-        
-        
     }
     
     //If we are in the detail view, load the specified object

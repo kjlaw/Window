@@ -1,4 +1,4 @@
-6
+4
 
 models/blue-shirt.obj
 0.0 160.0 0.0
@@ -20,18 +20,6 @@ MARKER 2
 
 models/cool-jeans.obj
 150.0 0.0 0.0
-90.0 1.0 0.0 0.0
-7.016 7.016 7.016
-MARKER 2
-
-models/white-bcnu.obj
-450.0 180.0 0.0
-90.0 1.0 0.0 0.0
-3.616 3.616 3.616
-MARKER 2
-
-models/cool-jeans.obj
-4500.0 0.0 0.0
 90.0 1.0 0.0 0.0
 7.016 7.016 7.016
 MARKER 2

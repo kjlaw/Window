@@ -18,7 +18,6 @@
 @synthesize showTop = _showTop;
 @synthesize newMove = _newMove;
 @synthesize inDetail = _inDetail;
-@synthesize centers = _centers;
 @synthesize numObjects = _numObjects;
 @synthesize index = _index;
 @synthesize curIndex = _curIndex;
@@ -46,19 +45,10 @@
         cycle = 0;
         newMove = false;
         inDetail = false;
-        _centers = [[NSMutableDictionary alloc] init];
         _index = 0;
         _curIndex = 0;
         _saved = ARPoseUnity;
         _savedPose = false;
-        //centers = [NSMutableDictionary dictionary];
-        [_centers setObject:@"centered" forKey:@"cool-jeans.obj"];
-        [_centers setObject:@"centered" forKey:@"blue-shirt.obj"];
-        [_centers setObject:@"out" forKey:@"red-hoodie.obj"];
-        [_centers setObject:@"out" forKey:@"girlt.obj"];
-        [_centers setObject:@"out" forKey:@"black-jeans.obj"];
-        [_centers setObject:@"out" forKey:@"pink-shirt.obj"];
-        [_centers setObject:@"out" forKey:@"skirt.obj"];
     }
     return self;
 }
