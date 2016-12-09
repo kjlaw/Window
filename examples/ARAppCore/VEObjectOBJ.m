@@ -265,7 +265,7 @@
         }
         if(_ve.arViewController.glView->showDetail == NO ){
             [_ve.arViewController hideDetailViewUI];
-            if(_ve->moveLeft == true && _ve->numMoved <= [_ve->objects count] && globals.index < globals.numObjects/2){
+            if(_ve->moveLeft == true && _ve->numMoved <= [_ve->objects count] && globals.index < globals.numObjects/2 -1){
                 if(_ve->numMoved == [_ve->objects count]){
                     _ve->moveLeft = false;
                     _ve->numMoved = 0;
