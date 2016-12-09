@@ -10,6 +10,7 @@
 #import <Contacts/Contacts.h>
 #import <MessageUI/MessageUI.h>
 #import <MobileCoreServices/MobileCoreServices.h>
+#import "GlobalVars.h"
 
 @interface ContactsTableViewController () <MFMessageComposeViewControllerDelegate>
 
@@ -142,6 +143,14 @@
     MFMessageComposeViewController *messageController = [[MFMessageComposeViewController alloc] init];
     messageController.messageComposeDelegate = self;
     [messageController setRecipients:recipients];
+    
+    GlobalVars *globals = [GlobalVars sharedInstance];
+    
+    if (globals.inDetail) {
+        [messageController setBody:@"Check out this item I found through Window!"];
+    } else {
+        [messageController setBody:@"Check out this outfit I found through Window!"];
+    }
     
     if (_snapshotImage != nil) {
         NSData *attachment = UIImagePNGRepresentation(_snapshotImage);
