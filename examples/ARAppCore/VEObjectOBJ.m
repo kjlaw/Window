@@ -147,9 +147,9 @@
     
     //If we are in the detail view, load the specified object
     if(_ve.arViewController.glView->showDetail == YES){
-        if( ((([self.name isEqualToString:@"cool-jeans.obj"] || [self.name isEqualToString:@"new-jeans.obj"] )&& globals.showBottom) ||
+        if( ((([self.name isEqualToString:@"cool-jeans.obj"] || [self.name isEqualToString:@"black-jeans.obj"] || [self.name isEqualToString:@"skirt.obj"] )&& globals.showBottom) ||
             (([self.name isEqualToString:@"red-hoodie.obj"] || [self.name isEqualToString:@"blue-shirt.obj"] ||
-              [self.name isEqualToString:@"thsirt_v002.obj"]) && globals.showTop)) ||
+              [self.name isEqualToString:@"thsirt_v002.obj"] ) && globals.showTop)) ||
             [[globals.centers objectForKey:self.name]  isEqual: @"centered"]){
             ARdouble pose[16];
             pose[0] = 0.018;
