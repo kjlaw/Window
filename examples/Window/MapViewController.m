@@ -24,21 +24,8 @@
     zoomLocation.longitude= -122.1719;
 
     MKCoordinateRegion viewRegion = MKCoordinateRegionMakeWithDistance(zoomLocation, 0.5 * METERS_PER_MILE, 0.5 * METERS_PER_MILE);
-
     [_mapView setRegion:viewRegion animated:YES];
     
-//    MKPointAnnotation *point = [[MKPointAnnotation alloc] init];
-//    point.coordinate = userLocation.coordinate;
-//    point.title = @"Where am I?";
-//    point.subtitle = @"I'm here!!!";
-//    
-//    [self.mapView addAnnotation:point];
-//    
-
-//    MKPlacemark *placemark = [[[MKPlacemark alloc] initWithCoordinate:CLLocationCoordinate2DMake(37.4390, -122.1735) addressDictionary:nil] autorelease];
-//    MKMapItem *mapItem = [[[MKMapItem alloc] initWithPlacemark:placemark] autorelease];
-//    [mapItem setName:@"Name of your location"];
-//    
     
     MKPointAnnotation *annotation = [[MKPointAnnotation alloc] init];
     annotation.coordinate = CLLocationCoordinate2DMake(37.439187, -122.173559);
