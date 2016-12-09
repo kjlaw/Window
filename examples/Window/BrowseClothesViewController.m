@@ -65,6 +65,8 @@
         ContactsTableViewController *sharevc = (ContactsTableViewController *)navcon.visibleViewController;
         UIImage *image = [self getScreenshotImageFromView:_snapshotView];
         sharevc.snapshotImage = image;
+
+        [self backButtonPressed:nil];
     }
 }
 

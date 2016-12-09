@@ -54,14 +54,7 @@
                 // only add contact if there is a phone number
                 if (contact.phoneNumbers != nil && [contact.phoneNumbers count] > 0) {
                     [contactList addObject:contact];
-                    NSLog(@"added: %@ %@", contact.givenName, contact.familyName);
                     [self refreshUI];
-                    for (CNLabeledValue *label in contact.phoneNumbers) {
-                        NSString *phone = [label.value stringValue];
-                        if ([phone length] > 0) {
-                            NSLog(@"phone: %@", phone);
-                        }
-                    }
                 }
             }];
         }
@@ -81,6 +74,9 @@
 }
 
 - (IBAction)cancel:(UIBarButtonItem *)sender {
+    GlobalVars *globals = [GlobalVars sharedInstance];
+    globals.inDetail = false;
+        
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
