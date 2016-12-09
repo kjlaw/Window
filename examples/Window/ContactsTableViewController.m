@@ -105,6 +105,13 @@
     
     cell.accessoryType = cell.selected ? UITableViewCellAccessoryCheckmark : UITableViewCellAccessoryNone;
     
+    UIView *bgColorView = [[UIView alloc] init];
+    bgColorView.backgroundColor = [UIColor colorWithRed:59.0f/255.0f
+                                                  green:209.0f/255.0f
+                                                   blue:209.0f/255.0f
+                                                  alpha:0.5f];
+    [cell setSelectedBackgroundView:bgColorView];
+    
     return cell;
 }
 
