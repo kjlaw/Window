@@ -116,6 +116,8 @@
 {
     self.wantsFullScreenLayout = YES;
     
+    itemPriceMapping = [[NSMutableDictionary alloc] init];
+    
     // This will be overlaid with the actual AR view.
     NSString *irisImage = nil;
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
@@ -129,6 +131,7 @@
         }
     }
     UIView *irisView = [[[UIImageView alloc] initWithImage:[UIImage imageNamed:irisImage]] autorelease];
+    
     
 //    UIView* irisView = [[UIView alloc] initWithFrame:CGRectMake(0,
 //                                                                0,
@@ -453,6 +456,11 @@ static void startCallback(void *userData)
     if(showMen && showWomen){
         modelPath = @"Data2/bothGenders.dat";
     }
+    
+    // Clear out price to item mapping
+    [itemPriceMapping removeAllObjects];
+    
+    
     // Set up the virtual environment.
     self.virtualEnvironment = [[[VirtualEnvironment alloc] initWithARViewController:self] autorelease];
    [self.virtualEnvironment addObjectsFromObjectListFile:modelPath connectToARMarkers:markers];
@@ -592,6 +600,7 @@ static void startCallback(void *userData)
 }
 
 - (void)dealloc {
+    [itemPriceMapping release];
     [super dealloc];
 }
 
@@ -608,20 +617,96 @@ static void startCallback(void *userData)
     arSetLabelingMode(gARHandle, (markersHaveWhiteBorders ? AR_LABELING_WHITE_REGION : AR_LABELING_BLACK_REGION));
 }
 
-- (void)showDetailViewUI {
-    BrowseClothesViewController *browsevc = (BrowseClothesViewController *)self.parentViewController;
-    [browsevc.backButton setHidden:NO];
-    [browsevc.filterButton setHidden:YES];
-    [browsevc.menuButton setHidden:YES];
-}
-
 - (void)hideDetailViewUI {
     BrowseClothesViewController *browsevc = (BrowseClothesViewController *)self.parentViewController;
     [browsevc.backButton setHidden:YES];
     [browsevc.filterButton setHidden:NO];
     [browsevc.menuButton setHidden:NO];
+    [browsevc.itemName setHidden:YES];
+    [browsevc.priceLabel setHidden:YES];
+    [browsevc.availableSizes setHidden:YES];
 }
 
+- (void)showDetailViewUI:(NSString *)name {
+    BrowseClothesViewController *browsevc = (BrowseClothesViewController *)self.parentViewController;
+    [browsevc.backButton setHidden:NO];
+    [browsevc.filterButton setHidden:YES];
+    [browsevc.menuButton setHidden:YES];
+    [browsevc.itemName setHidden:NO];
+    [browsevc.priceLabel setHidden:NO];
+    [browsevc.availableSizes setHidden:NO];
+    
+    NSLog(@"name: %@", name);
+    NSArray *items = @[@"blue-shirt.obj", @"cool-jeans.obj", @"red-hoodie.obj", @"pink-shirt.obj", @"skirt.obj"];
+    int item = (int)[items indexOfObject:name];
+    switch (item) {
+        case 0:
+            [self showDataForObj:@"Blue T-shirt"];
+            break;
+        case 1:
+            [self showDataForObj:@"Faded Blue Jeans"];
+            break;
+        case 2:
+            [self showDataForObj:@"Red Reflective Hoodie"];
+            break;
+        case 3:
+            [self showDataForObj:@"Pink Short Sleeve Shirt"];
+            break;
+        case 4:
+            [self showDataForObj:@"Maroon Pinstripe Skirt"];
+            break;
+        default:
+            [self showDataForObj:@""];
+            break;
+    }
+}
+
+- (void)showDataForObj:(NSString *)name {
+    BrowseClothesViewController *browsevc = (BrowseClothesViewController *)self.parentViewController;
+    browsevc.itemName.text = name;
+    
+    // Get price range
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    NSMutableArray *arr = [userDefaults objectForKey:@"priceIndexPathRows"];
+    
+    // Wizard-of-oz to set the price, too many combinations otherwise
+    NSString *price = [itemPriceMapping objectForKey:name];
+    if (price == nil) {
+        NSLog(@"price is nil");
+        price = [NSString stringWithFormat:@"$%ld", (long)[self randomNumberBetween:8 maxNumber:60]];
+        if (arr != nil && [arr count] > 0) {
+            NSLog(@"selected index: %ld", (long)[arr[0] integerValue]);
+            switch ([arr[0] integerValue]) {
+                case 0:
+                    price = [NSString stringWithFormat:@"$%ld", (long)[self randomNumberBetween:0 maxNumber:10]];
+                    break;
+                case 1:
+                    price = [NSString stringWithFormat:@"$%ld", (long)[self randomNumberBetween:10 maxNumber:25]];
+                    break;
+                case 2:
+                    price = [NSString stringWithFormat:@"$%ld", (long)[self randomNumberBetween:25 maxNumber:50]];
+                    break;
+                case 3:
+                    price = [NSString stringWithFormat:@"$%ld", (long)[self randomNumberBetween:50 maxNumber:100]];
+                    break;
+                case 4:
+                    price = [NSString stringWithFormat:@"$%ld", (long)[self randomNumberBetween:100 maxNumber:200]];
+                    break;
+                default:
+                    break;
+            }
+        }
+        [itemPriceMapping setObject:price forKey:name];
+    }
+    NSLog(@"price: %@", price);
+    browsevc.priceLabel.text = price;
+}
+
+
+- (NSInteger)randomNumberBetween:(NSInteger)min maxNumber:(NSInteger)max
+{
+    return min + arc4random_uniform((uint32_t)(max - min + 1));
+}
 
 
 //

@@ -61,6 +61,7 @@
 #import "ARView.h"
 #import "ARViewController.h"
 #import "GlobalVars.h"
+#import <sys/utsname.h>
 
 @implementation VEObjectOBJ {
     GLMmodel *glmModel;
@@ -149,12 +150,12 @@
     
     //If we are in the detail view, load the specified object
     if(_ve.arViewController.glView->showDetail == YES){
-        [_ve.arViewController showDetailViewUI];
         
         if(globals.savedPose == false){
             if( ((globals.curIndex%2 == 1 && globals.showBottom) || (globals.curIndex%2 == 0 && globals.showTop)) && globals.index == globals.curIndex/2){
                 globals.savedPose = true;
                 globals.model = glmModel;
+                [_ve.arViewController showDetailViewUI:self.name];
             }
         }
 
@@ -176,6 +177,16 @@
                 pose[12] = 150;
             } else {
                 pose[12] = 70;
+            }
+            struct utsname systemInfo;
+            uname(&systemInfo);
+            
+            if([[NSString stringWithCString:systemInfo.machine encoding:NSUTF8StringEncoding] isEqualToString:@"iPhone9,3"]){
+                if (globals.showTop) {
+                    pose[12] += 50;
+                } else {
+                    pose[12] += 20;
+                }
             }
             switch (globals.index) {
                 case 0:

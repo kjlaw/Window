@@ -96,8 +96,8 @@
     NSArray *gender = @[@"Men", @"Women", @"Neutral"];
     NSArray *style = @[@"Casual", @"Formal", @"Activewear", @"Seasonal"];
     NSArray *size = @[@"X-Small", @"Small", @"Medium", @"Large", @"X-Large"];
-    NSArray *color = @[@"Black", @"Blue", @"Pink", @"Gray", @"Red"];
-    NSArray *price = @[@"Under $50", @"$50 to $100", @"$100 to $250", @"$250 to $500", @"$500 & Above"];
+    NSArray *color = @[@"Blue", @"Pink", @"Gray", @"Red"];
+    NSArray *price = @[@"Under $10", @"$10 to $25", @"$25 to $50", @"$50 to $100", @"$100 & Above"];
     
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     

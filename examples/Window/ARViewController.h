@@ -67,12 +67,13 @@
 @interface ARViewController : UIViewController <CameraVideoTookPictureDelegate> {
     NSString *modelPath;
     UITouch *startPosition;
+    NSMutableDictionary *itemPriceMapping;
 }
 
 - (IBAction)start;
 - (IBAction)stop;
 - (void) processFrame:(AR2VideoBufferT *)buffer;
-- (void)showDetailViewUI;
+- (void)showDetailViewUI:(NSString *)name;
 - (void)hideDetailViewUI;
 
 @property (readonly) ARView *glView;
