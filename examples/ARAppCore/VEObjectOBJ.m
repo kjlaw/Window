@@ -131,9 +131,12 @@
     const GLfloat lightWhite75[]        =    {0.75, 0.75, 0.75, 1.0};    // RGBA all on three quarters.
     const GLfloat lightPosition0[]     =    {1.0f, 1.0f, 2.0f, 0.0f}; // A directional light (i.e. non-positional).
     GlobalVars *globals = [GlobalVars sharedInstance];
+    //If the user swiped make sure we don't try to register a click
     if(_ve->moveLeft || _ve->moveRight){
         globals.clicked = false;
     }
+    //This handles when the user clicks to leave the detail view
+    //Need to set all detail view booleans to false.
     if(globals.clicked && !_ve->moveLeft && !_ve->moveRight && _ve.arViewController.glView->showDetail == YES){
         _ve.arViewController.glView->showDetail = NO;
         globals.inDetail = false;
@@ -142,8 +145,9 @@
         globals.showBottom = false;
     }
     
+    //If we are in the detail view, load the specified object
     if(_ve.arViewController.glView->showDetail == YES){
-        if( (([self.name isEqualToString:@"cool-jeans.obj"] && globals.showBottom) ||
+        if( ((([self.name isEqualToString:@"cool-jeans.obj"] || [self.name isEqualToString:@"new-jeans.obj"] )&& globals.showBottom) ||
             (([self.name isEqualToString:@"red-hoodie.obj"] || [self.name isEqualToString:@"blue-shirt.obj"] ||
               [self.name isEqualToString:@"thsirt_v002.obj"]) && globals.showTop)) ||
             [[globals.centers objectForKey:self.name]  isEqual: @"centered"]){
@@ -165,7 +169,6 @@
             } else {
                 pose[12] = 177.0;
             }
-
             if([[globals.centers objectForKey:@"red-hoodie.obj"]  isEqual: @"centered"] && [self.name isEqual:@"red-hoodie.obj"]){
                 pose[13] = -150.0;
             } else {
@@ -213,23 +216,19 @@
             glPopMatrix();
         }
     }
-
+    //If the marker is visible (and we aren't in the detail view) load the objects
     if (_visible) {
         if(globals.clicked){
              if(!_ve->moveLeft && !_ve->moveRight){
-                NSLog(@"clicked!");
                 globals.cycle += 1;
                 //Check if obj is centered
                 if(self->centered){
-                    NSLog(@"centered");
                     _ve.arViewController.glView->showDetail = YES;
                     globals.inDetail = true;
                     globals.clicked = false;
                     if(globals.rP1->v[1] < 250){
-                        NSLog(@"top");
                         globals.showTop = true;
                     } else {
-                        NSLog(@"bottom");
                         globals.showBottom = true;
                     }
                 }
@@ -262,10 +261,8 @@
                     _localPose.T[12] -= _poseInEyeSpace.T[12];
                     if([[globals.centers objectForKey:self.name]  isEqual: @"centered"] && globals.newMove){
                         [globals.centers setValue:@"not" forKey:self.name];
-                        NSLog(@"Removed center flag");
                     } else if (globals.newMove){
                         [globals.centers setValue:@"centered" forKey:self.name];
-                        NSLog(@"Set center flag");
                     } else {
                         globals.newMove = false;
                     }
@@ -284,10 +281,8 @@
                     _localPose.T[12] += _poseInEyeSpace.T[12];
                     if([[globals.centers objectForKey:self.name]  isEqual: @"centered"] && globals.newMove){
                         [globals.centers setValue:@"not" forKey:self.name];
-                        NSLog(@"Removed center flag");
                     } else if (globals.newMove){
                         [globals.centers setValue:@"centered" forKey:self.name];
-                        NSLog(@"Set center flag");
                     } else {
                         globals.newMove = false;
                     }

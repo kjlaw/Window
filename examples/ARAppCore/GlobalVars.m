@@ -53,6 +53,9 @@
         [_centers setObject:@"centered" forKey:@"blue-shirt.obj"];
         [_centers setObject:@"out" forKey:@"red-hoodie.obj"];
         [_centers setObject:@"out" forKey:@"thsirt_v002.obj"];
+        [_centers setObject:@"out" forKey:@"new-jeans.obj"];
+
+
     }
     return self;
 }
