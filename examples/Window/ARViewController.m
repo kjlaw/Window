@@ -461,6 +461,39 @@ static void startCallback(void *userData)
         globals.setFilterBanner = false;
     }
     
+    NSMutableArray *styleArr = [userDefaults objectForKey:@"styleIndexPathRows"];
+    Boolean casual = false;
+    Boolean formal = false;
+    Boolean activewear = false;
+    Boolean seasonal = false;
+    for(int i= 0; i < [styleArr count]; i ++){
+        switch ((int)[styleArr[i] integerValue]) {
+            case 0:
+                casual = true;
+                break;
+            case 1:
+                formal = true;
+                break;
+            case 2:
+                activewear = true;
+                break;
+            case 3:
+                seasonal = true;
+                break;
+            default:
+                break;
+        }
+    }
+    
+    if(showWomen && formal){
+        globals.setFilterBanner = false;
+        modelPath = @"Data2/fancywomenmodels.dat";
+    }
+    if(formal && !showWomen && !showMen){
+        globals.setFilterBanner = false;
+        modelPath = @"Data2/fancywomenmodels.dat";
+    }
+    
     NSMutableArray *colorArr = [userDefaults objectForKey:@"colorIndexPathRows"];
     Boolean blue = false;
     Boolean pink = false;
@@ -537,39 +570,14 @@ static void startCallback(void *userData)
         modelPath = @"Data2/pinkfemalemodels.dat";
     }
     
-    NSMutableArray *styleArr = [userDefaults objectForKey:@"styleIndexPathRows"];
-    Boolean casual = false;
-    Boolean formal = false;
-    Boolean activewear = false;
-    Boolean seasonal = false;
-    for(int i= 0; i < [styleArr count]; i ++){
-        switch ((int)[styleArr[i] integerValue]) {
-            case 0:
-                casual = true;
-                break;
-            case 1:
-                formal = true;
-                break;
-            case 2:
-                activewear = true;
-                break;
-            case 3:
-                seasonal = true;
-                break;
-            default:
-                break;
-        }
-    }
-    
-    if(showWomen && formal){
-        globals.setFilterBanner = false;
-        modelPath = @"Data2/fancywomenmodels.dat";
-    }
-    if(formal && !showWomen && !showMen){
-        globals.setFilterBanner = false;
-        modelPath = @"Data2/fancywomenmodels.dat";
+    if ((seasonal || activewear) && !formal && !casual) {
+        globals.setFilterBanner = true;
     }
 
+    if (showMen && !showWomen && (seasonal || activewear || formal) && !casual) {
+        globals.setFilterBanner = true;
+    }
+    
     // Clear out price to item mapping
     [itemPriceMapping removeAllObjects];
     
