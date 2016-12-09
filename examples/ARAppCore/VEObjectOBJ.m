@@ -272,7 +272,7 @@
                     globals.index++;
                 } else {
                     _ve->numMoved ++;
-                    _localPose.T[12] -= _poseInEyeSpace.T[12];
+                    _localPose.T[12] -= 150;
                 }
             } else {
                 _ve->moveLeft = false;
@@ -284,7 +284,7 @@
                     globals.index--;
                 } else {
                     _ve->numMoved ++;
-                    _localPose.T[12] += _poseInEyeSpace.T[12];
+                    _localPose.T[12] += 150;
                 }
             } else {
                 _ve->moveRight = false;
