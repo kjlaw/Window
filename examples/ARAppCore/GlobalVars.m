@@ -16,12 +16,14 @@
 @synthesize cycle = _cycle;
 @synthesize showBottom = _showBottom;
 @synthesize showTop = _showTop;
-@synthesize rightShifts = _rightShifts;
-@synthesize leftShifts = _leftShifts;
 @synthesize newMove = _newMove;
 @synthesize inDetail = _inDetail;
 @synthesize centers = _centers;
 @synthesize numObjects = _numObjects;
+@synthesize index = _index;
+@synthesize curIndex = _curIndex;
+@synthesize saved = _saved;
+@synthesize savedPose = _savedPose;
 
 
 
@@ -42,21 +44,21 @@
         showTop = false;
         showBottom = false;
         cycle = 0;
-        _rightShifts = 0;
-        _leftShifts = 0;
         newMove = false;
         inDetail = false;
         _centers = [[NSMutableDictionary alloc] init];
-
+        _index = 0;
+        _curIndex = 0;
+        _saved = ARPoseUnity;
+        _savedPose = false;
         //centers = [NSMutableDictionary dictionary];
         [_centers setObject:@"centered" forKey:@"cool-jeans.obj"];
         [_centers setObject:@"centered" forKey:@"blue-shirt.obj"];
         [_centers setObject:@"out" forKey:@"red-hoodie.obj"];
-        [_centers setObject:@"out" forKey:@"thsirt_v002.obj"];
+        [_centers setObject:@"out" forKey:@"girlt.obj"];
         [_centers setObject:@"out" forKey:@"black-jeans.obj"];
+        [_centers setObject:@"out" forKey:@"pink-shirt.obj"];
         [_centers setObject:@"out" forKey:@"skirt.obj"];
-
-
     }
     return self;
 }

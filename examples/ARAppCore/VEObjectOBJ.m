@@ -135,6 +135,7 @@
     if(_ve->moveLeft || _ve->moveRight){
         globals.clicked = false;
     }
+    if(globals.curIndex == 8) globals.curIndex = 0;
     //This handles when the user clicks to leave the detail view
     //Need to set all detail view booleans to false.
     if(globals.clicked && !_ve->moveLeft && !_ve->moveRight && _ve.arViewController.glView->showDetail == YES){
@@ -143,14 +144,28 @@
         globals.clicked = false;
         globals.showTop = false;
         globals.showBottom = false;
+        globals.savedPose = false;
+//        globals.index = 0;
+//        //centers = [NSMutableDictionary dictionary];
+//        [globals.centers setObject:@"centered" forKey:@"cool-jeans.obj"];
+//        [globals.centers setObject:@"centered" forKey:@"blue-shirt.obj"];
+//        [globals.centers setObject:@"out" forKey:@"red-hoodie.obj"];
+//        [globals.centers setObject:@"out" forKey:@"thsirt_v002.obj"];
+//        [globals.centers setObject:@"out" forKey:@"black-jeans.obj"];
+//        [globals.centers setObject:@"out" forKey:@"pink-shirt.obj"];
+//        [globals.centers setObject:@"out" forKey:@"skirt.obj"];
+        
+        
     }
     
     //If we are in the detail view, load the specified object
     if(_ve.arViewController.glView->showDetail == YES){
-        if( ((([self.name isEqualToString:@"cool-jeans.obj"] || [self.name isEqualToString:@"black-jeans.obj"] || [self.name isEqualToString:@"skirt.obj"] )&& globals.showBottom) ||
-            (([self.name isEqualToString:@"red-hoodie.obj"] || [self.name isEqualToString:@"blue-shirt.obj"] ||
-              [self.name isEqualToString:@"thsirt_v002.obj"] ) && globals.showTop)) ||
-            [[globals.centers objectForKey:self.name]  isEqual: @"centered"]){
+        if(globals.savedPose == false){
+            globals.savedPose = true;
+            globals.saved = _localPose;
+        }
+
+        if( ((globals.curIndex%2 == 1 && globals.showBottom) || (globals.curIndex%2 == 0 && globals.showTop)) && globals.index == globals.curIndex/2){
             ARdouble pose[16];
             pose[0] = 0.018;
             pose[1] = 1.0;
@@ -164,17 +179,30 @@
             pose[9] = 0.021673;
             pose[10] = 0.12422;
             pose[11] = 0;
-            if([self.name isEqualToString:@"cool-jeans.obj"]){
-                pose[12] = 75.0;
+            if(globals.showTop){
+                pose[12] = 150;
             } else {
-                pose[12] = 177.0;
+                pose[12] = 70;
             }
-            if([[globals.centers objectForKey:@"red-hoodie.obj"]  isEqual: @"centered"] && [self.name isEqual:@"red-hoodie.obj"]){
-                pose[13] = -150.0;
-            } else {
-                pose[13] = 0.0;
+            switch (globals.index) {
+                case 0:
+                    pose[13] = 0.0;
+                    break;
+                case 1:
+                    pose[13] = -150.0;
+                    break;
+                case 2:
+                    pose[13] = -300.0;
+                    break;
+                case 3:
+                    pose[13] = -450.0;
+                    break;
+                    
+                default:
+                    pose[13] = 0.0;
+                    break;
             }
-            pose[14] = -339.0;
+            pose[14] = -330.0;
             pose[15] = 1;
             glPushMatrix();
             glMultMatrixf(pose);
@@ -243,49 +271,27 @@
             }
         }
         if(_ve.arViewController.glView->showDetail == NO ){
-            int minNumber = (globals.numObjects)/2;
-            if (globals.numObjects == 1) {
-                minNumber = 0;
-            } else if(globals.numObjects%2 == 1){
-                minNumber+=1;
-            }
             
-            if(_ve->moveLeft == true && _ve->numMoved <= [_ve->objects count] && globals.leftShifts < minNumber-1){
+            if(_ve->moveLeft == true && _ve->numMoved <= [_ve->objects count] && globals.index < globals.numObjects/2){
                 if(_ve->numMoved == [_ve->objects count]){
                     _ve->moveLeft = false;
                     _ve->numMoved = 0;
-                    globals.leftShifts += 1;
-                    if(globals.rightShifts != 0) globals.rightShifts -= 1;
+                    globals.index++;
                 } else {
                     _ve->numMoved ++;
                     _localPose.T[12] -= _poseInEyeSpace.T[12];
-                    if([[globals.centers objectForKey:self.name]  isEqual: @"centered"] && globals.newMove){
-                        [globals.centers setValue:@"not" forKey:self.name];
-                    } else if (globals.newMove){
-                        [globals.centers setValue:@"centered" forKey:self.name];
-                    } else {
-                        globals.newMove = false;
-                    }
                 }
             } else {
                 _ve->moveLeft = false;
             }
-            if(_ve->moveRight == true && _ve->numMoved <= [_ve->objects count] && globals.rightShifts < minNumber){
+            if(_ve->moveRight == true && _ve->numMoved <= [_ve->objects count] &&  globals.index > 0){
                 if(_ve->numMoved == [_ve->objects count]){
                     _ve->moveRight = false;
                     _ve->numMoved = 0;
-                    globals.rightShifts += 1;
-                    if(globals.leftShifts != 0) globals.leftShifts -= 1;
+                    globals.index--;
                 } else {
                     _ve->numMoved ++;
                     _localPose.T[12] += _poseInEyeSpace.T[12];
-                    if([[globals.centers objectForKey:self.name]  isEqual: @"centered"] && globals.newMove){
-                        [globals.centers setValue:@"not" forKey:self.name];
-                    } else if (globals.newMove){
-                        [globals.centers setValue:@"centered" forKey:self.name];
-                    } else {
-                        globals.newMove = false;
-                    }
                 }
             } else {
                 _ve->moveRight = false;
@@ -316,6 +322,7 @@
         GlobalVars *globals = [GlobalVars sharedInstance];
         globals.clicked = false;
     }
+    globals.curIndex ++;
 }
 
 -(void) dealloc

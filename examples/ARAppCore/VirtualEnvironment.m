@@ -228,14 +228,7 @@ static char *get_buff(char *buf, int n, FILE *fp, int skipblanks)
     }
     GlobalVars *globals = [GlobalVars sharedInstance];
     globals.numObjects = numObjects;
-    int minNumber = (globals.numObjects)/2;
-    if (globals.numObjects == 1) {
-        minNumber = 0;
-    } else if(globals.numObjects%2 == 1){
-        minNumber+=1;
-    }
-    globals.rightShifts = minNumber;
-    
+
 #ifdef DEBUG
     NSLog(@"Reading %d objects.\n", numObjects);
 #endif
