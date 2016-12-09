@@ -69,7 +69,6 @@
 
 - (void)refreshUI {
     dispatch_async(dispatch_get_main_queue(), ^{
-        NSLog(@"Calling reloadData");
         [self.tableView reloadData];
     });
 }
@@ -92,7 +91,6 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    NSLog(@"tableview count: %lu", (unsigned long)contactList.count);
     return contactList.count;
 }
 

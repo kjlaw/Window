@@ -57,6 +57,7 @@
         NSString* newKey = [NSString stringWithFormat:@"%@New", key];
         NSMutableArray *data = [userDefaults valueForKey:newKey];
         [self storeData:data forKey:key];
+//        NSLog(@"saved value: %@ forKey: %@",[[NSUserDefaults standardUserDefaults] valueForKey:key],key);
     }
 }
 
@@ -66,8 +67,8 @@
     
     for (NSString* key in filterKeys){
         [userDefaults removeObjectForKey:key];
+        [userDefaults synchronize];
     }
-    [userDefaults synchronize];
 }
 
 - (void)copySavedFiltersToTemp {
@@ -92,7 +93,7 @@
 - (void)displaySavedFilters {
     // populate details label from saved filters
     
-    NSArray *gender = @[@"Men", @"Women", @"Netural"];
+    NSArray *gender = @[@"Men", @"Women", @"Neutral"];
     NSArray *style = @[@"Casual", @"Formal", @"Activewear", @"Seasonal"];
     NSArray *size = @[@"X-Small", @"Small", @"Medium", @"Large", @"X-Large"];
     NSArray *color = @[@"Black", @"Blue", @"Pink", @"Gray", @"Red"];
@@ -187,15 +188,18 @@
 
 #pragma mark - Table view data source
 
-/*
- - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
- UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
- 
- // Configure the cell...
- 
- return cell;
- }
- */
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    UITableViewCell *cell = [super tableView:tableView cellForRowAtIndexPath:indexPath];
+    
+    UIView *bgColorView = [[UIView alloc] init];
+    bgColorView.backgroundColor = [UIColor colorWithRed:59.0f/255.0f
+                                                  green:209.0f/255.0f
+                                                   blue:209.0f/255.0f
+                                                  alpha:0.5f];
+    [cell setSelectedBackgroundView:bgColorView];
+    
+    return cell;
+}
 
 /*
  // Override to support conditional editing of the table view.

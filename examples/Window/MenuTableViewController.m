@@ -35,15 +35,18 @@
 
 #pragma mark - Table view data source
 
-/*
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
+    UITableViewCell *cell = [super tableView:tableView cellForRowAtIndexPath:indexPath];
     
-    // Configure the cell...
+    UIView *bgColorView = [[UIView alloc] init];
+    bgColorView.backgroundColor = [UIColor colorWithRed:59.0f/255.0f
+                                                  green:209.0f/255.0f
+                                                   blue:209.0f/255.0f
+                                                  alpha:0.5f];
+    [cell setSelectedBackgroundView:bgColorView];
     
     return cell;
 }
-*/
 
 /*
 // Override to support conditional editing of the table view.

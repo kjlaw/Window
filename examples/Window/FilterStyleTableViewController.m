@@ -66,7 +66,6 @@
 }
 
 - (void)storeData:(NSMutableArray *)selectedIndexPathRows {
-    NSLog(@"storeData");
     // Get the standardUserDefaults object, store your UITableView data array against a key, synchronize the defaults
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     [userDefaults setObject:selectedIndexPathRows forKey:@"styleIndexPathRowsNew"];
@@ -74,12 +73,10 @@
 }
 
 - (void)retrieveData {
-    NSLog(@"retrieveData");
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     NSArray *selectedIndexPathRows = [userDefaults arrayForKey:@"styleIndexPathRowsNew"];
     
     for (int i = 0; i < selectedIndexPathRows.count; i++) {
-        NSLog(@"row: %ld", (long)[selectedIndexPathRows[i] integerValue]);
         NSIndexPath *indexPath = [NSIndexPath indexPathForRow:[selectedIndexPathRows[i] integerValue] inSection:0];
         UITableViewCell *cell = [super tableView:myTableView cellForRowAtIndexPath:indexPath];
         cell.selected = YES;
@@ -93,6 +90,13 @@
     UITableViewCell *cell = [super tableView:tableView cellForRowAtIndexPath:indexPath];
     
     cell.accessoryType = cell.selected ? UITableViewCellAccessoryCheckmark : UITableViewCellAccessoryNone;
+    
+    UIView *bgColorView = [[UIView alloc] init];
+    bgColorView.backgroundColor = [UIColor colorWithRed:59.0f/255.0f
+                                                  green:209.0f/255.0f
+                                                   blue:209.0f/255.0f
+                                                  alpha:0.5f];
+    [cell setSelectedBackgroundView:bgColorView];
     
     return cell;
 }

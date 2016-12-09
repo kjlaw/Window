@@ -381,6 +381,7 @@
 		7B98FCD41DFA20AB003CCFF9 /* nearby_green_solid.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B98FCD31DFA20AB003CCFF9 /* nearby_green_solid.png */; };
 		7B98FCD61DFA2177003CCFF9 /* profile_gray_solid.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B98FCD51DFA2177003CCFF9 /* profile_gray_solid.png */; };
 		7B98FCDE1DFA4105003CCFF9 /* Images-2.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7B98FCDD1DFA4105003CCFF9 /* Images-2.xcassets */; };
+		7BD877E61DFAA1640077210C /* SettingsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BD877E51DFAA1640077210C /* SettingsTableViewController.m */; };
 		7F798A8B4F8E171F423F07E8 /* libPods-ARUtil.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F74E60D96CC225B69ADA20C /* libPods-ARUtil.a */; };
 		80E88110AED5386DE2C25E65 /* libPods-ARgsub_es2.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F8168B1AA876CFACA73B072 /* libPods-ARgsub_es2.a */; };
 		82C55E401397A0A30FD09787 /* libPods-ARMulti.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 27E2D5C18F248B6B67AA15EE /* libPods-ARMulti.a */; };
@@ -2341,6 +2342,8 @@
 		7B98FCD31DFA20AB003CCFF9 /* nearby_green_solid.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = nearby_green_solid.png; sourceTree = "<group>"; };
 		7B98FCD51DFA2177003CCFF9 /* profile_gray_solid.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = profile_gray_solid.png; sourceTree = "<group>"; };
 		7B98FCDD1DFA4105003CCFF9 /* Images-2.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = "Images-2.xcassets"; path = "Window/Images-2.xcassets"; sourceTree = "<group>"; };
+		7BD877E41DFAA1640077210C /* SettingsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsTableViewController.h; sourceTree = "<group>"; };
+		7BD877E51DFAA1640077210C /* SettingsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsTableViewController.m; sourceTree = "<group>"; };
 		7C81638A39638EA648840758 /* Pods-ARMulti.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ARMulti.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ARMulti/Pods-ARMulti.debug.xcconfig"; sourceTree = "<group>"; };
 		7F74E60D96CC225B69ADA20C /* libPods-ARUtil.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ARUtil.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		819EF64F1BA5B58F1E2243CE /* Pods-Window.distribution.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Window.distribution.xcconfig"; path = "Pods/Target Support Files/Pods-Window/Pods-Window.distribution.xcconfig"; sourceTree = "<group>"; };
@@ -2632,6 +2635,8 @@
 				7B98FCBF1DFA0462003CCFF9 /* ProfileTableViewController.m */,
 				7B8F72991DFA5BFF00EB5B62 /* MapViewController.h */,
 				7B8F729A1DFA5BFF00EB5B62 /* MapViewController.m */,
+				7BD877E41DFAA1640077210C /* SettingsTableViewController.h */,
+				7BD877E51DFAA1640077210C /* SettingsTableViewController.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -5930,6 +5935,7 @@
 				4A33B6C818ADB86E0028A979 /* EAGLView.m in Sources */,
 				7B98FCC01DFA0462003CCFF9 /* ProfileTableViewController.m in Sources */,
 				4A33B70918ADC8700028A979 /* ARView.m in Sources */,
+				7BD877E61DFAA1640077210C /* SettingsTableViewController.m in Sources */,
 				4A33B6EA18ADBA510028A979 /* ARMarker.m in Sources */,
 				7B8F729B1DFA5BFF00EB5B62 /* MapViewController.m in Sources */,
 			);
