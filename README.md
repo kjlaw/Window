@@ -1,11 +1,11 @@
 # Window
 
 ##Installation
-1) Clone the repo
-2) Download cocoapods if not already installed
-3) run pod init
-4) run pod install
-5) You should be good to go!
+1 Clone the repo
+2 Download cocoapods if not already installed
+3 run pod init
+4 run pod install
+5 You should be good to go!
 
 ##About
 Window uses augmented reality to place a custom mannequin with your proportions right in the store’s front window 
