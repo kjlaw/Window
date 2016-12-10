@@ -585,6 +585,10 @@ static void startCallback(void *userData)
     if(globals.setFilterBanner){
         modelPath = @"Data2/nothing.dat";
     }
+    
+    if(!(showMen && showWomen && showNeutral && red && blue && gray && pink && casual && formal && activewear && seasonal)){
+        modelPath = @"Data2/bothGenders.dat";
+    }
     // Set up the virtual environment.
     self.virtualEnvironment = [[[VirtualEnvironment alloc] initWithARViewController:self] autorelease];
    [self.virtualEnvironment addObjectsFromObjectListFile:modelPath connectToARMarkers:markers];
