@@ -586,7 +586,7 @@ static void startCallback(void *userData)
         modelPath = @"Data2/nothing.dat";
     }
     
-    if(!(showMen && showWomen && showNeutral && red && blue && gray && pink && casual && formal && activewear && seasonal)){
+    if(!showMen && !showWomen && !showNeutral && !red && !blue && !gray && !pink && !casual && !formal && !activewear && !seasonal){
         modelPath = @"Data2/bothGenders.dat";
     }
     // Set up the virtual environment.

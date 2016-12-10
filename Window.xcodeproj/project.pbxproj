@@ -5382,7 +5382,7 @@
 				LastUpgradeCheck = 0720;
 				TargetAttributes = {
 					4A2F72D7117840A600F35FA7 = {
-						DevelopmentTeam = ALM4357QZ2;
+						DevelopmentTeam = UPY629UR3V;
 					};
 				};
 			};
@@ -6535,11 +6535,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				DEVELOPMENT_TEAM = ALM4357QZ2;
+				DEVELOPMENT_TEAM = UPY629UR3V;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = examples/Window/ARApp2_Prefix.pch;
 				INFOPLIST_FILE = "$(SRCROOT)/examples/Window/Info.plist";
-				PRODUCT_BUNDLE_IDENTIFIER = com.merfrog.Window2;
+				PRODUCT_BUNDLE_IDENTIFIER = com.merfrog.Window;
 				PRODUCT_NAME = Window;
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -6553,11 +6553,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				DEVELOPMENT_TEAM = ALM4357QZ2;
+				DEVELOPMENT_TEAM = UPY629UR3V;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = examples/Window/ARApp2_Prefix.pch;
 				INFOPLIST_FILE = "$(SRCROOT)/examples/Window/Info.plist";
-				PRODUCT_BUNDLE_IDENTIFIER = com.merfrog.Window2;
+				PRODUCT_BUNDLE_IDENTIFIER = com.merfrog.Window;
 				PRODUCT_NAME = Window;
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -6571,12 +6571,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_ENTITLEMENTS = examples/Window/dist.plist;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
-				DEVELOPMENT_TEAM = ALM4357QZ2;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				DEVELOPMENT_TEAM = UPY629UR3V;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = examples/Window/ARApp2_Prefix.pch;
 				INFOPLIST_FILE = "$(SRCROOT)/examples/Window/Info.plist";
-				PRODUCT_BUNDLE_IDENTIFIER = com.merfrog.Window2;
+				PRODUCT_BUNDLE_IDENTIFIER = com.merfrog.Window;
 				PRODUCT_NAME = Window;
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
