@@ -1,6 +1,7 @@
 # Window
 
 Created by Kristen Law, Max Freundlich, and Elisa Lupin-Jimenez
+
 Website: http://hci.stanford.edu/courses/cs147/2016/au/projects/MixedReality/Window/
 
 ##Installation
